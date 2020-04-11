@@ -21,9 +21,11 @@
       background-image: url("../../assets/sword.svg");
       background-size: contain;
       background-repeat: no-repeat;
+      left: 20px;
       position: absolute;
       height: 100%;
-      width: 100%;
+      width: 30px;
+      transform: rotate(225deg);
 
     }
     &:before{

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Quicksand_Light.otf);
+  font-display: swap;
+}
+
+html, body {
+  background-color: #fef8f1;
+  font-family: Quicksand;
+}
