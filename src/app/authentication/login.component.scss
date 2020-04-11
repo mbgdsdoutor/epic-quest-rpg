@@ -15,11 +15,14 @@
   }
   &-title {
     text-align: center;
+    position: relative;
     &:after{
       content: "";
       background-image: url("../../assets/sword.svg");
-      display: block;
-      height: auto;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      height: 100%;
       width: 100%;
 
     }
