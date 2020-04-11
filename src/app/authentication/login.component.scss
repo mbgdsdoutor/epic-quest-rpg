@@ -1,0 +1,31 @@
+.login-container {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-header {
+  &-logo {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+  &-title {
+    text-align: center;
+    &:after{
+      content: "";
+      background-image: url("../../assets/sword.svg");
+      display: block;
+      height: auto;
+      width: 100%;
+
+    }
+    &:before{
+      content: "lalalala";
+    }
+
+  }
+}
