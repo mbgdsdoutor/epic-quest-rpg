@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'styles/normalize.css';
+
+body {
+  width: 320px;
+  height: 480px;
+  border: 1px solid #ccc;
+  position: relative;
+}

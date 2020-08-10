@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  padding: 24px;
+}
+
+.adventure-button {
+  border: 1px solid #ccc;
+  flex: 1;
+  margin: 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

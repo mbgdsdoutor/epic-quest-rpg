@@ -1,0 +1,15 @@
+<form class="login-form" [formGroup]="form">
+  <img alt="epic-quest-logo" src="assets/images/epicquest.png" />
+  <div>
+    <label for="username">Usuário:</label>
+    <input class="input" id="username" #username formControlName="username">
+  </div>
+  <div>
+    <label for="password">Senha:</label>
+    <input class="input" type="password" id="password" formControlName="password">
+  </div>
+  <div>
+    <button (click)="login()">Entrar</button>
+    <button [routerLink]="['/auth/password/']">Esqueceu sua senha?</button>
+  </div>
+</form>

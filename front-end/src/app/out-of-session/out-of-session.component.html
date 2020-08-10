@@ -1,0 +1,18 @@
+<router-outlet></router-outlet>
+<div class="bottom-navbar">
+  <div class="bottom-navbar-item--main" (click)="navigateTo('/home')" [ngClass]="{'active': isActive('home')}">
+    <i class="material-icons">home</i>
+  </div>
+  <div class="bottom-navbar-item" [ngClass]="{'active': isActive('')}">
+    <i class="material-icons">list</i>
+  </div>
+  <div class="bottom-navbar-item" (click)="navigateTo('/reports')" [ngClass]="{'active': isActive('reports')}">
+    <i class="material-icons">bar_chart</i>
+  </div>
+  <div class="bottom-navbar-item" [ngClass]="{'active': isActive('')}">
+    <i class="material-icons">person</i>
+  </div>
+  <div class="bottom-navbar-item" (click)="navigateTo('/settings')" [ngClass]="{'active': isActive('settings')}">
+    <i class="material-icons">settings</i>
+  </div>
+</div>
