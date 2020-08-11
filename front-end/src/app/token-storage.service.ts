@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 
 const TOKEN_KEY = 'AuthToken';
-const REMEMBER_ME = '';
 const USER = 'User';
-const PERMISSOES = 'Permissoes';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,6 @@ export class TokenStorageService {
   signOut() {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.removeItem(USER);
-    window.localStorage.removeItem(PERMISSOES);
   }
 
   public saveUser(user: any) {
@@ -27,15 +24,6 @@ export class TokenStorageService {
     if (this.isLogged) {
       return JSON.parse(localStorage.getItem(USER)) as any;
     }
-  }
-
-  public saveRememberMe(remember: string) {
-    window.localStorage.removeItem(REMEMBER_ME);
-    window.localStorage.setItem(REMEMBER_ME, remember);
-  }
-
-  public getRememberMe(): string {
-    return localStorage.getItem(REMEMBER_ME);
   }
 
   public saveToken(token: string) {
@@ -60,8 +48,6 @@ export class TokenStorageService {
   }
 
   public isTokenExpired(token?: string): boolean {
-    //TODO REMOVE MOCK
-    return false
     if (!token) {
       token = this.getToken();
     }
@@ -70,7 +56,8 @@ export class TokenStorageService {
       return true;
     }
 
-    const date = this.getTokenExpirationDate(token);
+    // const date = this.getTokenExpirationDate(token);
+    const date = token === 'madokinha_star' ? undefined : this.getTokenExpirationDate(token);
     if (date === undefined) {
       return false;
     }

@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from '../interceptor';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthService } from './auth.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { AuthService } from './auth.service';
   declarations: [
     AuthComponent,
     LoginComponent,
+    RegisterComponent,
     ForgotPasswordComponent
   ],
   providers: [

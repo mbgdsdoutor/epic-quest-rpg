@@ -1,0 +1,34 @@
+<form class="login-form-container" [formGroup]="form">
+  <div class="register-form-header">
+    <h4>Criar uma nova conta</h4>
+  </div>
+  <div class="login-form">
+    <div class="field" [ngClass]="{'error': form.get('fullname').errors && form.get('fullname').errors.required && form.get('fullname').touched}">
+      <label for="fullname">Nome Completo</label>
+      <input class="input" placeholder="seu nome completo" id="fullname" formControlName="fullname">
+      <div *ngIf="form.get('fullname').errors && form.get('fullname').errors.required && form.get('fullname').touched">
+        <small style="color: '#e53935'; font-weight: bold;">campo obrigatório.</small>
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input class="input" placeholder="seu email" id="email" formControlName="email">
+    </div>
+    <div class="field">
+      <label for="username">Nome de Usuário</label>
+      <input class="input" placeholder="seu nome de usuário (nick)" id="username" formControlName="username">
+    </div>
+    <div class="field">
+      <label for="password">Senha</label>
+      <input class="input" placeholder="digite sua senha" type="password" id="password" formControlName="password">
+    </div>
+    <div class="field">
+      <label for="confirmPassword">Confirmar Senha</label>
+      <input class="input" placeholder="confirme sua senha" type="password" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <div class="login-form-actions">
+      <button class="button--link" [routerLink]="['/auth/login/']">Já é cadastrado?</button>
+      <button class="button--primary">Registrar</button>
+    </div>
+  </div>
+</form>

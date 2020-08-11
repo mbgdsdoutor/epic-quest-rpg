@@ -6,10 +6,16 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegisterComponent } from './register/register.component';
 
 const LOGIN: Route = {
-    path: 'login',
-    component: LoginComponent
+  path: 'login',
+  component: LoginComponent
+};
+
+const REGISTER: Route = {
+  path: 'register',
+  component: RegisterComponent
 };
 
 const FORGOT_PASSWORD: Route = {
@@ -18,29 +24,30 @@ const FORGOT_PASSWORD: Route = {
 };
 
 export const authRoutes: Routes = [
-    {
-      path: '',
-      component: AuthComponent,
-      children: [
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'home'
-          },
-          LOGIN,
-          FORGOT_PASSWORD
-      ]
-    }
+  {
+    path: '',
+    component: AuthComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      LOGIN,
+      REGISTER,
+      FORGOT_PASSWORD
+    ]
+  }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(authRoutes),
-        HttpClientModule,
-        FormsModule,
-        CommonModule
-    ],
-    exports: [ RouterModule ]
+  imports: [
+    RouterModule.forChild(authRoutes),
+    HttpClientModule,
+    FormsModule,
+    CommonModule
+  ],
+  exports: [RouterModule]
 })
 
 export class AuthRoutingModule { }

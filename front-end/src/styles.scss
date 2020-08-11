@@ -2,9 +2,42 @@
 
 @import 'styles/normalize.css';
 
+$primary: #f0871c;
+$contrast: #14213d;
+$platinum: #e5e5e5;
+$support: #F5F5F5;
+$error: #e53935;
+
+@font-face {
+  font-family: quicksand;
+  src: url(assets/fonts/quicksand/Quicksand-Regular.ttf);
+}
+
+@font-face {
+  font-family: quicksandSemiBold;
+  src: url(assets/fonts/quicksand/Quicksand-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: quicksandSemiBold;
+  src: url(assets/fonts/quicksand/Quicksand-Bold.ttf);
+}
+
+html, body {
+  font-family: quicksand;
+  font-size: 14px;
+}
+
+html {
+  background-color: aliceblue;
+}
+
 body {
   width: 320px;
   height: 480px;
   border: 1px solid #ccc;
   position: relative;
+  background-color: $support;
+  margin-top: 30px;
+  margin-left: 50px;
 }
