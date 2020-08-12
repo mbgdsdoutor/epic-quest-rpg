@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ValidationErrors, AbstractControl }
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/token-storage.service';
 import { AuthService } from '../auth.service';
+import { EpicValidators } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
 
   configurarForm() {
     const fullname = this.formBuilder.control(null, [Validators.required]);
-    const email = this.formBuilder.control(null, [Validators.required]);
+    const email = this.formBuilder.control(null, [Validators.required, EpicValidators.EMAIL]);
     const username = this.formBuilder.control(null, [Validators.required]);
     const password = this.formBuilder.control(null, [Validators.required]);
     const confirmPassword = this.formBuilder.control(null, [Validators.required, this.matchValues('password')]);
@@ -42,6 +43,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  adf() {
+    console.log(this.form.controls.confirmPassword)
+  }
+
   public matchValues(
     matchTo: string // name of the control to match to
   ): (AbstractControl) => ValidationErrors | null {
@@ -50,7 +55,7 @@ export class RegisterComponent implements OnInit {
         !!control.parent.value &&
         control.value === control.parent.controls[matchTo].value
         ? null
-        : { isMatching: false };
+        : { isMatching: true };
     };
 }
 }

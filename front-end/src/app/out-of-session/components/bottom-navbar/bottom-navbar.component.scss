@@ -1,0 +1,45 @@
+@media only screen and (min-width: 720px) {
+  .bottom-navbar {
+    display: none !important;
+  }
+}
+.bottom-navbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #ccc;
+
+  &-item {
+    flex: 1;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      border-right: 0px;
+    }
+
+    &--main {
+      width: 56px;
+      height: 56px;
+      position: absolute;
+      top: -20px;
+      left: calc(50% - 20px);
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.active {
+  background-color: orangered;
+  color: white;
+}

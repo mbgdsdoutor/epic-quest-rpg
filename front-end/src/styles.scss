@@ -1,43 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'styles/normalize.css';
+@import 'styles/typography.scss';
 
 $primary: #f0871c;
-$contrast: #14213d;
+$contrast: #2d4b8b;
 $platinum: #e5e5e5;
 $support: #F5F5F5;
+$bg: #fef8f1;
 $error: #e53935;
-
-@font-face {
-  font-family: quicksand;
-  src: url(assets/fonts/quicksand/Quicksand-Regular.ttf);
-}
-
-@font-face {
-  font-family: quicksandSemiBold;
-  src: url(assets/fonts/quicksand/Quicksand-SemiBold.ttf);
-}
-
-@font-face {
-  font-family: quicksandSemiBold;
-  src: url(assets/fonts/quicksand/Quicksand-Bold.ttf);
-}
 
 html, body {
   font-family: quicksand;
   font-size: 14px;
 }
 
-html {
-  background-color: aliceblue;
+body {
+  background-color: $bg;
 }
 
-body {
-  width: 320px;
-  height: 480px;
-  border: 1px solid #ccc;
-  position: relative;
-  background-color: $support;
-  margin-top: 30px;
-  margin-left: 50px;
-}
+@import 'app/shared/shared.scss';
+@import 'app/authentication/authentication.scss';

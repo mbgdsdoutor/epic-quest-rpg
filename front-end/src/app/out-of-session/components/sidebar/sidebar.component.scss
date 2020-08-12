@@ -1,0 +1,13 @@
+@media only screen and (max-width: 720px) {
+  .sidebar {
+    display: none !important;
+  }
+}
+
+.sidebar {
+  background-color: #FCA311;
+  position: fixed;
+  height: 100vh;
+  width: 240px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}

@@ -1,34 +1,52 @@
-<form class="login-form-container" [formGroup]="form">
+<form class="auth-form-container" [formGroup]="form">
   <div class="register-form-header">
-    <h4>Criar uma nova conta</h4>
+    <h3>Criar uma nova conta</h3>
   </div>
-  <div class="login-form">
-    <div class="field" [ngClass]="{'error': form.get('fullname').errors && form.get('fullname').errors.required && form.get('fullname').touched}">
+  <div class="auth-form">
+    <div class="field" [ngClass]="{'error': form.get('fullname').errors && form.get('fullname').touched}">
       <label for="fullname">Nome Completo</label>
       <input class="input" placeholder="seu nome completo" id="fullname" formControlName="fullname">
-      <div *ngIf="form.get('fullname').errors && form.get('fullname').errors.required && form.get('fullname').touched">
-        <small style="color: '#e53935'; font-weight: bold;">campo obrigatório.</small>
+      <div *ngIf="form.get('fullname').errors && form.get('fullname').errors.required">
+        <small>campo obrigatório.</small>
       </div>
     </div>
-    <div class="field">
+    <div class="field" [ngClass]="{'error': form.get('email').errors && form.get('email').touched}">
       <label for="email">E-mail</label>
       <input class="input" placeholder="seu email" id="email" formControlName="email">
+      <div *ngIf="form.get('email').errors && form.get('email').errors.required">
+        <small>campo obrigatório.</small>
+      </div>
+      <div *ngIf="form.get('email').errors && form.get('email').errors.email">
+        <small>email inválido.</small>
+      </div>
     </div>
-    <div class="field">
+    <div class="field" [ngClass]="{'error': form.get('username').errors && form.get('username').touched}">
       <label for="username">Nome de Usuário</label>
       <input class="input" placeholder="seu nome de usuário (nick)" id="username" formControlName="username">
+      <div *ngIf="form.get('username').errors && form.get('username').errors.required">
+        <small>campo obrigatório.</small>
+      </div>
     </div>
-    <div class="field">
+    <div class="field" [ngClass]="{'error': form.get('password').errors && form.get('password').touched}">
       <label for="password">Senha</label>
       <input class="input" placeholder="digite sua senha" type="password" id="password" formControlName="password">
+      <div *ngIf="form.get('password').errors && form.get('password').errors.required">
+        <small>campo obrigatório.</small>
+      </div>
     </div>
-    <div class="field">
-      <label for="confirmPassword">Confirmar Senha</label>
+    <div class="field" [ngClass]="{'error': form.get('confirmPassword').errors && form.get('confirmPassword').touched}">
+      <label for="confirmPassword" (click)="adf()">Confirmar Senha</label>
       <input class="input" placeholder="confirme sua senha" type="password" id="confirmPassword" formControlName="confirmPassword">
+      <div *ngIf="form.get('confirmPassword').errors && form.get('confirmPassword').errors.required">
+        <small>campo obrigatório.</small>
+      </div>
+      <div *ngIf="form.get('confirmPassword').errors && form.get('confirmPassword').errors.isMatching">
+        <small>as senhas devem coincidir.</small>
+      </div>
     </div>
-    <div class="login-form-actions">
+    <div class="auth-form-actions">
       <button class="button--link" [routerLink]="['/auth/login/']">Já é cadastrado?</button>
-      <button class="button--primary">Registrar</button>
+      <button class="button--primary" [disabled]="form.invalid || form.pristine">Registrar</button>
     </div>
   </div>
 </form>

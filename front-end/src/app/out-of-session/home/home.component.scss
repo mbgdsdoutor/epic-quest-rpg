@@ -1,15 +1,49 @@
+@media only screen and (min-width: 720px) {
+  .container {
+    flex-direction: row !important;
+    margin-left: 32px;
+  }
+
+  .adventure-button {
+    flex: 1;
+    height: 100px !important;
+    font-size: 2rem !important;
+    text-align: left !important;
+    &:first-child {
+      margin-right: 56px;
+    }
+
+    img {
+      left: -40px;
+      height: 140% !important;
+    }
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
-  padding: 24px;
+  height: calc(100% - 54px);
+  padding: 24px 32px;
 }
 
 .adventure-button {
-  border: 1px solid #ccc;
-  flex: 1;
-  margin: 8px 0px;
+  border: 2px solid #f07c35;
+  border-radius: 4px;
+  margin: 24px 0px 8px 32px;
+  height: 20vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding-left: 120px;
+  position: relative;
+  font-size: 1.8rem;
+  text-align: center;
+  
+  img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: -48px;
+    height: 120%;
+  }
 }

@@ -1,6 +1,6 @@
-<form class="login-form-container" [formGroup]="form">
+<form class="auth-form-container" [formGroup]="form">
   <img alt="epic-quest-logo" src="assets/images/epicquest.png" />
-  <div class="login-form">
+  <div class="auth-form">
     <div class="field">
       <label for="username">Login</label>
       <input class="input" placeholder="seu e-mail ou nome de usuário" id="username" #username formControlName="username">
@@ -10,7 +10,7 @@
       <input class="input" placeholder="sua senha" type="password" id="password" formControlName="password">
     </div>
     <button class="button--primary full" (click)="login()">Entrar</button>
-    <div class="login-form-actions">
+    <div class="auth-form-actions">
       <button class="button--link" [routerLink]="['/auth/password/']">Esqueceu sua senha?</button>
       <button class="button--primary" [routerLink]="['/auth/register/']">Criar Conta</button>
     </div>
