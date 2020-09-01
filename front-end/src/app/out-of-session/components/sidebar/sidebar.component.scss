@@ -5,9 +5,43 @@
 }
 
 .sidebar {
-  background-color: #FCA311;
+  // background-color: #FCA311;
   position: fixed;
   height: 100vh;
   width: 240px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  &-header {
+    margin-top: 16px;
+    // background-color: #f7f7f7;
+    img {
+      width: auto;
+      height: 64px;
+      opacity: 0;
+    }
+  }
+
+  &-section {
+    // color: #f7f7f7;
+    margin-bottom: 24px;
+    margin-left: 16px;
+
+    &-title {
+      text-transform: uppercase;
+      font-family: quicksandSemiBold;
+    }
+    &-options {
+      padding: 0px;
+      list-style-type: none;
+      li {
+        display: flex;
+        align-items: center;
+        margin: 8px 0px;
+      }
+      span {
+        margin-left: 8px;
+        font-size: 1.2rem;
+      }
+    }
+  }
 }

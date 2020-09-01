@@ -1,20 +1,13 @@
 @import 'styles/normalize.css';
 @import 'styles/typography.scss';
+@import 'styles/theme.scss';
 
 $primary: #f0871c;
-$contrast: #2d4b8b;
-$platinum: #e5e5e5;
-$support: #F5F5F5;
-$bg: #fef8f1;
 $error: #e53935;
 
 html, body {
   font-family: quicksand;
   font-size: 14px;
-}
-
-body {
-  background-color: $bg;
 }
 
 @import 'app/shared/shared.scss';

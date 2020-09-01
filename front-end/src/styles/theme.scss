@@ -1,0 +1,61 @@
+// light variables
+$bg-contrast-color-light: #fef8f1;
+$bg-color-light: rgb(255, 255, 255);
+$text-color-light: #626262;
+
+// dark variables
+$bg-contrast-color-dark: #262c46;
+$bg-color-dark: #10163a;
+$text-color-dark: #c2c6dc;
+
+.light-theme {
+  background-color: $bg-contrast-color-light;
+  transition: background-color 0.2s;
+
+  .bg-theme {
+    background-color: $bg-color-light;
+    transition: all 0.2s;
+  }
+  .text-theme {
+    color: $text-color-light;
+    transition: all 0.2s;
+  }
+  svg {
+    fill: $text-color-light;
+    transition: all 0.2s;
+  }
+}
+
+.dark-theme {
+  background-color: $bg-contrast-color-dark;
+  transition: background-color 0.2s;
+
+  .bg-theme {
+    background-color: $bg-color-dark;
+    transition: all 0.2s;
+  }
+  .text-theme {
+    color: $text-color-dark;
+    transition: all 0.2s;
+  }
+  svg {
+    fill: $text-color-dark;
+    transition: all 0.2s;
+  }
+}
+
+.theme-switcher {
+  position: relative;
+  cursor: pointer;
+
+  .magic {
+    position: absolute;
+    width: 8px;
+    height: 11px;
+    top: 15px;
+    left: 12px;
+    .light-theme & {
+      opacity: 0;
+    }
+  }
+}

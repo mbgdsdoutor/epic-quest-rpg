@@ -8,6 +8,15 @@ import { SettingsComponent } from './settings/settings.component';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AdventureIcon } from '../shared/adventure-icon';
+import { MapsIcon } from '../shared/maps-icon';
+import { RulesIcon } from '../shared/rules-icon';
+import { ExitIcon } from '../shared/exit-icon';
+import { HelpIcon } from '../shared/help-icon';
+import { CogIcon } from '../shared/cog-icon';
+import { NotificationIcon } from '../shared/notification-icon';
+import { PersonIcon } from '../shared/person-icon';
+import { TorchIcon } from '../shared/torch-icon';
 
 @NgModule({
   imports: [
@@ -23,6 +32,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     TopNavbarComponent,
     SidebarComponent,
     SettingsComponent,
+    //icons
+    AdventureIcon,
+    RulesIcon,
+    MapsIcon,
+    ExitIcon,
+    HelpIcon,
+    CogIcon,
+    NotificationIcon,
+    PersonIcon,
+    TorchIcon
   ]
 })
 export class OutOfSessionModule { }
