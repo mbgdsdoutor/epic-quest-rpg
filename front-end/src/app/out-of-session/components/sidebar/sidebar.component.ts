@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TokenStorageService } from 'src/app/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sidebar',
@@ -7,5 +9,19 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
-  constructor() { }
+  userId: number
+
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private router: Router) { }
+
+  ngOnInit() {
+    this.userId = 2
+    // this.userId = this.tokenStorageService.getLoggedUser().id
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut()
+    this.router.navigate(['/auth/login']);
+  }
 }

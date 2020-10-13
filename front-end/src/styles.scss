@@ -12,3 +12,24 @@ html, body {
 
 @import 'app/shared/shared.scss';
 @import 'app/authentication/authentication.scss';
+
+// ngx-chips
+tag-input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-family: quicksand;
+  &:hover, &:focus, &:focus-within {
+    border-color: #2d4b8b;
+  }
+
+  input {
+    background-color: transparent;
+    &::placeholder {
+      color: gray;
+      font-family: quicksand;
+    }
+  }
+  .ng2-tag-input.ng2-tag-input--focused {
+    border-color: transparent !important;
+  }
+}

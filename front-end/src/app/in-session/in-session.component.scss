@@ -1,0 +1,64 @@
+@media only screen and (max-width: 720px) {
+  .content {
+    width: 100% !important;
+    transform: unset !important;
+    padding-top: 8px !important;
+    height: calc(100vh - 54) !important;
+    max-height: calc(100vh - 54) !important;
+  }
+}
+
+.main-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  max-width: 100vw;
+  width: 100vw;
+  height: 64px;
+  overflow-x: auto;
+  transition: width 0.5s;
+
+  &::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+
+  &.closed {
+    width: 92px;
+
+    >button:first-child i {
+      transform: rotate(180deg)
+    }
+  }
+
+  button {
+    width: 90px;
+    min-width: 90px;
+    height: 100%;
+    background-color: transparent;
+    border: 0px;
+    outline: 0px;
+    cursor: pointer;
+    margin: 0px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: worksans;
+    font-size: 16px;
+    -webkit-text-stroke: 0.5px #FFF;
+    &:hover {
+      color: #FFF;
+      -webkit-text-stroke: 0.5px #000;
+    }
+    &:first-child {
+      width: 60px;
+      min-width: 60px;
+      font-size: 14px;
+      color: #000 !important;
+      -webkit-text-stroke: 0px !important;
+    }
+  }
+}

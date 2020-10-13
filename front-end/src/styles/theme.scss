@@ -1,11 +1,13 @@
 // light variables
 $bg-contrast-color-light: #fef8f1;
 $bg-color-light: rgb(255, 255, 255);
+$bg-color-light-hover: #ccc;
 $text-color-light: #626262;
 
 // dark variables
 $bg-contrast-color-dark: #262c46;
 $bg-color-dark: #10163a;
+$bg-color-dark-hover: #262c46;
 $text-color-dark: #c2c6dc;
 
 .light-theme {
@@ -16,9 +18,24 @@ $text-color-dark: #c2c6dc;
     background-color: $bg-color-light;
     transition: all 0.2s;
   }
+  .bg-theme-hover:hover {
+    background-color: $bg-color-light-hover !important;
+    transition: all 0.2s;
+  }
   .text-theme {
     color: $text-color-light;
     transition: all 0.2s;
+  }
+  .border-theme {
+    border-color: $text-color-light;
+    transition: all 0.2s;
+  }
+  .text-theme-black {
+    color: #000;
+    transition: all 0.2s;
+  }
+  .box-shadow-theme {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   svg {
     fill: $text-color-light;
@@ -34,9 +51,24 @@ $text-color-dark: #c2c6dc;
     background-color: $bg-color-dark;
     transition: all 0.2s;
   }
+  .bg-theme-hover:hover {
+    background-color: $bg-contrast-color-dark !important;
+    transition: all 0.2s;
+  }
   .text-theme {
     color: $text-color-dark;
     transition: all 0.2s;
+  }
+  .border-theme {
+    color: $text-color-dark;
+    transition: all 0.2s;
+  }
+  .text-theme-black {
+    color: #e4e8fc;
+    transition: all 0.2s;
+  }
+  .box-shadow-theme {
+    box-shadow: 0 1px 3px #FFFFFF30, 0 1px 2px #FFFFFF30;
   }
   svg {
     fill: $text-color-dark;

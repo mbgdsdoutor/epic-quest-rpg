@@ -2,9 +2,44 @@
   <div class="sidebar-header">
     <img src="../../../../assets/images/epicquest.png" alt="logo" />
   </div>
-  <div class="sidebar-section">
-    <p class="sidebar-section-title">apps</p>
-    <ul class="sidebar-section-options">
+  <div class="sidebar-section bg-theme-hover" [routerLink]="['/home']">
+    <adventure-icon width="28" height="30"></adventure-icon>
+    <span>Home</span>
+  </div>
+  <div class="sidebar-section bg-theme-hover">
+    <adventure-icon width="28" height="30"></adventure-icon>
+    <span>Aventuras</span>
+  </div>
+  <ul class="sidebar-section-options">
+    <li class="bg-theme-hover" [routerLink]="['/adventures/mine']">Minhas Aventuras</li>
+    <li class="bg-theme-hover" [routerLink]="['/adventures/list']">Explorar</li>
+    <li class="bg-theme-hover" [routerLink]="['/adventures/new']">Criar Aventura</li>
+  </ul>
+  <div class="sidebar-section bg-theme-hover">
+    <rules-icon width="28" height="28"></rules-icon>
+    <span>Regras</span>
+  </div>
+  <div class="sidebar-section bg-theme-hover">
+    <maps-icon width="28" height="28"></maps-icon>
+    <span>Criador de Mapas</span>
+  </div>
+  <div class="sidebar-section bg-theme-hover">
+    <cog-icon width="26" height="26"></cog-icon>
+    <span>Social</span>
+  </div>
+  <ul class="sidebar-section-options">
+    <li class="bg-theme-hover" [routerLink]="['/social/profile/'+userId]">Meu Perfil</li>
+    <li class="bg-theme-hover" [routerLink]="['/social/explore']">Explorar</li>
+  </ul>
+  <div class="sidebar-section bg-theme-hover">
+    <cog-icon width="26" height="26"></cog-icon>
+    <span>Configurações</span>
+  </div>
+  <div class="sidebar-section bg-theme-hover" (click)="logout()">
+    <exit-icon width="26" height="26"></exit-icon>
+    <span>Sair</span>
+  </div>
+    <!-- <ul class="sidebar-section-options">
       <li>
         <adventure-icon width="28" height="30"></adventure-icon>
         <span>Aventuras</span>
@@ -17,9 +52,12 @@
         <maps-icon width="28" height="28"></maps-icon>
         <span>Criador de Mapas</span>
       </li>
-    </ul>
-  </div>
-  <div class="sidebar-section">
+      <li>
+        <cog-icon width="26" height="26"></cog-icon>
+        <span>Configurações</span>
+      </li>
+    </ul> -->
+  <!-- <div class="sidebar-section">
     <p class="sidebar-section-title">configurações</p>
     <ul class="sidebar-section-options">
       <li>
@@ -43,5 +81,5 @@
         <span>sair</span>
       </li>
     </ul>
-  </div>
+  </div> -->
 </div>

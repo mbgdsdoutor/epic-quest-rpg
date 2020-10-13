@@ -11,10 +11,16 @@ const OUT_OF_SESSION_ROUTE: Route = {
   loadChildren: () => import('./out-of-session/out-of-session.module').then(m => m.OutOfSessionModule)
 }
 
+const IN_SESSION_ROUTE: Route = {
+  path: '',
+  loadChildren: () => import('./in-session/in-session.module').then(m => m.InSessionModule)
+}
+
 const routes: Routes = [
   {path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   AUTH_ROUTE,
-  OUT_OF_SESSION_ROUTE
+  OUT_OF_SESSION_ROUTE,
+  IN_SESSION_ROUTE
 ];
 
 @NgModule({

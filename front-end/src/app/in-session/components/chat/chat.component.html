@@ -1,0 +1,16 @@
+<aside class="chat" #chat>
+  <div class="chat-close" (click)="hideChat()">
+    <i class="material-icons">close</i>
+  </div>
+  <h2 class="chat-title">Chat</h2>
+  <div class="chat-content">
+    <div class="chat-content-message" *ngFor="let message of messages">
+      <img [src]="message.photo" alt="character photo"/>
+      <span>{{message.message}}</span>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input class="input" type="text" />
+    <button><i class="material-icons">send</i></button>
+  </div>
+</aside>

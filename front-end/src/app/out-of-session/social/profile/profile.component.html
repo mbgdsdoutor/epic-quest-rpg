@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="profile-card box-shadow-theme bg-theme text-theme">
+    <button *ngIf="isEditable" class="edit-photo bg-theme-hover">
+      <i class="material-icons">photo_camera</i>
+    </button>
+    <button *ngIf="isEditable && !isEditing" (click)="toggleIsEditing()" class="edit-photo info bg-theme-hover text-theme-black">
+      <i class="material-icons">edit</i>
+    </button>
+    
+    <img class="profile-card-img" [src]="user.photoUrl" alt="profile picture"/>
+    <h4 *ngIf="!isEditing" class="profile-card-title text-theme-black">{{user.name}}</h4>
+    <div *ngIf="isEditing" class="profile-card-info" style="margin-top: 16px;">
+      <label>nome</label>
+      <input class="input text-theme-black" type="text" [value]="user.name" />
+    </div>
+    <div class="profile-card-info">
+      <label>e-mail</label>
+      <p *ngIf="!isEditing" class="text-theme-black">{{user.email}}</p>
+      <input *ngIf="isEditing" class="input text-theme-black" type="text" [value]="user.email" />
+    </div>
+    <div class="profile-card-info">
+      <label>sobre</label>
+      <p *ngIf="!isEditing" class="text-theme-black">{{user.description}}</p>
+      <textarea *ngIf="isEditing" style="resize: none" class="input text-theme-black" type="text" [value]="user.description"></textarea>
+    </div>
+    <div *ngIf="isEditing" class="profile-card-actions">
+      <button class="button--default" (click)="toggleIsEditing()">Cancelar</button>
+      <button class="button--primary" (click)="toggleIsEditing()">Salvar</button>
+    </div>
+  </div>
+  <div class="profile-group-card">
+    <div class="profile-card box-shadow-theme bg-theme text-theme">
+      <h4 class="profile-card-title text-theme-black">amigos</h4>
+      <div class="friends-container">
+        <div class="friend" *ngFor="let friend of user.friendList">
+          <img [src]="friend.photoUrl" alt="friend photo"/>
+          <p>{{friend.name}}</p>
+          <span [routerLink]="['/social/profile/'+friend.id]">Ver<br>Perfil</span>
+        </div>
+        <div *ngIf="!user.friendList || user.friendList.length === 0" class="empty-content">
+          <broken-axe-icon  width="80" height="80"></broken-axe-icon>
+          <p class="text-theme-black">Ops! Este usuário ainda não adicionou nenhum amigo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card box-shadow-theme bg-theme text-theme">
+      <h4 class="profile-card-title text-theme-black">aventuras e conquistas</h4>
+      <div class="empty-content">
+        <broken-axe-icon  width="80" height="80"></broken-axe-icon>
+        <p class="text-theme-black">Ops! Este usuário ainda não participa de nenhuma aventura.</p>
+      </div>
+    </div>
+  </div>
+</div>

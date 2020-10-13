@@ -1,0 +1,30 @@
+<aside-menu></aside-menu>
+<router-outlet></router-outlet>
+<notes></notes>
+<chat></chat>
+<div class="main-options" [ngClass]="{'closed': isMainOptionsClosed}">
+  <button (click)="toggleMainOptions()">
+    <i class="material-icons">keyboard_backspace</i>
+    <span>{{isMainOptionsClosed ? 'exibir menu' : 'esconder menu'}}</span>
+  </button>
+  <button>
+    <i class="material-icons">assignment</i>
+    <span>ficha</span>
+  </button>
+  <button (click)="toggleMicrophone()">
+    <i class="material-icons">{{isMicrophoneOn ? 'mic_off' : 'mic'}}</i>
+    <span>mic.</span>
+  </button>
+  <button>
+    <i class="material-icons">casino</i>
+    <span>dados</span>
+  </button>
+  <button (click)="showNotes()">
+    <i class="material-icons">description</i>
+    <span>diário</span>
+  </button>
+  <button (click)="showChat()">
+    <i class="material-icons">chat</i>
+    <span>chat</span>
+  </button>
+</div>

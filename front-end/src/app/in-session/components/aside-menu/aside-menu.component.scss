@@ -1,0 +1,47 @@
+@media only screen and (max-width: 720px) {
+
+}
+
+.aside {
+  font-family: worksans;
+  z-index: 1;
+  background-color: #fafafa;
+  position: fixed;
+  height: 100vh;
+  width: 300px;
+  left: -300px;
+  max-width: 100%;
+  border-right: 1px solid #000;
+  transition: left 0.3s;
+  padding-top: 40px;
+
+  &-toggle {
+    position: absolute;
+    top: 8px;
+    right: -32px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .aside--open & {
+      right: unset;
+      left: 8px;
+    }
+  }
+
+  &--open {
+    left: 0px;
+  }
+
+  &-item {
+    font-size: 1.2rem;
+    padding: 12px 4px 12px 12px;
+    border-bottom: 1px solid #ccc;
+    &:last-child {
+      border-bottom: unset;
+    }
+  }
+}

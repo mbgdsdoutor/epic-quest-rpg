@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
+import { User } from './out-of-session/models/user';
 
 const TOKEN_KEY = 'AuthToken';
 const USER = 'User';
@@ -20,7 +21,7 @@ export class TokenStorageService {
     window.localStorage.setItem(USER,  JSON.stringify(user));
   }
 
-  public getLoggedUser(): any {
+  public getLoggedUser(): User {
     if (this.isLogged) {
       return JSON.parse(localStorage.getItem(USER)) as any;
     }

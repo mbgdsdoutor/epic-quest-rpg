@@ -1,0 +1,7 @@
+export enum CategoryEnum {
+  Combate = 'Combate',
+  Destino = 'Destino',
+  Magia = 'Magia',
+  Concedido = 'Concedido',
+  Tormenta = 'Tormenta',
+}
