@@ -1,0 +1,45 @@
+.field {
+  margin-top: 16px;
+  > label {
+    margin-bottom: 4px;
+  }
+}
+
+.radio-class-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 8px;
+
+  input {
+    opacity: 0;
+    position: absolute;
+
+    &:checked + label {
+      img {
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45), 0 2px 3px rgba(0, 0, 0, 0.45)
+      }
+      p {
+        text-decoration-color: #000;
+        font-weight: bold;
+      }
+    }
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    img {
+      height: 56px;
+      width: 56px;
+      transition: all 0.3s;
+    }
+    p {
+      margin: 8px 0px;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      transition: all 0.3s;
+    }
+  }
+}

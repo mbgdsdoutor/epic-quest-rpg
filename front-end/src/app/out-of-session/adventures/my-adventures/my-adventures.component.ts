@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { Adventure } from '../../../shared/models/adventure';
 
 @Component({
@@ -83,7 +84,7 @@ export class MyAdventuresComponent implements OnInit {
   ]
   searchedAdventures: Adventure[] = []
 
-  constructor() { }
+  constructor(private loadingService: LoadingService) { }
 
   ngOnInit() {
     this.searchedAdventures = this.adventures;

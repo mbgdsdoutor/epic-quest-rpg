@@ -9,6 +9,9 @@ import { CombatComponent } from './combat/combat.component';
 import { AsideMenuComponent } from './components/aside-menu/aside-menu.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { FichaStepperComponent } from './ficha-stepper/ficha-stepper.component';
+import { BasicInfoComponent } from './ficha-stepper/first-step/basic-info.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -17,6 +20,7 @@ import { NotesComponent } from './components/notes/notes.component';
     ReactiveFormsModule,
     CommonModule,
     TagInputModule,
+    NgSelectModule,
   ],
   declarations: [
     InSessionComponent,
@@ -25,6 +29,8 @@ import { NotesComponent } from './components/notes/notes.component';
     AsideMenuComponent,
     ChatComponent,
     NotesComponent,
+    FichaStepperComponent,
+    BasicInfoComponent,
   ]
 })
 export class InSessionModule { }
