@@ -2,7 +2,7 @@
   <h2 class="adventure-creation-link text-theme-black">Quer ser o mestre da sua própria aventura? <b [routerLink]="['/adventures/new']">Crie uma nova aventura agora.</b></h2>
   <div class="user-search-box">
     <i class="material-icons text-theme-black">search</i>
-    <input class="input" type="text" placeholder="Digite o nome do mestre ou da aventura" (input)="handleSearchUser($event)"/>
+    <input class="input" type="text" placeholder="Digite o nome do mestre ou da aventura" (input)="handleSearchAdventure($event)"/>
   </div>
   <div class="user-container">
     <div class="user bg-theme" *ngFor="let adventure of searchedAdventures">
@@ -12,8 +12,8 @@
       <img class="user-img" [src]="adventure.photoUrl" />
       <div class="user-info text-theme-black">
         <p class="user-info-name">{{adventure.name}}</p>
-        <p class="user-info-email"><b>Mestre: </b> <span [routerLink]="['/social/profile/'+adventure.master.id]">{{adventure.master.name}}</span></p>
-        <p class="user-info-email"><b>Participantes: </b><span *ngFor="let player of adventure.users" [routerLink]="['/social/profile/'+player.id]">{{ player.name }}</span></p>
+        <p class="user-info-email"><b>Mestre: </b> <span [routerLink]="['/social/profile/'+adventure.master.id]">{{adventure.master.userName}}</span></p>
+        <p class="user-info-email"><b>Participantes: </b><span *ngFor="let player of adventure.users" [routerLink]="['/social/profile/'+player.id]">{{ player.userName }}</span></p>
         <p class="user-info-description">{{adventure.description}}</p>
       </div>
     </div>

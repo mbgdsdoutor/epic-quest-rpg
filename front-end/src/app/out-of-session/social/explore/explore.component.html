@@ -8,9 +8,9 @@
       <button class="bg-theme-hover">
         <i class="material-icons text-theme-black">person_add</i>
       </button>
-      <img class="user-img" [src]="user.photoUrl" />
+      <img class="user-img" [src]="user.photoUrl ? user.photoUrl : 'assets/images/pinguim.png'" />
       <div class="user-info text-theme-black">
-        <p class="user-info-name">{{user.name}}</p>
+        <p class="user-info-name">{{user.userName}}</p>
         <p class="user-info-email">{{user.email}}</p>
         <p class="user-info-description">{{user.description}}</p>
       </div>

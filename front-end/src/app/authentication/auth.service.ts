@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { TokenStorageService } from '../token-storage.service';
+import { Credentials } from './models/credentials';
 
 const url = 'https://madoka/v1';
 
@@ -15,29 +16,29 @@ export class AuthService {
     private router: Router
   ) { }
 
-  // authenticate(credentials: any): Observable<any> {
-  //   const ret = {
-  //     userName: credentials.userName,
-  //     password: credentials.password,
-  //   };
+  authenticate(credentials: Credentials): Observable<any> {
+    const ret = {
+      username: credentials.username,
+      password: credentials.password,
+    };
 
-  //   const headers = new HttpHeaders(
-  //     {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //       Accept: '*/*',
-  //     }
-  //   );
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: '*/*',
+      }
+    );
 
-  //   const body = new HttpParams({ fromObject: ret });
-  //   const options = { headers };
-  //   return this.http.post(`${url}`, body.toString(), options);
-  // }
-
-  authenticate(credentials: any): Observable<any> {
-    return of({
-      access_token: 'madokinha_star'
-    });
+    const body = new HttpParams({ fromObject: ret });
+    const options = { headers };
+    return this.http.post(`${url}`, body.toString(), options);
   }
+
+  // authenticate(credentials: any): Observable<any> {
+  //   return of({
+  //     access_token: 'madokinha_star'
+  //   });
+  // }
 
   logout() {
     this.tokenService.signOut();

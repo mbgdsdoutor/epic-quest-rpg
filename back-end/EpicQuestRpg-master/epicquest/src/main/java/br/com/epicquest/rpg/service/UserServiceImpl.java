@@ -1,5 +1,8 @@
 package br.com.epicquest.rpg.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,12 +25,28 @@ public class UserServiceImpl implements UserService {
 
 	public UserDTO registerUser(UserDTO userDto) {
 		User user = _userMapper.toModel(userDto);
-		if (!_userRepository.existsByUsername(user.getUsername())) {
+		if (!_userRepository.existsByUserName(user.getUserName())) {
 			user.setPassword(_passwordEncoder.encode(user.getPassword()));
 			user = _userRepository.save(user);
 			return _userMapper.toDto(user);
-		} else {
-			throw new AbstractException("Username is already in use");
 		}
+
+		throw new AbstractException("Username is already in use");
+	}
+
+	@Override
+	public List<UserDTO> getAllUsers() {
+		List<User> usuarios = _userRepository.findAll();
+		List<UserDTO> users = new ArrayList<UserDTO>();
+		for (User user : usuarios) {
+			users.add(_userMapper.toDto(user));
+		}
+
+		return users;
+	}
+
+	@Override
+	public UserDTO GetUserById(long userId) {
+		return _userMapper.toDto(_userRepository.findById(userId).get());
 	}
 }

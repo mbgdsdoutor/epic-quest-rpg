@@ -1,3 +1,7 @@
+import { Pericia } from './pericia';
+import { Poder } from './poder';
+import { Deus } from './deus';
+
 export interface Requirement {
   id: number,
   strengthPoints: number,
@@ -6,7 +10,7 @@ export interface Requirement {
   constitutionPoints: number,
   intelligencePoints: number,
   charismaPoints: number,
-  PoderesIds: number[],
-  PericiasIds: number[],
-  DeusId: number,
+  poderes: Poder[],
+  pericias: Pericia[],
+  deus: Deus,
 }

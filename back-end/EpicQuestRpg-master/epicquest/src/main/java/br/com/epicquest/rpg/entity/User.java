@@ -30,16 +30,16 @@ public class User implements Serializable {
 	private Long id;
 
 	@Basic(optional = false)
-	@Column(name = "username")
-	private String username;
+	@Column(name = "userName")
+	private String userName;
 
 	@Basic(optional = false)
-	@Column(name = "fullname")
-	private String fullname;
+	@Column(name = "fullName")
+	private String fullName;
 	
 	@Basic(optional = false)
-	@Column(name = "birthday")
-	private Date birthday;
+	@Column(name = "description")
+	private String description;
 	
 	@Basic(optional = false)
 	@Column(name = "password")
@@ -49,8 +49,8 @@ public class User implements Serializable {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "photoDirectory")
-	private String photoDirectory;
+	@Column(name = "photoUrl")
+	private String photoUrl;
 
 	/*
 	@JoinTable(name = "PermissionList", joinColumns = {

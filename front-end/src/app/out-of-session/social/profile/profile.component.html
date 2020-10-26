@@ -8,7 +8,7 @@
     </button>
     
     <img class="profile-card-img" [src]="user.photoUrl" alt="profile picture"/>
-    <h4 *ngIf="!isEditing" class="profile-card-title text-theme-black">{{user.name}}</h4>
+    <h4 *ngIf="!isEditing" class="profile-card-title text-theme-black">{{user.userName}}</h4>
     <div *ngIf="isEditing" class="profile-card-info" style="margin-top: 16px;">
       <label>nome</label>
       <input class="input text-theme-black" type="text" [value]="user.name" />
@@ -34,7 +34,7 @@
       <div class="friends-container">
         <div class="friend" *ngFor="let friend of user.friendList">
           <img [src]="friend.photoUrl" alt="friend photo"/>
-          <p>{{friend.name}}</p>
+          <p>{{friend.userName}}</p>
           <span [routerLink]="['/social/profile/'+friend.id]">Ver<br>Perfil</span>
         </div>
         <div *ngIf="!user.friendList || user.friendList.length === 0" class="empty-content">

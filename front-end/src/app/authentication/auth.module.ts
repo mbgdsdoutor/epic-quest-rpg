@@ -9,6 +9,7 @@ import { Interceptor } from '../interceptor';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   providers: [
     AuthService,
+    UserService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ]
 })

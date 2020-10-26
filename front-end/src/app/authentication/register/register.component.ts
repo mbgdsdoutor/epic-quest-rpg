@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/token-storage.service';
-import { AuthService } from '../auth.service';
 import { EpicValidators } from 'src/app/utils/validators';
+import { UserService } from '../services/user.service';
+import { User } from 'src/app/out-of-session/models/user';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private authService: AuthService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -29,22 +30,30 @@ export class RegisterComponent implements OnInit {
   }
 
   configurarForm() {
-    const fullname = this.formBuilder.control(null, [Validators.required]);
+    const fullName = this.formBuilder.control(null, [Validators.required]);
     const email = this.formBuilder.control(null, [Validators.required, EpicValidators.EMAIL]);
-    const username = this.formBuilder.control(null, [Validators.required]);
+    const userName = this.formBuilder.control(null, [Validators.required]);
+    const description = this.formBuilder.control(null, [Validators.required]);
     const password = this.formBuilder.control(null, [Validators.required]);
     const confirmPassword = this.formBuilder.control(null, [Validators.required, this.matchValues('password')]);
+    const photoUrl = this.formBuilder.control(null, []);
     this.form = this.formBuilder.group({
-      fullname,
+      fullName,
       email,
-      username,
+      userName,
+      description,
       password,
-      confirmPassword
+      confirmPassword,
+      photoUrl
     });
   }
 
-  adf() {
-    console.log(this.form.controls.confirmPassword)
+  salvarUsuario() {
+    const user = this.form.value as User;
+    console.log(user);
+    this.userService.saveUser(user).subscribe(response => {
+      console.log('USUARIO SALVO COM SUCESSO!', response);
+    });
   }
 
   public matchValues(

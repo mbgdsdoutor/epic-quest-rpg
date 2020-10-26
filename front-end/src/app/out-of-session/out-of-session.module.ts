@@ -24,6 +24,8 @@ import { MyAdventuresComponent } from './adventures/my-adventures/my-adventures.
 import { NewAdventureComponent } from './adventures/new-adventure/new-adventure.component';
 import { TagInputModule } from 'ngx-chips';
 import { MasterIcon } from '../shared/master-icon';
+import { UserService } from '../authentication/services/user.service';
+import { AdventureService } from './services/adventure.service';
 
 @NgModule({
   imports: [
@@ -56,6 +58,10 @@ import { MasterIcon } from '../shared/master-icon';
     PersonIcon,
     TorchIcon,
     MasterIcon
+  ],
+  providers: [
+    UserService,
+    AdventureService
   ]
 })
 export class OutOfSessionModule { }

@@ -9,9 +9,9 @@ import br.com.epicquest.rpg.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	Optional<User> findByUsername(String userName);
+	Optional<User> findByUserName(String userName);
 
-	Boolean existsByUsername(String userName);
+	Boolean existsByUserName(String userName);
 
 	Boolean existsByEmail(String userEmail);
 }

@@ -1,9 +1,8 @@
 package br.com.epicquest.rpg.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotEmpty;
 
-import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,19 +21,21 @@ public class UserDTO implements Serializable{
 
 	private Long id;
 
-	@NotBlank(message = "UserName is required")
-	private String username;
+	@NotEmpty(message = "UserName is required")
+	private String userName;
 
-	@NotBlank(message = "FullName is required")
-	private String fullname;
+	@NotEmpty(message = "FullName is required")
+	private String fullName;
 	
-	@NotBlank(message = "Birthday is required")
-	private Date birthday;
+	@NotEmpty(message = "Description is required")
+	private String description;
 	
-	@NotBlank(message = "Email is required")
+	@NotEmpty(message = "Email is required")
 	private String email;
-
-	@NotBlank(message = "UserName is required")
+	
+	private String photoUrl;
+	
+	@NotEmpty(message = "UserName is required")
 	private String password;
 	
 	private String confirmPassword;
