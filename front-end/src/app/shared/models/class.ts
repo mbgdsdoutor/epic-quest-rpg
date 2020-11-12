@@ -11,8 +11,11 @@ export interface Class {
   initialManaPoints: number; // se arcanista; + mod atributo chave
   levelUpManaPoints: number;
   pericias: Pericia[];
-  proficiencias: any; // ???????? to do
-  levelUpEffect: LevelUpEffect; // to do
+  proficiencias?: any; // ???????? to do
+  /*Proficiências. Descreve que tipos de equipamento você sabe usar. Todos os personagens sabem
+usar armas simples e armaduras leves. Se você souber
+usar outros equipamentos, isso estará anotado aqui. */
+  levelUpEffect?: LevelUpEffect; // to do
   // arcanista
   arcanistWay: ArcanistWay | null;
   // barbaro
@@ -24,7 +27,8 @@ export interface Class {
 }
 
 export interface LevelUpEffect {
- // criar tabela com efeitos de level up pra cada nivel
+  // criar tabela com efeitos de level up pra cada nivel
+
 }
 
 export interface ArcanistWay {

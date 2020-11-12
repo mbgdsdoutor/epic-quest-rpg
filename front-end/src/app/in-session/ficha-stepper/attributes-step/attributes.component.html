@@ -1,0 +1,9 @@
+<p class="step-title"><i class="material-icons">monetization_on</i>available coins: {{availablePoints}}</p>
+<div class="attributes-container">
+  <div *ngFor="let attribute of attributes">
+    <label [for]="'attribute-'+attribute.name">{{attribute.name}}</label>
+    <ng-select [(ngModel)]="attribute.value" [id]="'attribute-'+attribute.name" [searchable]="false" (change)="handleChangeAttribute($event)">
+      <ng-option *ngFor="let item of costPerPointsValue" [disabled]="item.cost > availablePoints" [value]="item.value">{{item.value}} pontos &nbsp;&nbsp;&nbsp;&nbsp; (custo: {{item.cost}})</ng-option>
+  </ng-select>
+  </div>
+</div>

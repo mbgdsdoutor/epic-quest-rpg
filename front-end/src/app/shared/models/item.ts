@@ -2,7 +2,7 @@ import { DiceEnum } from '../enums/dice-enum';
 import { Requirement } from './requirement';
 
 export interface Item {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   value: number;

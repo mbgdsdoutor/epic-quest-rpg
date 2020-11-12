@@ -6,10 +6,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LoadingService } from './shared/loading/loading.service';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { AlertComponent } from './shared/alert.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertComponent
   ],
   imports: [
     BrowserAnimationsModule,

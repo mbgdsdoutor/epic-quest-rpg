@@ -19,17 +19,6 @@ export class LoadingService {
     private injector: Injector
   ) { }
 
-  startLoading() {
-    this.componentRef = this.componentFactoryResolver
-      .resolveComponentFactory(LoadingComponent)
-      .create(this.injector);
-
-    this.appRef.attachView(this.componentRef.hostView);
-
-    const domElem = (this.componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
-  }
-
   startLoadingBar() {
     const loader = document.createElement('div');
     loader.classList.add('progress');
@@ -69,11 +58,6 @@ export class LoadingService {
     if (document.querySelector(`${seletor} .loader`)) {
       document.querySelector(`${seletor} .loader`).remove();
     }
-  }
-
-  stopLoading() {
-    this.appRef.detachView(this.componentRef.hostView);
-    this.componentRef.destroy();
   }
 
   appendComponentToBody(component: any) {

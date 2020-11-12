@@ -6,6 +6,6 @@ export interface Poder {
   name: string,
   description: string,
   category: CategoryEnum,
-  requirement: Requirement,
+  requirement: Requirement | null,
   //TODO: mapear para combate
 }

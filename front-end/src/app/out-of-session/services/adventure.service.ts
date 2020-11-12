@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { adventuresMock } from 'src/app/utils/mocks';
+import { adventuresMock, fullAdventuresMock } from 'src/app/utils/mocks';
 import { Adventure } from 'src/app/shared/models/adventure';
 
 const url = 'http://localhost:8085/api/v1/adventure';
@@ -14,7 +14,13 @@ export class AdventureService {
         // return this.httpClient.get<Adventure[]>(`${url}/`);
         return of(adventuresMock);
     }
-    public saveUser(adventure: Adventure): Observable<Adventure> {
+
+    public findByUserId(userId: number): Observable<Adventure[]> {
+        // return this.httpClient.get<Adventure[]>(`${url}/`);
+        return of(fullAdventuresMock);
+    }
+
+    public saveAdventure(adventure: Adventure): Observable<Adventure> {
         return this.httpClient.post<Adventure>(`${url}/`, adventure);
     }
 }

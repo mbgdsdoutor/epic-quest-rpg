@@ -1,24 +1,39 @@
 <div class="field">
   <label for="name">Nome</label>
-  <input class="input" placeholder="digite o nome do seu personagem" id="name">
+  <input
+    class="input"
+    [(ngModel)]="ficha.name"
+    placeholder="digite o nome do seu personagem"
+    id="name"
+  />
 </div>
-
+<div class="field">
+  <label for="age">Idade</label>
+  <input
+    type="number"
+    class="input"
+    [(ngModel)]="ficha.age"
+    placeholder="digite a idade de seu personagem"
+    id="age"
+  />
+</div>
 <div class="field">
   <label for="race">Raça</label>
   <ng-select [(ngModel)]="race" id="race">
-    <ng-option *ngFor="let race of races" [value]="race.id">{{race?.name}}</ng-option>
- </ng-select>
-  <!-- <input class="input" placeholder="selecione sua raça" id="race"> -->
+    <ng-option *ngFor="let race of races" [value]="race.id">{{
+      race?.name
+    }}</ng-option>
+  </ng-select>
 </div>
 
 <div class="field">
   <label>Classe</label>
   <div class="radio-class-container">
     <div class="radio-class" *ngFor="let class of classesInfo">
-      <input type="radio" [id]="class.id" name="class" [value]="class.id">
+      <input type="radio" [id]="class.id" name="class" [value]="class.id" />
       <label [for]="class.id">
         <img [src]="class.url" [alt]="class.name + 'image'" />
-        <p>{{class.name}}</p>
+        <p>{{ class.name }}</p>
       </label>
     </div>
   </div>

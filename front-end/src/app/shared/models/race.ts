@@ -11,6 +11,7 @@ export interface Race {
   intelligencePoints: number;
   charismaPoints: number;
   freePoints: number;
+  displacement: number;
   pericias: Pericia[];
   poderes: Poder[];
 }

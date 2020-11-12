@@ -1,11 +1,11 @@
-import {AbstractControl} from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 export class EpicValidators {
 
   static get EMAIL() {
     return (control: AbstractControl) => {
       if (control.value && !control.value.match(/\S+@\S+\.\S+/)) {
-        return {email: true};
+        return { email: true };
       }
       return null;
     };

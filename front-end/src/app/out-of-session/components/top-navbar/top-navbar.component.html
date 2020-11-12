@@ -1,20 +1,63 @@
 <div class="top-navbar bg-theme text-theme">
   <div class="top-navbar-left-content">
-    <div class="theme-switcher" (click)="help()">
+    <div class="theme-switcher" (click)="switchTheme()">
       <torch-icon width="32" heigth="32"></torch-icon>
       <div class="magic bg-theme"></div>
     </div>
   </div>
   <div class="top-navbar-right-content">
     <div class="top-navbar-right-content-options">
-      <i class="material-icons">notifications_none</i>
+      <div class="notifications">
+        <i (click)="toggleNotificationOpen()" class="material-icons"
+          >notifications_none</i
+        >
+        <div
+          (click)="toggleNotificationOpen()"
+          *ngIf="notifications.length > 0"
+          class="notifications-quantity"
+        >
+          {{ notifications.length }}
+        </div>
+        <div
+          *ngIf="isNotificationsOpened"
+          class="notifications-list bg-theme text-theme"
+        >
+          <div *ngFor="let notification of notifications">
+            <img
+              class="notification-user-photo"
+              [src]="notification.from.photoUrl"
+            />
+            <p class="notification-description">
+              <span *ngIf="notification.type === 'FriendList'"
+                >{{ notification.from.userName }} gostaria de ser seu amigo no
+                Epic Quest RPG.</span
+              >
+              <span *ngIf="notification.type === 'Adventure'"
+                >{{ notification.from.userName }} gostaria de participar da sua
+                aventura {{ notification.adventureName }}.</span
+              >
+            </p>
+            <div class="notification-options">
+              <button (click)="updateNotification(notification, 'Accepted')">
+                aceitar
+              </button>
+              <button (click)="updateNotification(notification, 'Denied')">
+                recusar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="top-navbar-right-content-info">
       <div>
         <p>Matheus Braz</p>
         <p>Disponível</p>
       </div>
-      <img src="https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg" alt="minha foto" />
+      <img
+        src="https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg"
+        alt="minha foto"
+      />
     </div>
   </div>
 </div>

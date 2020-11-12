@@ -1,0 +1,34 @@
+.attributes-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  > div {
+    width: 45%;
+    margin: 8px 0px;
+    &:nth-child(odd) {
+      margin-right: 16px;
+    }
+
+    .ng-select {
+      margin-top: 4px;
+    }
+  }
+}
+
+p {
+  text-align: center;
+}
+
+.step-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-top: 0px;
+
+  i {
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
+  }
+}

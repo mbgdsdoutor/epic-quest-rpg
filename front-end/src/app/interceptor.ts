@@ -13,10 +13,15 @@ const TOKEN_HEADER_KEY = 'Authorization';
 export class Interceptor implements HttpInterceptor {
 
   constructor(public tokenStorageService: TokenStorageService,
-              public router: Router) { }
+    public router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    return this.interceptMadoka(request, next);
+    if (request.url.includes('user/register')) {
+      console.log('ADENTREI?')
+      return next.handle(request)
+    } else {
+      return this.interceptMadoka(request, next);
+    }
   }
 
   private interceptMadoka(request: HttpRequest<any>, next: HttpHandler) {

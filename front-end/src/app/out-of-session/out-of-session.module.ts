@@ -26,6 +26,7 @@ import { TagInputModule } from 'ngx-chips';
 import { MasterIcon } from '../shared/master-icon';
 import { UserService } from '../authentication/services/user.service';
 import { AdventureService } from './services/adventure.service';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { AdventureService } from './services/adventure.service';
   ],
   providers: [
     UserService,
-    AdventureService
+    AdventureService,
+    NotificationService
   ]
 })
 export class OutOfSessionModule { }

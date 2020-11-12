@@ -12,6 +12,10 @@ import { NotesComponent } from './components/notes/notes.component';
 import { FichaStepperComponent } from './ficha-stepper/ficha-stepper.component';
 import { BasicInfoComponent } from './ficha-stepper/first-step/basic-info.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AttributesComponent } from './ficha-stepper/attributes-step/attributes.component';
+import { ExpertiseComponent } from './ficha-stepper/third-step/expertise.component';
+import { RaceStepComponent } from './ficha-stepper/race-step/race-step.component';
+import { ClassStepComponent } from './ficha-stepper/class-step/class-step.component';
 
 @NgModule({
   imports: [
@@ -31,6 +35,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NotesComponent,
     FichaStepperComponent,
     BasicInfoComponent,
+    AttributesComponent,
+    ExpertiseComponent,
+    RaceStepComponent,
+    ClassStepComponent,
+  ],
+  providers: [
   ]
 })
 export class InSessionModule { }

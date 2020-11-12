@@ -11,7 +11,7 @@
     <h4 *ngIf="!isEditing" class="profile-card-title text-theme-black">{{user.userName}}</h4>
     <div *ngIf="isEditing" class="profile-card-info" style="margin-top: 16px;">
       <label>nome</label>
-      <input class="input text-theme-black" type="text" [value]="user.name" />
+      <input class="input text-theme-black" type="text" [value]="user.userName" />
     </div>
     <div class="profile-card-info">
       <label>e-mail</label>

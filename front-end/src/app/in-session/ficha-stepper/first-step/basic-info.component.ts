@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Player } from 'src/app/shared/models/player';
 
 @Component({
   selector: 'basic-info',
@@ -7,19 +8,21 @@ import { Component } from '@angular/core';
 })
 export class BasicInfoComponent {
 
-  race = undefined
+  @Input() ficha: Player;
+
+  race = undefined;
   races = [
-    {id: 1, name: 'Humano(a)'},
-    {id: 2, name: 'Elfo(a)'},
-    {id: 3, name: 'Anão(a)'},
-  ]
+    { id: 1, name: 'Humano(a)' },
+    { id: 2, name: 'Elfo(a)' },
+    { id: 3, name: 'Anão(a)' },
+  ];
   classesInfo = [
-    {name: 'Arcanista', id: 'arcanista', url: 'assets/images/1.jpeg'},
-    {name: 'Guerreiro', id: 'guerreiro', url: 'assets/images/2.jpeg'},
-    {name: 'Bárbaro', id: 'barbaro', url: 'assets/images/3.jpeg'},
-    {name: 'Bardo', id: 'bardo', url: 'assets/images/4.jpeg'},
-    {name: 'Druída', id: 'druida', url: 'assets/images/5.jpeg'},
-  ]
+    { name: 'Arcanista', id: 'arcanista', url: 'assets/images/1.jpeg' },
+    { name: 'Guerreiro', id: 'guerreiro', url: 'assets/images/2.jpeg' },
+    { name: 'Bárbaro', id: 'barbaro', url: 'assets/images/3.jpeg' },
+    { name: 'Bardo', id: 'bardo', url: 'assets/images/4.jpeg' },
+    { name: 'Druída', id: 'druida', url: 'assets/images/5.jpeg' },
+  ];
 
   constructor() { }
 

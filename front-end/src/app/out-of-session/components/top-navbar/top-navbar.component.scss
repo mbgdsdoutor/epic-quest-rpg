@@ -16,7 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   &-left-content {
     display: flex;
@@ -56,5 +56,79 @@
         object-fit: cover;
       }
     }
+  }
+}
+
+.notifications {
+  position: relative;
+  cursor: pointer;
+  &-quantity {
+    background-color: #f0871c;
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 13px;
+    right: -7px;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    align-items: center;
+    font-weight: bold;
+  }
+  &-list {
+    position: absolute;
+    left: -50px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 1px solid #ccc;
+    animation: show 0.3s;
+
+    > div {
+      display: flex;
+      align-items: center;
+      padding: 8px 0px;
+      margin: 0px 8px;
+      border-bottom: 1px solid #ccc;
+      cursor: default;
+
+      &:last-child {
+        border-bottom: unset;
+      }
+
+      img {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+      }
+
+      p {
+        margin: 0px 4px;
+        flex: 1;
+        align-self: flex-start;
+      }
+
+      .notification-options {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          cursor: pointer;
+          margin: 2px 0px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes show {
+  from {
+    transform: scale(0, 0);
+  }
+  to {
+    transform: scale(1, 1);
   }
 }

@@ -1,27 +1,40 @@
 <div class="backdrop">
   <main class="ficha-stepper">
     <div class="ficha-stepper-img">
-      <img src="assets/images/ficha-stepper-bg.jpeg"/>
+      <img src="assets/images/ficha-stepper-bg.jpeg" />
     </div>
     <div class="ficha-stepper-form">
-      <div class="ficha-stepper-form-title">
-        Criação de Ficha
-      </div>
+      <div class="ficha-stepper-form-title">Criação de Ficha</div>
       <div class="ficha-stepper-form-menu">
-        <div class="step" *ngFor="let step of steps; let i = index" 
-        [ngClass]="{'active': i <= activeStep}"
-        (click)="changeStep(i)">
-        </div>
+        <div
+          class="step"
+          *ngFor="let step of steps; let i = index"
+          [ngClass]="{ active: i <= activeStep }"
+          (click)="changeStep(i)"
+        ></div>
       </div>
       <div class="ficha-stepper-form-subtitle">
-        {{steps[activeStep]}}
+        {{ steps[activeStep] }}
       </div>
       <div class="ficha-stepper-form-fields">
-        <basic-info *ngIf="activeStep === 0"></basic-info>
+        {{ ficha.name }}
+        <basic-info [ficha]="ficha" *ngIf="activeStep === 0"></basic-info>
+        <race-step [ficha]="ficha" *ngIf="activeStep === 1"></race-step>
+        <class-step [ficha]="ficha" *ngIf="activeStep === 2"></class-step>
+        <attributes [ficha]="ficha" *ngIf="activeStep === 3"></attributes>
+        <expertise [ficha]="ficha" *ngIf="activeStep === 4"></expertise>
       </div>
       <div class="ficha-stepper-form-actions">
-        <button class="button--default" *ngIf="activeStep > 0" (click)="previousStep()">Anterior</button>
-        <button class="button--primary" (click)="nextStep()">{{activeStep === 3 ? 'Salvar' : 'Próximo'}}</button>
+        <button
+          class="button--default"
+          *ngIf="activeStep > 0"
+          (click)="previousStep()"
+        >
+          Anterior
+        </button>
+        <button class="button--primary" (click)="nextStep()">
+          {{ activeStep === 3 ? "Salvar" : "Próximo" }}
+        </button>
       </div>
     </div>
   </main>

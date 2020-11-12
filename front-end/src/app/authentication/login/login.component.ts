@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     const credentials = this.form.value;
     this.authService.authenticate(credentials).subscribe(
       (data) => {
+        console.log('MADOKAAAAAAAAAAAAAAA NELES', data)
         if (data && data.access_token) {
           this.tokenStorageService.saveToken(data.access_token);
           this.tokenStorageService.saveUser(credentials);

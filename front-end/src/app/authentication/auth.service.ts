@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { TokenStorageService } from '../token-storage.service';
 import { Credentials } from './models/credentials';
 
-const url = 'https://madoka/v1';
+const url = 'http://localhost:8085/api/v1/login';
 
 @Injectable()
 export class AuthService {
@@ -22,16 +22,16 @@ export class AuthService {
       password: credentials.password,
     };
 
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Accept: '*/*',
-      }
-    );
+    // const headers = new HttpHeaders(
+    //   {
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //     Accept: '*/*',
+    //   }
+    // );
 
-    const body = new HttpParams({ fromObject: ret });
-    const options = { headers };
-    return this.http.post(`${url}`, body.toString(), options);
+    // const body = new HttpParams({ fromObject: ret });
+    // const options = { headers };
+    return this.http.post(`${url}`, ret);
   }
 
   // authenticate(credentials: any): Observable<any> {

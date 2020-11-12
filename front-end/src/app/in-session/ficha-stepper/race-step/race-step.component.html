@@ -1,0 +1,32 @@
+<h3>Raça escolhida: {{race.name}}</h3>
+
+<div class="">
+  <h4>Atributos: <span *ngFor="let atributo of attributes">{{atributo.value > 0 ? '+' : ''}}{{atributo.value}}&nbsp;{{atributo.name}}</span></h4>
+</div>
+<div class="">
+  <h4>Perícias: <span *ngFor="let pericia of race.pericias">{{pericia.name}}</span></h4>
+</div>
+<div class="">
+  <h4>Habilidades de Raça:</h4>
+  <ul>
+    <li *ngFor="let habilidade of race.poderes">
+      <p><span>{{habilidade.name}}:</span> {{habilidade.description}}</p>
+    </li>
+  </ul>
+</div>
+<!-- <label class="control control--radio">First radio
+  <input type="radio" name="radio" checked="checked"/>
+  <div class="control__indicator"></div>
+</label>
+<label class="control control--radio">Second radio
+  <input type="radio" name="radio"/>
+  <div class="control__indicator"></div>
+</label>
+<label class="control control--radio">Disabled
+  <input type="radio" name="radio2" disabled="disabled"/>
+  <div class="control__indicator"></div>
+</label>
+<label class="control control--radio">Disabled & checked
+  <input type="radio" name="radio2" disabled="disabled" checked="checked"/>
+  <div class="control__indicator"></div>
+</label> -->
