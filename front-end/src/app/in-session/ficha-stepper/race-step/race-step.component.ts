@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AttributesEnum } from 'src/app/shared/enums/attributes-enum';
 import { Player } from 'src/app/shared/models/player';
-import { Race } from 'src/app/shared/models/race';
-import { raceMock } from 'src/app/utils/mocks';
+import { fullPericiasMock, fullPoderesMock } from 'src/app/utils/mocks';
 
 @Component({
   selector: 'race-step',
@@ -13,13 +12,17 @@ export class RaceStepComponent {
 
   @Input() ficha: Player;
 
-  race: Race = raceMock;
+  mockAttributes = [AttributesEnum.Charisma, AttributesEnum.Strength, AttributesEnum.Wisdom, AttributesEnum.Dexterity, AttributesEnum.Intelligence, AttributesEnum.Constitution]
   attributes = [];
+  humanAttributes = [];
+  humanIsTwoPericias: boolean = true;
+  pericias = fullPericiasMock;
+  poderes = fullPoderesMock;
 
   constructor() { }
 
   ngOnInit() {
-    const { strengthPoints, wisdomPoints, dexterityPoints, intelligencePoints, charismaPoints, constitutionPoints } = this.race;
+    const { strengthPoints, wisdomPoints, dexterityPoints, intelligencePoints, charismaPoints, constitutionPoints } = this.ficha.race;
     this.attributes = [
       { name: AttributesEnum.Charisma, value: charismaPoints },
       { name: AttributesEnum.Strength, value: strengthPoints },
@@ -28,7 +31,9 @@ export class RaceStepComponent {
       { name: AttributesEnum.Intelligence, value: intelligencePoints },
       { name: AttributesEnum.Constitution, value: constitutionPoints },
     ].filter(attribute => attribute.value !== 0)
+  }
 
-    console.log(this.attributes)
+  handleOnChange() {
+    this.ficha.pericias = [];
   }
 }

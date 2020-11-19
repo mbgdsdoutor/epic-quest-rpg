@@ -1,32 +1,102 @@
-<h3>Raça escolhida: {{race.name}}</h3>
+<h3>Raça escolhida: {{ ficha.race.name }}</h3>
 
-<div class="">
-  <h4>Atributos: <span *ngFor="let atributo of attributes">{{atributo.value > 0 ? '+' : ''}}{{atributo.value}}&nbsp;{{atributo.name}}</span></h4>
+<div *ngIf="ficha.race.name === 'Humano'">
+  <div>
+    <h4>{{ ficha.race.poderes[0].name }}</h4>
+    <p>{{ ficha.race.poderes[0].description }}. Selecione os atributos:</p>
+    <ng-select
+      [(ngModel)]="humanAttributes"
+      id="race"
+      [multiple]="true"
+      [maxSelectedItems]="3"
+      [closeOnSelect]="false"
+    >
+      <ng-option *ngFor="let atributo of mockAttributes" [value]="atributo">{{
+        atributo
+      }}</ng-option>
+    </ng-select>
+  </div>
+
+  <div>
+    <h4>{{ ficha.race.poderes[1].name }}</h4>
+    <p>{{ ficha.race.poderes[1].description }}. Selecione:</p>
+
+    <div>
+      <div class="md-radio">
+        <input
+          id="1"
+          type="radio"
+          [(ngModel)]="humanIsTwoPericias"
+          name="true"
+          [value]="true"
+          (change)="handleOnChange()"
+        />
+        <label for="1">Duas Perícias</label>
+      </div>
+      <div class="md-radio">
+        <input
+          id="2"
+          type="radio"
+          [(ngModel)]="humanIsTwoPericias"
+          name="false"
+          [value]="false"
+          (change)="handleOnChange()"
+        />
+        <label for="2">Uma Perícia e um Poder</label>
+      </div>
+
+      <label for="pericias">Perícias</label>
+      <ng-select
+        [(ngModel)]="ficha.pericias"
+        id="pericias"
+        [multiple]="humanIsTwoPericias ? true : false"
+        [maxSelectedItems]="humanIsTwoPericias ? 2 : 1"
+        [closeOnSelect]="humanIsTwoPericias ? false : true"
+      >
+        <ng-option *ngFor="let pericia of pericias" [value]="pericia">{{
+          pericia.name
+        }}</ng-option>
+      </ng-select>
+
+      <div style="margin-top: 8px" *ngIf="!humanIsTwoPericias">
+        <label for="pericias">Poder</label>
+        <ng-select [(ngModel)]="ficha.poderes" id="poder">
+          <ng-option *ngFor="let poder of poderes" [value]="poder">{{
+            poder.name
+          }}</ng-option>
+        </ng-select>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="">
-  <h4>Perícias: <span *ngFor="let pericia of race.pericias">{{pericia.name}}</span></h4>
+
+<div *ngIf="ficha.race.name !== 'Humano'">
+  <div>
+    <h4>
+      Atributos:
+      <span *ngFor="let atributo of attributes"
+        >{{ atributo.value > 0 ? "+" : "" }}{{ atributo.value }}&nbsp;{{
+          atributo.name
+        }}</span
+      >
+    </h4>
+  </div>
+  <div>
+    <h4>
+      Perícias:
+      <span *ngFor="let pericia of ficha.race.pericias">{{
+        pericia.name
+      }}</span>
+    </h4>
+  </div>
+  <div>
+    <h4>Habilidades de Raça:</h4>
+    <ul>
+      <li *ngFor="let habilidade of ficha.race.poderes">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="">
-  <h4>Habilidades de Raça:</h4>
-  <ul>
-    <li *ngFor="let habilidade of race.poderes">
-      <p><span>{{habilidade.name}}:</span> {{habilidade.description}}</p>
-    </li>
-  </ul>
-</div>
-<!-- <label class="control control--radio">First radio
-  <input type="radio" name="radio" checked="checked"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Second radio
-  <input type="radio" name="radio"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Disabled
-  <input type="radio" name="radio2" disabled="disabled"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Disabled & checked
-  <input type="radio" name="radio2" disabled="disabled" checked="checked"/>
-  <div class="control__indicator"></div>
-</label> -->

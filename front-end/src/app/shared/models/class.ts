@@ -11,7 +11,8 @@ export interface Class {
   initialManaPoints: number; // se arcanista; + mod atributo chave
   levelUpManaPoints: number;
   pericias: Pericia[];
-  proficiencias?: any; // ???????? to do
+  periciasChoose?: { quantity: number, pericias: Pericia[] }[];
+  proficiencias?: ProficienciasEnum[]; // ???????? to do
   /*Proficiências. Descreve que tipos de equipamento você sabe usar. Todos os personagens sabem
 usar armas simples e armaduras leves. Se você souber
 usar outros equipamentos, isso estará anotado aqui. */
@@ -24,6 +25,11 @@ usar outros equipamentos, isso estará anotado aqui. */
   bardWay: BardWay | null;
   // druida
   // druidWay: DruidWay | null;
+}
+
+export enum ProficienciasEnum {
+  ArmasMarciais = 'Armas Marciais',
+  Escudos = 'Escudos',
 }
 
 export interface LevelUpEffect {

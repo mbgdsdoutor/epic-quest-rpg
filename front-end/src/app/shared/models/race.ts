@@ -4,6 +4,7 @@ import { Poder } from './poder';
 export interface Race {
   id: number;
   name: string;
+  ageMultiplier?: number,
   strengthPoints: number;
   wisdomPoints: number;
   dexterityPoints: number;

@@ -17,12 +17,14 @@
         {{ steps[activeStep] }}
       </div>
       <div class="ficha-stepper-form-fields">
-        {{ ficha.name }}
         <basic-info [ficha]="ficha" *ngIf="activeStep === 0"></basic-info>
-        <race-step [ficha]="ficha" *ngIf="activeStep === 1"></race-step>
-        <class-step [ficha]="ficha" *ngIf="activeStep === 2"></class-step>
-        <attributes [ficha]="ficha" *ngIf="activeStep === 3"></attributes>
-        <expertise [ficha]="ficha" *ngIf="activeStep === 4"></expertise>
+        <origin-and-alignment-step
+          [ficha]="ficha"
+          *ngIf="activeStep === 1"
+        ></origin-and-alignment-step>
+        <race-step [ficha]="ficha" *ngIf="activeStep === 2"></race-step>
+        <class-step [ficha]="ficha" *ngIf="activeStep === 3"></class-step>
+        <attributes [ficha]="ficha" *ngIf="activeStep === 4"></attributes>
       </div>
       <div class="ficha-stepper-form-actions">
         <button
@@ -33,7 +35,7 @@
           Anterior
         </button>
         <button class="button--primary" (click)="nextStep()">
-          {{ activeStep === 3 ? "Salvar" : "Próximo" }}
+          {{ activeStep === steps.length - 1 ? "Salvar" : "Próximo" }}
         </button>
       </div>
     </div>

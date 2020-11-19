@@ -16,7 +16,7 @@ export class AuthService {
     private router: Router
   ) { }
 
-  authenticate(credentials: Credentials): Observable<any> {
+  authenticatea(credentials: Credentials): Observable<any> {
     const ret = {
       username: credentials.username,
       password: credentials.password,
@@ -34,11 +34,11 @@ export class AuthService {
     return this.http.post(`${url}`, ret);
   }
 
-  // authenticate(credentials: any): Observable<any> {
-  //   return of({
-  //     access_token: 'madokinha_star'
-  //   });
-  // }
+  authenticate(credentials: any): Observable<any> {
+    return of({
+      access_token: 'madokinha_star'
+    });
+  }
 
   logout() {
     this.tokenService.signOut();

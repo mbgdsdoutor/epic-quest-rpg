@@ -9,7 +9,7 @@ import { TokenStorageService } from 'src/app/token-storage.service';
 })
 export class FichaStepperComponent implements OnInit {
 
-  steps: string[] = [Steps.basicInfo, Steps.originAndAlignment, Steps.raceInfo, Steps.classInfo, Steps.attributeInfo, Steps.expertiseInfo]
+  steps: string[] = [Steps.basicInfo, Steps.originAndAlignment, Steps.raceInfo, Steps.classInfo, Steps.attributeInfo]
   activeStep: number = 0
   ficha: Player
 
@@ -78,7 +78,6 @@ export enum Steps {
   basicInfo = 'Informações Básicas',
   originAndAlignment = 'Alinhamento e Origem',
   attributeInfo = 'Atributos',
-  expertiseInfo = 'Perícias',
   classInfo = 'Informações de Classe',
   raceInfo = 'Informações de Raça',
 }

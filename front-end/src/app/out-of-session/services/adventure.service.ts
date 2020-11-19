@@ -8,11 +8,16 @@ const url = 'http://localhost:8085/api/v1/adventure';
 
 @Injectable()
 export class AdventureService {
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
 
     public findAll(): Observable<Adventure[]> {
         // return this.httpClient.get<Adventure[]>(`${url}/`);
         return of(adventuresMock);
+    }
+
+    public findById(id: number): Observable<Adventure> {
+        // return this.httpClient.get<Adventure>(`${url}/${id}`);
+        return of(fullAdventuresMock[1]);
     }
 
     public findByUserId(userId: number): Observable<Adventure[]> {

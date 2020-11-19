@@ -1,32 +1,77 @@
-<h3>Raça escolhida: {{race.name}}</h3>
+<h3>Classe escolhida: {{ ficha.class.name }}</h3>
+<div style="display: flex; justify-content: space-between">
+  <ul>
+    <li>
+      <p><span>Pontos de Vida:</span> {{ ficha.class.initialLifePoints }}</p>
+    </li>
+    <li>
+      <p>
+        <span>Pontos de Vida p/ nível:</span>
+        {{ ficha.class.levelUpLifePoints }}
+      </p>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <p><span>Pontos de Mana:</span> {{ ficha.class.initialManaPoints }}</p>
+    </li>
+    <li>
+      <p>
+        <span>Pontos de Mana p/ nível:</span>
+        {{ ficha.class.levelUpManaPoints }}
+      </p>
+    </li>
+  </ul>
+</div>
 
+<div>
+  <ul>
+    <li>
+      <p><span>Perícias:</span></p>
+    </li>
+    <li>
+      <ng-select
+        [(ngModel)]="ficha.pericias"
+        id="pericias"
+        [multiple]="true"
+        [maxSelectedItems]="
+          ficha.pericias.length +
+          ficha.class.pericias.length +
+          ficha.class.periciasChoose[0].quantity
+        "
+        [closeOnSelect]="false"
+      >
+        <ng-option *ngFor="let pericia of pericias" [value]="pericia">{{
+          pericia.name
+        }}</ng-option>
+      </ng-select>
+    </li>
+  </ul>
+</div>
+<!-- 
 <div class="">
-  <h4>Atributos: <span *ngFor="let atributo of attributes">{{atributo.value > 0 ? '+' : ''}}{{atributo.value}}&nbsp;{{atributo.name}}</span></h4>
+  <h4>
+    Atributos:
+    <span *ngFor="let atributo of attributes"
+      >{{ atributo.value > 0 ? "+" : "" }}{{ atributo.value }}&nbsp;{{
+        atributo.name
+      }}</span
+    >
+  </h4>
 </div>
 <div class="">
-  <h4>Perícias: <span *ngFor="let pericia of race.pericias">{{pericia.name}}</span></h4>
+  <h4>
+    Perícias:
+    <span *ngFor="let pericia of race.pericias">{{ pericia.name }}</span>
+  </h4>
 </div>
 <div class="">
   <h4>Habilidades de Raça:</h4>
   <ul>
     <li *ngFor="let habilidade of race.poderes">
-      <p><span>{{habilidade.name}}:</span> {{habilidade.description}}</p>
+      <p>
+        <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+      </p>
     </li>
   </ul>
-</div>
-<!-- <label class="control control--radio">First radio
-  <input type="radio" name="radio" checked="checked"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Second radio
-  <input type="radio" name="radio"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Disabled
-  <input type="radio" name="radio2" disabled="disabled"/>
-  <div class="control__indicator"></div>
-</label>
-<label class="control control--radio">Disabled & checked
-  <input type="radio" name="radio2" disabled="disabled" checked="checked"/>
-  <div class="control__indicator"></div>
-</label> -->
+</div> -->

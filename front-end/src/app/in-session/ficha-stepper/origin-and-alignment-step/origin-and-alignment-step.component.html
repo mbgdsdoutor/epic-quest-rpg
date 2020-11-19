@@ -1,0 +1,68 @@
+<div class="field">
+  <label for="alignment">Alinhamento</label>
+  <ng-select
+    [(ngModel)]="ficha.alignment"
+    id="alignment"
+    (change)="handleChangeAlignnment($event)"
+  >
+    <ng-option *ngFor="let alignment of alignments" [value]="alignment.name">{{
+      alignment.name
+    }}</ng-option>
+  </ng-select>
+</div>
+
+<div *ngIf="ficha.alignment">
+  <h4>Descrição do Alinhamento:</h4>
+  <p>{{ selectedAlignment?.description }}</p>
+</div>
+
+<div class="field">
+  <label for="origin">Origem</label>
+  <ng-select [(ngModel)]="ficha.origem" id="origin">
+    <ng-option *ngFor="let origin of origins" [value]="origin">{{
+      origin.name
+    }}</ng-option>
+  </ng-select>
+</div>
+
+<div *ngIf="ficha.origem">
+  <div *ngIf="!ficha.origem.itemChooseOne">
+    <h4>Itens:</h4>
+    <ul>
+      <li *ngFor="let item of ficha?.origem?.items">
+        <p>
+          <span>{{ item.name }}:</span> {{ item.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="ficha.origem.itemChooseOne">
+    <h4>Itens:</h4>
+    <div class="field">
+      <label for="item-origem">Escolha um dos itens a seguir:</label>
+      <ng-select id="item-origem">
+        <ng-option *ngFor="let item of ficha.origem.items" [value]="item">{{
+          item.name
+        }}</ng-option>
+      </ng-select>
+    </div>
+  </div>
+  <div>
+    <h4>
+      Perícias:
+      <span *ngFor="let pericia of ficha?.origem?.pericias">{{
+        pericia.name
+      }}</span>
+    </h4>
+  </div>
+  <div>
+    <h4>Poderes da Origem:</h4>
+    <ul>
+      <li *ngFor="let habilidade of ficha?.origem?.poderes">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

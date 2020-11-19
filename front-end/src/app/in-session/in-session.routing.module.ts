@@ -9,30 +9,30 @@ import { SessionComponent } from './session/session.component';
 import { CombatComponent } from './combat/combat.component';
 
 const SESSION: Route = {
-    path: 'session',
+    path: 'session/:id',
     component: SessionComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [AuthGuard]
 };
 
 const COMBAT: Route = {
     path: 'combat',
     component: CombatComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [AuthGuard]
 };
 
 export const inSessionRoutes: Routes = [
     {
-      path: '',
-      component: InSessionComponent,
-      children: [
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'session'
-          },
-          SESSION,
-          COMBAT
-      ]
+        path: '',
+        component: InSessionComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'session'
+            },
+            SESSION,
+            COMBAT
+        ]
     }
 ];
 
@@ -43,7 +43,7 @@ export const inSessionRoutes: Routes = [
         FormsModule,
         CommonModule
     ],
-    exports: [ RouterModule ]
+    exports: [RouterModule]
 })
 
 export class InSessionRoutingModule { }

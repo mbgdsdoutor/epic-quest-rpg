@@ -17,7 +17,7 @@
 
     &:checked + label {
       img {
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45), 0 2px 3px rgba(0, 0, 0, 0.45)
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45), 0 2px 3px rgba(0, 0, 0, 0.45);
       }
       p {
         text-decoration-color: #000;
@@ -41,5 +41,20 @@
       text-decoration-color: transparent;
       transition: all 0.3s;
     }
+  }
+}
+
+.warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  margin-top: 8px;
+
+  p {
+    flex: 1;
+    margin: 0px 0px 0px 8px;
   }
 }

@@ -16,6 +16,8 @@ import { AttributesComponent } from './ficha-stepper/attributes-step/attributes.
 import { ExpertiseComponent } from './ficha-stepper/third-step/expertise.component';
 import { RaceStepComponent } from './ficha-stepper/race-step/race-step.component';
 import { ClassStepComponent } from './ficha-stepper/class-step/class-step.component';
+import { OriginAndAlignmentStepComponent } from './ficha-stepper/origin-and-alignment-step/origin-and-alignment-step.component';
+import { AdventureService } from '../out-of-session/services/adventure.service';
 
 @NgModule({
   imports: [
@@ -39,8 +41,10 @@ import { ClassStepComponent } from './ficha-stepper/class-step/class-step.compon
     ExpertiseComponent,
     RaceStepComponent,
     ClassStepComponent,
+    OriginAndAlignmentStepComponent,
   ],
   providers: [
+    AdventureService
   ]
 })
 export class InSessionModule { }

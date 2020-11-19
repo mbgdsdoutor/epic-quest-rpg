@@ -3,9 +3,10 @@
     <i class="material-icons">menu</i>
   </div>
 
-  <div class="aside-item">Solicitar Acesso</div>
+  <div *ngIf="isMaster" class="aside-item">Conceder Experiência</div>
+  <div *ngIf="!isMaster" class="aside-item">Solicitar Acesso</div>
   <div class="aside-item">Consultar Livro</div>
-  <div class="aside-item">Conquistas</div>
-  <div class="aside-item">Configurações</div>
+  <div *ngIf="!isMaster" class="aside-item">Conquistas</div>
+  <!-- <div class="aside-item">Configurações</div> -->
   <div class="aside-item">Sair</div>
 </aside>

@@ -7,9 +7,20 @@
     id="name"
   />
 </div>
+
+<div class="field">
+  <label for="race">Raça</label>
+  <ng-select [(ngModel)]="ficha.race" id="race">
+    <ng-option *ngFor="let race of races" [value]="race">{{
+      race?.name
+    }}</ng-option>
+  </ng-select>
+</div>
+
 <div class="field">
   <label for="age">Idade</label>
   <input
+    [disabled]="!ficha.race"
     type="number"
     class="input"
     [(ngModel)]="ficha.age"
@@ -17,22 +28,49 @@
     id="age"
   />
 </div>
-<div class="field">
-  <label for="race">Raça</label>
-  <ng-select [(ngModel)]="race" id="race">
-    <ng-option *ngFor="let race of races" [value]="race.id">{{
-      race?.name
-    }}</ng-option>
-  </ng-select>
+
+<div
+  class="warning"
+  *ngIf="ficha.race && ficha.age >= 40 * ficha.race.ageMultiplier"
+>
+  <i class="material-icons">warning</i>
+  <p
+    *ngIf="
+      ficha.age >= 40 * ficha.race.ageMultiplier &&
+      ficha.age < 60 * ficha.race.ageMultiplier
+    "
+  >
+    Modificador de Envelhecimento - {{ idadesAlert[0] }}
+  </p>
+  <p
+    *ngIf="
+      ficha.age >= 60 * ficha.race.ageMultiplier &&
+      ficha.age < 80 * ficha.race.ageMultiplier
+    "
+  >
+    Modificador de Envelhecimento - {{ idadesAlert[1] }}
+  </p>
+  <p *ngIf="ficha.age >= 80 * ficha.race.ageMultiplier">
+    Modificador de Envelhecimento - {{ idadesAlert[2] }}
+  </p>
 </div>
 
 <div class="field">
   <label>Classe</label>
   <div class="radio-class-container">
-    <div class="radio-class" *ngFor="let class of classesInfo">
-      <input type="radio" [id]="class.id" name="class" [value]="class.id" />
+    <div class="radio-class" *ngFor="let class of classes">
+      <input
+        [(ngModel)]="ficha.class"
+        type="radio"
+        [id]="class.id"
+        name="class"
+        [value]="class"
+      />
       <label [for]="class.id">
-        <img [src]="class.url" [alt]="class.name + 'image'" />
+        <img
+          [src]="'assets/images/' + class.id + '.jpeg'"
+          [alt]="class.name + 'image'"
+        />
         <p>{{ class.name }}</p>
       </label>
     </div>

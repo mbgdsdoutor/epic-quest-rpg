@@ -1,40 +1,108 @@
 <div class="container">
-  <h2 class="adventure-creation-link text-theme-black">Deseja criar uma nova aventura? <b [routerLink]="['/adventures/new']">Crie uma nova aventura agora.</b></h2>
+  <h2 class="adventure-creation-link text-theme-black">
+    Deseja criar uma nova aventura?
+    <b [routerLink]="['/adventures/new']">Crie uma nova aventura agora.</b>
+  </h2>
   <div class="user-search-box">
     <i class="material-icons text-theme-black">search</i>
-    <input class="input" type="text" placeholder="Digite o nome do mestre ou da aventura" (input)="handleSearchUser($event)"/>
+    <input
+      class="input"
+      type="text"
+      placeholder="Digite o nome do mestre ou da aventura"
+      (input)="handleSearchUser($event)"
+    />
   </div>
   <div class="adventure-container">
-    <div class="adventure bg-theme" *ngFor="let adventure of searchedAdventures">
+    <div
+      class="adventure bg-theme"
+      *ngFor="let adventure of searchedAdventures"
+    >
       <div class="adventure-header">
         <img [src]="adventure.photoUrl" />
         <div class="adventure-header-info">
-          <h2>{{adventure.name}}</h2>
-          <p class="user-info-email text-theme-black"><b>Mestre: </b> <span [routerLink]="['/social/profile/'+adventure.master.id]">{{adventure.master.userName}}</span></p>
-          <p class="user-info-email text-theme-black"><b>Participantes: </b><span *ngFor="let player of adventure.users" [routerLink]="['/social/profile/'+player.id]">{{ player.userName }}</span></p>
+          <h2>{{ adventure.name }}</h2>
+          <p class="user-info-email text-theme-black">
+            <b>Mestre: </b>
+            <span [routerLink]="['/social/profile/' + adventure.master.id]">{{
+              adventure.master.userName
+            }}</span>
+          </p>
+          <p class="user-info-email text-theme-black">
+            <b>Participantes: </b
+            ><span
+              *ngFor="let player of adventure.users"
+              [routerLink]="['/social/profile/' + player.id]"
+              >{{ player.userName }}</span
+            >
+          </p>
         </div>
-        <div class="master-emblem bg-theme" *ngIf="adventure.master.id === user.id">
+        <div
+          class="master-emblem bg-theme"
+          *ngIf="adventure.master.id === user.id"
+        >
           <master-icon width="28" height="28"></master-icon>
         </div>
       </div>
-      <div class="player-info" *ngFor="let player of adventure.players" [ngStyle]="{'order': player.userId === user.id ? -1 : 1}">
-        <h4 class="text-theme-black" [ngStyle]="{'font-size': player.userId === user.id ? '18px' : '14px'}">{{player.name}}, Lv.{{player.nivel}}</h4>
+      <div
+        class="player-info"
+        *ngFor="let player of adventure.players"
+        [ngStyle]="{ order: player.userId === user.id ? -1 : 1 }"
+      >
+        <h4
+          class="text-theme-black"
+          [ngStyle]="{
+            'font-size': player.userId === user.id ? '18px' : '14px'
+          }"
+        >
+          {{ player.name }}, Lv.{{ player.nivel }}
+        </h4>
         <div class="player-status">
-          <div class="player-status-profile" [ngClass]="{'my-character': player.userId === user.id}">
+          <div
+            class="player-status-profile"
+            [ngClass]="{ 'my-character': player.userId === user.id }"
+          >
             <img [src]="player.photoUrl" class="border-theme" />
             <div class="player-status-profile-points">
               <div class="life-points border-theme">
-                <span>HP: {{ player.lifePoints }} / {{ player.totalLifePoints }}</span>
-                <div class="life-points-bar" [ngStyle]="{'width': ''+((player.lifePoints * 100) / player.totalLifePoints)+'%'}"></div>
+                <span
+                  >HP: {{ player.lifePoints }} /
+                  {{ player.totalLifePoints }}</span
+                >
+                <div
+                  class="life-points-bar"
+                  [ngStyle]="{
+                    width:
+                      '' +
+                      (player.lifePoints * 100) / player.totalLifePoints +
+                      '%'
+                  }"
+                ></div>
               </div>
               <div class="mana-points border-theme">
-                <span>MP: {{ player.manaPoints }} / {{ player.totalManaPoints }}</span>
-                <div class="mana-points-bar" [ngStyle]="{'width': ''+((player.manaPoints * 100) / player.totalManaPoints)+'%'}"></div>
+                <span
+                  >MP: {{ player.manaPoints }} /
+                  {{ player.totalManaPoints }}</span
+                >
+                <div
+                  class="mana-points-bar"
+                  [ngStyle]="{
+                    width:
+                      '' +
+                      (player.manaPoints * 100) / player.totalManaPoints +
+                      '%'
+                  }"
+                ></div>
               </div>
             </div>
             <div class="player-status-profile-info">
-              <img [src]="'../assets/images/'+player.class.id+'.jpeg'" alt="class-icon" />
-              <p class="text-theme-black">{{player.race.name}} <br/> {{player.class.name}}</p>
+              <img
+                [src]="'../assets/images/' + player.class.id + '.jpeg'"
+                alt="class-icon"
+              />
+              <p class="text-theme-black">
+                {{ player.race.name }} <br />
+                {{ player.class.name }}
+              </p>
             </div>
             <ul class="status" *ngIf="player.userId === user.id">
               <li><span>FOR:</span> {{ player.strength }}</li>
@@ -48,10 +116,17 @@
         </div>
       </div>
       <div class="master-actions">
-        <button *ngIf="adventure.master.id === user.id" class="button--outline text-theme-black">
+        <button
+          *ngIf="adventure.master.id === user.id"
+          class="button--outline text-theme-black"
+        >
           Iniciar Sessão
         </button>
-        <button *ngIf="adventure.master.id !== user.id" class="button--outline text-theme-black" [routerLink]="['/session']">
+        <button
+          *ngIf="adventure.master.id !== user.id"
+          class="button--outline text-theme-black"
+          [routerLink]="['/session/' + adventure.id]"
+        >
           Entrar na Sessão
         </button>
       </div>

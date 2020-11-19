@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { AttributesEnum } from 'src/app/shared/enums/attributes-enum';
+import { Pericia } from 'src/app/shared/models/pericia';
 import { Player } from 'src/app/shared/models/player';
 import { Race } from 'src/app/shared/models/race';
-import { raceMock } from 'src/app/utils/mocks';
+import { fullPericiasMock, raceMock } from 'src/app/utils/mocks';
 
 @Component({
   selector: 'class-step',
@@ -12,22 +13,11 @@ import { raceMock } from 'src/app/utils/mocks';
 export class ClassStepComponent {
 
   @Input() ficha: Player;
-  race: Race = raceMock;
-  attributes = [];
+  pericias: Pericia[] = fullPericiasMock;
 
   constructor() { }
 
   ngOnInit() {
-    const { strengthPoints, wisdomPoints, dexterityPoints, intelligencePoints, charismaPoints, constitutionPoints } = this.race;
-    this.attributes = [
-      { name: AttributesEnum.Charisma, value: charismaPoints },
-      { name: AttributesEnum.Strength, value: strengthPoints },
-      { name: AttributesEnum.Wisdom, value: wisdomPoints },
-      { name: AttributesEnum.Dexterity, value: dexterityPoints },
-      { name: AttributesEnum.Intelligence, value: intelligencePoints },
-      { name: AttributesEnum.Constitution, value: constitutionPoints },
-    ].filter(attribute => attribute.value !== 0)
 
-    console.log(this.attributes)
   }
 }

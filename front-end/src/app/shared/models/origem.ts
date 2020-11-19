@@ -6,6 +6,7 @@ export interface Origem {
   id: number;
   name: string;
   description: string;
+  itemChooseOne: boolean;
   items: Item[];
   pericias: Pericia[];
   poderes: Poder[];

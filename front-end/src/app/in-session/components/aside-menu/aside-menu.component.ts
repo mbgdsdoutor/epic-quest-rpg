@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'aside-menu',
@@ -7,8 +7,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AsideMenuComponent {
 
+  @Input() isMaster: boolean;
   @ViewChild('aside', { static: false }) aside: ElementRef;
-  
+
   constructor() { }
 
   toggleAside() {
