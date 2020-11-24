@@ -119,6 +119,7 @@
         <button
           *ngIf="adventure.master.id === user.id"
           class="button--outline text-theme-black"
+          [routerLink]="['/session/' + adventure.id]"
         >
           Iniciar Sessão
         </button>

@@ -17,7 +17,7 @@ export class AdventureService {
 
     public findById(id: number): Observable<Adventure> {
         // return this.httpClient.get<Adventure>(`${url}/${id}`);
-        return of(fullAdventuresMock[1]);
+        return of(fullAdventuresMock.find(a => a.id === id));
     }
 
     public findByUserId(userId: number): Observable<Adventure[]> {

@@ -6,17 +6,10 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import { InSessionComponent } from './in-session.component';
 import { AuthGuard } from '../auth.guard';
 import { SessionComponent } from './session/session.component';
-import { CombatComponent } from './combat/combat.component';
 
 const SESSION: Route = {
     path: 'session/:id',
     component: SessionComponent,
-    canActivate: [AuthGuard]
-};
-
-const COMBAT: Route = {
-    path: 'combat',
-    component: CombatComponent,
     canActivate: [AuthGuard]
 };
 
@@ -31,7 +24,6 @@ export const inSessionRoutes: Routes = [
                 redirectTo: 'session'
             },
             SESSION,
-            COMBAT
         ]
     }
 ];

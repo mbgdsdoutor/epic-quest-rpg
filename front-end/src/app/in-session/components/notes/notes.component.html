@@ -1,6 +1,86 @@
-<div class="notes" #notes>
+<div class="notes" #notesContainer>
   <div class="notes-close" (click)="hideNotes()">
     <i class="material-icons">close</i>
   </div>
 
+  <div class="notes-header">
+    <h2>Anotações</h2>
+    <button class="button--default" (click)="toggleNote()">
+      {{ isNotesForm ? "Voltar" : "Nova Anotação" }}
+    </button>
+  </div>
+  <div class="notes-body" *ngIf="isNotesForm">
+    <div class="field">
+      <!--*ngIf="!activeNote?.id || activeNote.userId === userId"-->
+      <label for="name">Titulo</label>
+      <input
+        class="input"
+        [(ngModel)]="activeNote.title"
+        [disabled]="isEditorDisabled"
+        id="title"
+      />
+    </div>
+    <div class="field" *ngIf="userId === adventure.master.id">
+      <label for="sharedUsersIds">Usuários</label>
+      <ng-select
+        [(ngModel)]="activeNote.sharedUsersIds"
+        id="sharedUsersIds"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        [disabled]="isEditorDisabled"
+      >
+        <ng-option *ngFor="let user of adventure.players" [value]="user.id">{{
+          user?.name
+        }}</ng-option>
+      </ng-select>
+    </div>
+
+    <div class="field" style="margin-top: 8px">
+      <label for="name">Conteúdo</label>
+      <div class="notes-body-scroll">
+        <quill-editor
+          [(ngModel)]="activeNote.content"
+          [modules]="modules"
+          [readOnly]="isEditorDisabled"
+        ></quill-editor>
+      </div>
+    </div>
+    <button
+      class="button--primary"
+      style="float: right; margin-top: 8px"
+      [disabled]="isEditorDisabled"
+      (click)="saveNote()"
+    >
+      Salvar
+    </button>
+  </div>
+  <div *ngIf="!isNotesForm">
+    <div class="notes-body">
+      <div class="note" *ngFor="let note of notes">
+        <div class="note-title">
+          <span>{{ note.title }}</span>
+          <ng-container *ngFor="let player of adventure.players">
+            <img
+              *ngIf="
+                note.userId !== userId &&
+                note.sharedUsersIds.includes(player.userId)
+              "
+              [src]="player.photoUrl"
+            />
+          </ng-container>
+        </div>
+        <div class="note-options">
+          <button (click)="viewNote(note)">
+            <i class="material-icons">visibility</i>
+          </button>
+          <button (click)="editNote(note)" *ngIf="note.userId === userId">
+            <i class="material-icons">edit</i>
+          </button>
+          <button (click)="deleteNote(note.id)" *ngIf="note.userId === userId">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

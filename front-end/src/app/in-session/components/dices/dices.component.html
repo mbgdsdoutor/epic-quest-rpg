@@ -1,0 +1,31 @@
+<div class="dices" #dicesContainer>
+  <button (click)="hideDices()">
+    <i class="material-icons">chevron_right</i>
+  </button>
+  <button (click)="clearDices()">Limpar Seleção</button>
+  <aside class="dices-list">
+    <button
+      *ngFor="let preRolledDice of preRolledDices"
+      (click)="preRoll(preRolledDice.dice)"
+    >
+      <div *ngIf="preRolledDice.quantity > 0" class="dice-quantity">
+        x{{ preRolledDice.quantity }}
+      </div>
+      <span [attr.class]="'dice-icon dice-icon--' + preRolledDice.dice"></span
+      >{{ preRolledDice.dice }}
+    </button>
+  </aside>
+  <div class="dices-log">
+    <p>Log de Rolagens</p>
+    <div>
+      <div *ngFor="let diceLog of dicesLog">
+        <span *ngFor="let dice of diceLog.dices"
+          >{{ dice.quantity }}{{ dice.dice }}</span
+        >
+        = {{ diceLog.result }}
+      </div>
+    </div>
+
+    <button class="button--primary" (click)="roll()">Rolar</button>
+  </div>
+</div>

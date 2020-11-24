@@ -10,6 +10,7 @@ import { Race } from '../shared/models/race';
 import { Notification, NotificationStatus, NotificationType } from '../out-of-session/models/notification';
 import { Pericia } from '../shared/models/pericia';
 import { Poder } from '../shared/models/poder';
+import { Note } from '../in-session/components/notes/note';
 
 export const usersMock: User[] = [
   {
@@ -729,6 +730,25 @@ export const fullRacesMock: Race[] = [{
     }],
 }]
 
+export const notesMock: Note[] = [{
+  id: 1,
+  title: 'Observações do mestre sobre a missão',
+  content: 'O mestre deu muita enfâse na funcionária da taverna. Pode ser uma pista para começarmos a investigação.',
+  userId: 2,
+  sharedUsersIds: []
+}, {
+  id: 1,
+  title: 'Meu Diário - Dia 01',
+  content: 'O dia começou tranquilo.',
+  userId: 2,
+  sharedUsersIds: []
+}, {
+  id: 3,
+  title: 'Carta do Rei Artur',
+  content: '<h2><u>Carta do Rei Artur</u></h2><p><br></p><p><span class="ql-font-monospace">Olá, bravos guerreiros. Gostaria de solicitar sua ajuda, pois estou ciente de seus feitos recentes, e tenho muita fé que serão capazes de concluir o que tenho pra pedir. Segue meus pedidos:</span></p><p><br></p><ol><li><span class="ql-font-monospace">Entrem na "Dungeon da Noite"</span></li><li><span class="ql-font-monospace">Encontrem Erick, meu fiel cavaleiro que se perdeu na mesma</span></li><li><span class="ql-font-monospace">Resgatem e retornem com Erick em segurança</span></li></ol>',
+  userId: 6,
+  sharedUsersIds: [2, 3]
+}]
 
 export const fullClassesMock: Class[] = [{
   id: 1,
