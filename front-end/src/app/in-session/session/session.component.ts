@@ -14,6 +14,7 @@ export class SessionComponent {
   pencilColor: string = '#000000';
   pencilWidth: number = 5;
   drawHistory = [];
+  imageWard: File;
 
   constructor() { }
 
@@ -29,6 +30,7 @@ export class SessionComponent {
   }
 
   setBackground(file: File) {
+    this.imageWard = file;
     const url = URL.createObjectURL(file);
     const img = new Image();
     img.onload = () => {
@@ -87,13 +89,14 @@ export class SessionComponent {
   }
 
   redrawAll(clearBeforeDraw: boolean) {
-    if (this.drawHistory.length == 0) {
+    if (this.drawHistory.length == 0 && clearBeforeDraw) {
       this.canvasContext.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
       return;
     }
 
     if (clearBeforeDraw) {
       this.canvasContext.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+      if (this.imageWard) this.setBackground(this.imageWard)
     }
 
     for (var i = 0; i < this.drawHistory.length; i++) {
@@ -114,22 +117,20 @@ export class SessionComponent {
         this.canvasContext.beginPath();
         this.canvasContext.moveTo(pt.x, pt.y);
       }
-      this.canvasContext.lineTo(pt.x, pt.y);
+      if (pt.mode == "draw") { // eu
+        this.canvasContext.lineTo(pt.x, pt.y);
+      } // eu
+
       if (pt.mode == "end" || (i == this.drawHistory.length - 1)) {
         this.canvasContext.stroke();
+        this.canvasContext.beginPath(); // eu
       }
     }
-    this.canvasContext.stroke();
-  }
-
-  undoLast() {
-    this.drawHistory.pop();
-    this.redrawAll(true);
+    // this.canvasContext.stroke();
   }
 
   undoDraw() {
     let reverseDrawHistory = [...this.drawHistory].reverse()
-    console.log('antes: ', reverseDrawHistory);
     for (const draw of reverseDrawHistory) {
       if (draw.mode === 'end' || draw.mode === 'draw') {
         this.drawHistory.pop();
@@ -139,11 +140,11 @@ export class SessionComponent {
       }
     }
     setTimeout(() => {
-      console.log('dps: ', this.drawHistory);
       if (this.drawHistory.length === 1) this.drawHistory.pop()
+      // if (this.drawHistory.length > 1) this.drawHistory.shift()
       this.redrawAll(true);
-    }, 100)
-    // this.undoLast()
+      // this.setBackground(this.imageWard)
+    }, 1)
   }
 
   resetDraw() {
