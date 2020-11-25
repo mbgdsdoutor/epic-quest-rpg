@@ -18,6 +18,7 @@
   transition: width 0.5s;
   width: 400px;
   padding: 0px 13px;
+  left: calc(50% - 200px);
 
   &.master {
     width: 600px;
