@@ -25,6 +25,7 @@
     "@angular/router": "~9.1.0",
     "@angular/service-worker": "~9.1.0",
     "@ng-select/ng-select": "^5.0.8",
+    "express": "^4.17.1",
     "jwt-decode": "^2.2.0",
     "ngx-chips": "^2.1.0",
     "ngx-color-picker": "^10.1.0",
