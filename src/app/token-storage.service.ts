@@ -17,8 +17,9 @@ export class TokenStorageService {
   }
 
   public saveUser(user: any) {
+    console.log('entrei no save user')
     window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER,  JSON.stringify(user));
+    window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
   public getLoggedUser(): User {
@@ -28,8 +29,9 @@ export class TokenStorageService {
   }
 
   public saveToken(token: string) {
+    console.log('entrei no save token')
     window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY,  token);
+    window.localStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string {

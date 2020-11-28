@@ -1,0 +1,19 @@
+<div class="ficha">
+  <button class="ficha-closer" (click)="emitHideFicha()">
+    <i class="material-icons">keyboard_arrow_left</i>
+  </button>
+  <div class="ficha-title">
+    {{ isMaster ? "Gerenciar Fichas" : "Visualizar Ficha" }}
+  </div>
+  <div *ngIf="isMaster" class="ficha-tabs">
+    <div
+      *ngFor="let ficha of fichas"
+      [ngClass]="{ active: ficha.id === activeFicha.id }"
+    >
+      {{ ficha.name }}
+    </div>
+  </div>
+  <div class="ficha-body">
+    <img [src]="activeFicha.photoUrl" alt="user picture" />
+  </div>
+</div>

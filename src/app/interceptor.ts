@@ -16,19 +16,14 @@ export class Interceptor implements HttpInterceptor {
     public router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    if (request.url.includes('user/register')) {
-      console.log('ADENTREI?')
-      return next.handle(request)
-    } else {
-      return this.interceptMadoka(request, next);
-    }
+    return this.interceptMadoka(request, next);
   }
 
   private interceptMadoka(request: HttpRequest<any>, next: HttpHandler) {
     let authReq = request;
     if (this.tokenStorageService.getToken() != null) {
       authReq = request.clone({
-        headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.tokenStorageService.getToken()
+        headers: request.headers.set(TOKEN_HEADER_KEY, this.tokenStorageService.getToken()
         )
       });
     }

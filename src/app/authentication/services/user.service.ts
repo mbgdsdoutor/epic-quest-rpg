@@ -11,22 +11,16 @@ export class UserService {
     constructor(private httpClient: HttpClient) { }
 
     public findById(userId: number): Observable<User> {
-        // return this.httpClient.get<User>(`${url}/${userId}`);
-        const user = usersMock.filter(u => u.id === userId)[0];
-        return of({ ...user, friendList: usersMock });
+        return this.httpClient.get<User>(`${url}/getById/${userId}`);
+        // const user = usersMock.filter(u => u.id === userId)[0];
+        // return of({ ...user, friendList: usersMock });
     }
     public findAll(): Observable<User[]> {
         return this.httpClient.get<User[]>(`${url}/getAll/`);
         // return of(usersMock);
     }
-    public saveUser(user: User): Observable<User> {
-        const headers = new HttpHeaders(
-            {
-                'Content-Type': 'application/json',
-                Accept: '*/*',
-            }
-        );
-        const options = { headers }
-        return this.httpClient.post<User>(`${url}/register/`, user, options);
+
+    public addFriend(user: User): Observable<void> {
+        return this.httpClient.post<void>(`${url}/addFriend/`, user);
     }
 }

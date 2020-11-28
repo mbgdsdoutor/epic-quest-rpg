@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/alert.service';
+import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { TokenStorageService } from 'src/app/token-storage.service';
 import { AuthService } from '../auth.service';
 
@@ -16,13 +18,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private tokenStorageService: TokenStorageService,
     private router: Router,
+    private loadingService: LoadingService,
+    private alertService: AlertService,
     private authService: AuthService,
   ) { }
 
   ngOnInit() {
     this.configurarForm();
     if (this.tokenStorageService.isLogged()) {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/social/explore');
     }
   }
 
@@ -36,18 +40,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    this.loadingService.startLoadingBar();
     const credentials = this.form.value;
     this.authService.authenticate(credentials).subscribe(
       (data) => {
-        console.log('MADOKAAAAAAAAAAAAAAA NELES', data)
-        if (data && data.access_token) {
-          this.tokenStorageService.saveToken(data.access_token);
-          this.tokenStorageService.saveUser(credentials);
-          this.router.navigateByUrl('/home');
+        if (data && data.token) {
+          this.tokenStorageService.saveToken('Bearer ' + data.token);
+          this.tokenStorageService.saveUser(data.user);
+          this.loadingService.stopLoadingBar();
+          this.router.navigateByUrl('/social/explore');
         }
       },
       (err) => {
-        alert('erro doido!')
+        this.loadingService.stopLoadingBar();
+        this.alertService.error('Credenciais Invalidas.')
       });
   }
 }

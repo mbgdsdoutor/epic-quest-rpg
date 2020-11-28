@@ -27,6 +27,8 @@ import { MasterIcon } from '../shared/master-icon';
 import { UserService } from '../authentication/services/user.service';
 import { AdventureService } from './services/adventure.service';
 import { NotificationService } from './services/notification.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from '../interceptor';
 
 @NgModule({
   imports: [
@@ -63,7 +65,8 @@ import { NotificationService } from './services/notification.service';
   providers: [
     UserService,
     AdventureService,
-    NotificationService
+    NotificationService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ]
 })
 export class OutOfSessionModule { }

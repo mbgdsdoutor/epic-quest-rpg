@@ -16,8 +16,7 @@ export class SidebarComponent {
     private router: Router) { }
 
   ngOnInit() {
-    this.userId = 2
-    // this.userId = this.tokenStorageService.getLoggedUser().id
+    this.userId = this.tokenStorageService.getLoggedUser().id
   }
 
   logout(): void {

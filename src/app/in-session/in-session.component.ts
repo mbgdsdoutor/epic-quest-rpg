@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../out-of-session/models/user';
 import { AdventureService } from '../out-of-session/services/adventure.service';
 import { AlertService } from '../shared/alert.service';
@@ -19,6 +19,7 @@ export class InSessionComponent {
   adventure: Adventure;
   isMaster: boolean;
   showFichaCreation: boolean = false;
+  isFichaOpen: boolean = false;
 
   constructor(
     private loadingService: LoadingService,
@@ -58,6 +59,15 @@ export class InSessionComponent {
     document.querySelector('#pencil-trigger').classList.toggle('active');
     document.querySelector('canvas').classList.toggle('active');
     document.querySelector('.pencil-options').classList.toggle('pencil-options--open');
+  }
+
+  showFicha(): void {
+    this.isFichaOpen = true;
+  }
+
+  hideFicha(): void {
+    console.log('EMITIDO!')
+    this.isFichaOpen = false;
   }
 
   showDices(): void {

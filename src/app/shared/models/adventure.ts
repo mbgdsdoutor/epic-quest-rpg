@@ -10,4 +10,5 @@ export interface Adventure {
   users: User[];
   players?: Player[];
   isSessionActive?: boolean;
+  usersIdActive?: number[];
 }

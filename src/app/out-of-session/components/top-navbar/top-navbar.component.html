@@ -51,13 +51,10 @@
     </div>
     <div class="top-navbar-right-content-info">
       <div>
-        <p>Matheus Braz</p>
+        <p>{{ loggedUser.fullName }}</p>
         <p>Disponível</p>
       </div>
-      <img
-        src="https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg"
-        alt="minha foto"
-      />
+      <img [src]="loggedUser.photoUrl" alt="minha foto" />
     </div>
   </div>
 </div>

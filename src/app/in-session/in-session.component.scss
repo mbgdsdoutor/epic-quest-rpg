@@ -94,3 +94,103 @@
   align-items: center;
   cursor: pointer;
 }
+
+// CSS PLAYERS INFO RS
+
+.player-info-container {
+  width: 150px;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+}
+
+.player-info {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 8px 0px;
+  position: relative;
+
+  .player-status {
+    width: 100%;
+
+    &-profile {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+
+      > img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid;
+      }
+      &-points {
+        width: 100%;
+        margin-left: -16px;
+        z-index: -1;
+        margin-top: 4px;
+      }
+      &-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 16px;
+        img {
+          width: 30px;
+          height: 30px;
+          margin-right: 8px;
+        }
+        p {
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  h4 {
+    margin: 0px;
+    flex: 1;
+    flex-basis: 100%;
+    width: 100%;
+  }
+  .life-points {
+    width: 100%;
+  }
+  .mana-points {
+    width: 90%;
+  }
+  .life-points,
+  .mana-points {
+    border: 1px solid;
+    border-radius: 2px;
+    margin-bottom: 4px;
+    padding-left: 16px;
+    position: relative;
+
+    span {
+      z-index: 1;
+      color: #000;
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+  .life-points-bar {
+    background-color: #44be44;
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+  }
+  .mana-points-bar {
+    background-color: #2587ff;
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+  }
+}

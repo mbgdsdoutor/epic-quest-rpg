@@ -14,6 +14,7 @@ import { TokenStorageService } from 'src/app/token-storage.service';
 
 export class ExploreComponent implements OnInit {
 
+  loggedUser: User;
   users: User[] = [];
   searchedUsers: User[] = [];
   usersIdNotification: number[] = [];
@@ -26,10 +27,16 @@ export class ExploreComponent implements OnInit {
     private loadingService: LoadingService) { }
 
   ngOnInit() {
+    this.loggedUser = this.tokenService.getLoggedUser();
     this.loadingService.startLoadingBar();
     this.isLoading = true;
     this.userService.findAll().subscribe(response => {
-      this.users = response;
+      let idsMap = [];
+      if (this.loggedUser.friendList && this.loggedUser.friendList.length > 0) {
+        idsMap = this.loggedUser.friendList.map(e => e.id)
+      }
+
+      this.users = response.filter(u => u.id !== this.loggedUser.id && !idsMap.includes(u.id));
       this.searchedUsers = this.users;
     }).add(() => {
       this.loadingService.stopLoadingBar();
@@ -49,15 +56,18 @@ export class ExploreComponent implements OnInit {
   }
 
   handleSendNotification(user: User) {
-    const loggedUser = this.tokenService.getLoggedUser();
-    const notification: Notification = {
-      from: loggedUser,
-      to: user,
-      status: NotificationStatus.Created,
-      type: NotificationType.FriendList
-    }
-    this.notificationService.createNotification(notification).subscribe(response => {
+    this.userService.addFriend(user).subscribe(response => {
+      console.log(response)
       this.usersIdNotification.push(user.id);
     })
+    // const notification: Notification = {
+    //   from: this.loggedUser,
+    //   to: user,
+    //   status: NotificationStatus.Created,
+    //   type: NotificationType.FriendList
+    // }
+    // this.notificationService.createNotification(notification).subscribe(response => {
+    //   this.usersIdNotification.push(user.id);
+    // })
   }
 }

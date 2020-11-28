@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { TokenStorageService } from 'src/app/token-storage.service';
 import { Notification, NotificationStatus } from '../../models/notification';
+import { User } from '../../models/user';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
@@ -18,11 +19,13 @@ export class TopNavbarComponent {
 
   notifications: Notification[] = [];
   isNotificationsOpened: boolean = false;
+  loggedUser: User;
 
   ngOnInit() {
-    console.log('test render');
-    const userId = this.tokenService.getLoggedUser().id;
-    this.notificationService.findByUserId(userId).subscribe(response => {
+    this.loggedUser = this.tokenService.getLoggedUser();
+    console.log(this.loggedUser)
+    this.notificationService.findByUserId(this.loggedUser.id).subscribe(response => {
+      console.log('MADOKA NOTIFICATIONS!', response)
       this.notifications = response;
     })
   }

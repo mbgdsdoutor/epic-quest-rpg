@@ -2,10 +2,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { User } from '../out-of-session/models/user';
 import { TokenStorageService } from '../token-storage.service';
 import { Credentials } from './models/credentials';
 
-const url = 'http://localhost:8085/api/v1/login';
+const url = 'http://localhost:8085/api/v1/auth';
 
 @Injectable()
 export class AuthService {
@@ -16,28 +17,16 @@ export class AuthService {
     private router: Router
   ) { }
 
-  authenticatea(credentials: Credentials): Observable<any> {
+  authenticate(credentials: Credentials): Observable<any> {
     const ret = {
       username: credentials.username,
       password: credentials.password,
     };
-
-    // const headers = new HttpHeaders(
-    //   {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //     Accept: '*/*',
-    //   }
-    // );
-
-    // const body = new HttpParams({ fromObject: ret });
-    // const options = { headers };
-    return this.http.post(`${url}`, ret);
+    return this.http.post(`${url}/login`, ret);
   }
 
-  authenticate(credentials: any): Observable<any> {
-    return of({
-      access_token: 'madokinha_star'
-    });
+  saveUser(user: User): Observable<User> {
+    return this.http.post<User>(`${url}/register/`, user);
   }
 
   logout() {

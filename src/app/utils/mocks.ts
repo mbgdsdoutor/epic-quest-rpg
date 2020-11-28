@@ -175,7 +175,9 @@ export const fullAdventuresMock: Adventure[] = [
     users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
     { id: 6, userName: 'Leonardo Tavares', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
     players: [
-      playerMock, playerMock, playerMock
+      playerMock,
+      { ...playerMock, id: 2, name: 'Tobias' },
+      { ...playerMock, id: 3, name: 'Tavares' },
     ]
   },
   {
@@ -191,8 +193,8 @@ export const fullAdventuresMock: Adventure[] = [
     { id: 2, userName: 'Matheus Braz', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
     players: [
       playerMock,
-      { ...playerMock, id: 2, userId: 2 },
-      { ...playerMock, id: 3 }
+      { ...playerMock, id: 2, userId: 2, name: 'Doutor' },
+      { ...playerMock, id: 3, name: 'Kirito' }
     ]
   }
 ]

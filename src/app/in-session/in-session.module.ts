@@ -21,6 +21,10 @@ import { NotesService } from './services/notes.service';
 import { QuillModule } from 'ngx-quill'
 import { DicesComponent } from './components/dices/dices.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { FichaViewerComponent } from './ficha-viewer/ficha-viewer.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from '../interceptor';
 
 @NgModule({
   imports: [
@@ -31,6 +35,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     TagInputModule,
     NgSelectModule,
     ColorPickerModule,
+    NgxExtendedPdfViewerModule,
     QuillModule.forRoot()
   ],
   declarations: [
@@ -47,10 +52,12 @@ import { ColorPickerModule } from 'ngx-color-picker';
     RaceStepComponent,
     ClassStepComponent,
     OriginAndAlignmentStepComponent,
+    FichaViewerComponent
   ],
   providers: [
     AdventureService,
-    NotesService
+    NotesService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ]
 })
 export class InSessionModule { }
