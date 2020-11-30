@@ -14,6 +14,12 @@
     </div>
   </div>
   <div class="ficha-body">
+    <div class="ficha-body-fixed-header">
+      <img
+        [src]="'../assets/images/' + activeFicha.class.id + '.jpeg'"
+        alt="class-icon"
+      />
+    </div>
     <div class="ficha-body-fixed-content">
       <img [src]="activeFicha.photoUrl" alt="user picture" />
       <div class="bottom-info">
@@ -23,24 +29,32 @@
       </div>
     </div>
     <div class="ficha-body-header">
-      <img
-        [src]="'../assets/images/' + activeFicha.class.id + '.jpeg'"
-        alt="class-icon"
-      />
       <div class="ficha-body-header-item">
         <img src="assets/icons/progression.svg" alt="xp-icon" />
+        <p>
+          xp: {{ activeFicha.experience }} /
+          {{ experiencesPerLevel["level" + activeFicha.nivel] }}
+        </p>
       </div>
       <div class="ficha-body-header-item">
         <img src="assets/icons/life-ball.svg" alt="xp-icon" />
+        <p>
+          vida: {{ activeFicha.lifePoints }} / {{ activeFicha.totalLifePoints }}
+        </p>
       </div>
       <div class="ficha-body-header-item">
         <img src="assets/icons/mana-ball.svg" alt="xp-icon" />
+        <p>
+          mana: {{ activeFicha.manaPoints }} / {{ activeFicha.totalManaPoints }}
+        </p>
       </div>
       <div class="ficha-body-header-item">
         <img src="assets/icons/swap-bag.svg" alt="xp-icon" />
+        <p>tibar: {{ activeFicha.tibar }}</p>
       </div>
       <div class="ficha-body-header-item">
         <img src="assets/icons/wingfoot.svg" alt="xp-icon" />
+        <p>deslocamento: {{ activeFicha.displacement }}</p>
       </div>
     </div>
     <div class="ficha-body-container">
@@ -52,10 +66,5 @@
       </div>
       <div class="ficha-body-tabs-content"></div>
     </div>
-    <!-- <p style="font-size: 1.2rem">Lv. {{ activeFicha.nivel }}</p>
-          <p style="text-align: right">
-            {{ activeFicha.experience }} /
-            {{ experiencesPerLevel["level" + activeFicha.nivel] }}
-          </p> -->
   </div>
 </div>

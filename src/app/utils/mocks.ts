@@ -868,5 +868,27 @@ export const fullMagicsMock: Magic[] = [
     execution: MagicExecution.Padrao,
     range: MagicRange.Curto,
     target: '1 animal'
+  }, {
+    id: 3,
+    name: 'Adaga Mental',
+    type: 'Arcana',
+    school: MagicSchools.Encantamento,
+    circle: 1,
+    description: 'Você manifesta e dispara uma adagaimaterial contra a mente do alvo, quesofre 2d6 pontos de dano mental e ficapasmo por uma rodada. Se passar noteste de resistência, sofre apenas metade do dano e não fica pasmo.+1 PM: você lança a magia sem gesticular ou pronunciar palavras e a adagase torna invisível. Se o alvo falhar noteste de resistência, não percebe quevocê lançou uma magia contra ele.+2 PM: muda a duração para 1 dia.Além do normal, você “finca” a adagana mente do alvo. Enquanto a magiadurar, você sabe a direção e localizaçãodo alvo, desde que ele esteja no mesmo mundo.+2 PM: aumenta o dano em +1d6.',
+    duration: 'Instantânea',
+    execution: MagicExecution.Padrao,
+    range: MagicRange.Curto,
+    target: '1 criatura'
+  }, {
+    id: 99,
+    name: 'Amarras Etéreas',
+    type: 'Arcana',
+    school: MagicSchools.Convocacao,
+    circle: 2,
+    description: 'Três cordas de energia surgem do chãoe se enroscam no alvo, deixando-oagarrado. A vítima pode tentar se livrar, gastando uma ação padrão parafazer um teste de Atletismo (CD igualà da magia). Se passar, destrói umacorda, mais uma corda adicional paracada 2 pontos pelos quais superou aCD. As cordas também podem ser atacadas e destruídas: cada uma tem Defesa 10, 10 PV, RD 5 e imunidade adano mágico. Se todas as cordas foremdestruídas, a magia é dissipada. Por serem feitas de energia, as cordas afetamcriaturas incorpóreas.+2 PM: aumenta o número de alvosem +1.+2 PM: aumenta o número de cordasem um alvo a sua escolha em +1.+3 PM: em vez do normal, cada cordapode ser destruída automaticamentecom um único ataque bem-sucedido;porém, cada corda destruída libera umchoque de energia que causa 1d6+1pontos de dano de essência na criaturaamarrada. Requer 3º círculo.',
+    duration: 'Cena',
+    execution: MagicExecution.Padrao,
+    range: MagicRange.Medio,
+    target: '1 criatura'
   },
 ];

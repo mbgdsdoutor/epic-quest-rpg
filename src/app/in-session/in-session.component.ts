@@ -19,7 +19,7 @@ export class InSessionComponent {
   adventure: Adventure;
   isMaster: boolean;
   showFichaCreation: boolean = false;
-  isFichaOpen: boolean = true;
+  isFichaOpen: boolean = false;
 
   constructor(
     private loadingService: LoadingService,

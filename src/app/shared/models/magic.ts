@@ -17,10 +17,12 @@ export enum MagicSchools {
   Transmutacao = 'Transmutação',
   Encantamento = 'Encantamento',
   Abjuracao = 'Abjuração',
+  Convocacao = 'Convocação'
 }
 
 export enum MagicRange {
   Curto = 'Curto',
+  Medio = 'Médio'
 }
 
 export enum MagicExecution {
