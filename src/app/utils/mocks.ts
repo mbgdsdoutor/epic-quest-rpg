@@ -11,6 +11,7 @@ import { Notification, NotificationStatus, NotificationType } from '../out-of-se
 import { Pericia } from '../shared/models/pericia';
 import { Poder } from '../shared/models/poder';
 import { Note } from '../in-session/components/notes/note';
+import { Magic, MagicExecution, MagicRange, MagicSchools } from '../shared/models/magic';
 
 export const usersMock: User[] = [
   {
@@ -131,10 +132,34 @@ export const origemMock: Origem = {
   poderes: [],
 }
 
+export const experienceMock = {
+  level1: 1000,
+  level2: 3000,
+  level3: 6000,
+  level4: 10000,
+  level5: 15000,
+  level6: 21000,
+  level7: 28000,
+  level8: 36000,
+  level9: 45000,
+  level10: 55000,
+  level11: 66000,
+  level12: 78000,
+  level13: 91000,
+  level14: 105000,
+  level15: 120000,
+  level16: 136000,
+  level17: 153000,
+  level18: 171000,
+  level19: 190000,
+  level20: '-'
+}
+
 export const playerMock: Player = {
   id: 1,
   adventureId: 1,
   alignment: AlignmentEnum.Neutro,
+  experience: 300,
   age: 20,
   origem: origemMock,
   displacement: 8,
@@ -737,18 +762,21 @@ export const notesMock: Note[] = [{
   title: 'Observações do mestre sobre a missão',
   content: 'O mestre deu muita enfâse na funcionária da taverna. Pode ser uma pista para começarmos a investigação.',
   userId: 2,
+  adventureId: 1,
   sharedUsersIds: []
 }, {
   id: 1,
   title: 'Meu Diário - Dia 01',
   content: 'O dia começou tranquilo.',
   userId: 2,
+  adventureId: 1,
   sharedUsersIds: []
 }, {
   id: 3,
   title: 'Carta do Rei Artur',
   content: '<h2><u>Carta do Rei Artur</u></h2><p><br></p><p><span class="ql-font-monospace">Olá, bravos guerreiros. Gostaria de solicitar sua ajuda, pois estou ciente de seus feitos recentes, e tenho muita fé que serão capazes de concluir o que tenho pra pedir. Segue meus pedidos:</span></p><p><br></p><ol><li><span class="ql-font-monospace">Entrem na "Dungeon da Noite"</span></li><li><span class="ql-font-monospace">Encontrem Erick, meu fiel cavaleiro que se perdeu na mesma</span></li><li><span class="ql-font-monospace">Resgatem e retornem com Erick em segurança</span></li></ol>',
   userId: 6,
+  adventureId: 1,
   sharedUsersIds: [2, 3]
 }]
 
@@ -816,3 +844,29 @@ export const fullClassesMock: Class[] = [{
   barbarianWay: null,
   bardWay: null,
 }]
+
+export const fullMagicsMock: Magic[] = [
+  {
+    id: 1,
+    name: 'Abençoar Alimentos',
+    type: 'Divina',
+    school: MagicSchools.Transmutacao,
+    circle: 1,
+    description: 'Você purifica e abençoa uma porção decomida ou dose de bebida. Isso tornaum alimento sujo, estragado ou envenenado próprio para consumo. Além disso, se for consumido até o final daduração, o alimento oferece 5 PV temporários ou 1 PM temporário (além dequaisquer bônus que já oferecesse).Bônus de alimentação duram um dia ecada personagem só pode receber umbônus de alimentação por dia.Truque: o alimento é purificado (não causa nenhum efeito nocivo se estavaestragado ou envenenado), mas não oferece bônus ao ser consumido.+1 PM: aumenta o número de alvo sem +1.+1 PM: muda a duração para permanente, o alvo para 1 frasco com água eadiciona componente material (pó de prata no valor de T$ 5). Em vez do normal, cria um frasco de água benta.',
+    duration: 'Cena',
+    execution: MagicExecution.Padrao,
+    range: MagicRange.Curto,
+    target: 'Alimento para 1 criatura'
+  }, {
+    id: 2,
+    name: 'Acalmar Animal',
+    type: 'Divina',
+    school: MagicSchools.Encantamento,
+    circle: 1,
+    description: 'O animal fica prestativo em relação avocê. Ele não fica sob seu controle, maspercebe suas palavras e ações da maneira mais favorável possível. Você recebe+10 nos testes de Adestramento e Diplomacia que fizer contra o animal.Um alvo hostil ou que esteja envolvidoem um combate recebe +5 em seu testede resistência. Se você ou seus aliadostomarem qualquer ação hostil contra oalvo, a magia é anulada e ele retorna àatitude que tinha antes (ou piorada, deacordo com o mestre). Se tratar bem oalvo, a atitude pode permanecer mesmoapós o término da magia.+1 PM: muda o alcance para médio.+1 PM: muda o alvo para 1 monstro ouespírito com Inteligência 1, 2 ou nula.',
+    duration: 'Cena',
+    execution: MagicExecution.Padrao,
+    range: MagicRange.Curto,
+    target: '1 animal'
+  },
+];

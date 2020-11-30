@@ -2,7 +2,7 @@ import { Player } from './player';
 import { User } from '../../out-of-session/models/user';
 
 export interface Adventure {
-  id: number;
+  id?: number;
   name: string;
   photoUrl: string;
   description: string;

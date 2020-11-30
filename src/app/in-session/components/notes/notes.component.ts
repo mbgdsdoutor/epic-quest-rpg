@@ -58,6 +58,7 @@ export class NotesComponent {
     this.activeNote = {
       title: '',
       content: '',
+      adventureId: this.adventure.id,
       userId: this.userId
     };
     this.isNotesForm = !this.isNotesForm;

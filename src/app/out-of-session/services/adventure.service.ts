@@ -11,8 +11,8 @@ export class AdventureService {
     constructor(private httpClient: HttpClient) { }
 
     public findAll(): Observable<Adventure[]> {
-        // return this.httpClient.get<Adventure[]>(`${url}/`);
-        return of(adventuresMock);
+        return this.httpClient.get<Adventure[]>(`${url}/getAll`);
+        // return of(adventuresMock);
     }
 
     public findById(id: number): Observable<Adventure> {
@@ -26,6 +26,6 @@ export class AdventureService {
     }
 
     public saveAdventure(adventure: Adventure): Observable<Adventure> {
-        return this.httpClient.post<Adventure>(`${url}/`, adventure);
+        return this.httpClient.post<Adventure>(`${url}/create`, adventure);
     }
 }

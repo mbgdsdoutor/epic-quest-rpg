@@ -19,6 +19,10 @@ export class SidebarComponent {
     this.userId = this.tokenStorageService.getLoggedUser().id
   }
 
+  openRules() {
+    document.querySelector('#rules').classList.add('showModal');
+  }
+
   logout(): void {
     this.tokenStorageService.signOut()
     this.router.navigate(['/auth/login']);

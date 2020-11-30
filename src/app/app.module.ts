@@ -7,11 +7,13 @@ import { environment } from '../environments/environment';
 import { LoadingService } from './shared/loading/loading.service';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { AlertComponent } from './shared/alert.component';
+import { RulesComponent } from './shared/rules/rules.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent
+    AlertComponent,
+    RulesComponent
   ],
   imports: [
     BrowserAnimationsModule,

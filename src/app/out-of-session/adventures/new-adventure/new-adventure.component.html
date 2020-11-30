@@ -9,13 +9,29 @@
     <div class="auth-form">
       <div class="field">
         <label for="name">Nome</label>
-        <input class="input" placeholder="nome da aventura" id="name" />
+        <input
+          class="input"
+          [(ngModel)]="adventureName"
+          placeholder="nome da aventura"
+          id="name"
+        />
+      </div>
+
+      <div class="field">
+        <label for="foto">Foto</label>
+        <input
+          class="input"
+          [(ngModel)]="adventurePhotoUrl"
+          placeholder="foto da aventura"
+          id="foto"
+        />
       </div>
 
       <div class="field">
         <label for="description">Descrição</label>
         <textarea
           class="input"
+          [(ngModel)]="adventureDescription"
           placeholder="descrição da aventura"
           id="description"
         ></textarea>
@@ -26,29 +42,23 @@
         <tag-input
           [placeholder]="'+ jogador'"
           [secondaryPlaceholder]="'adicionar um jogador'"
-          [(ngModel)]="players"
+          [ngModel]="adventureUsers"
+          [identifyBy]="'id'"
+          [displayBy]="'userName'"
           [onlyFromAutocomplete]="true"
         >
-          <tag-input-dropdown
+          <!-- <tag-input-dropdown
             [showDropdownIfEmpty]="true"
-            [autocompleteItems]="[
-              'Atsuko Akagari',
-              'Kirigaya Kazuto',
-              'Taiga Asaki',
-              'Leonardo Tavares'
-            ]"
+            [autocompleteItems]="users"
           >
-          </tag-input-dropdown>
+          </tag-input-dropdown> -->
         </tag-input>
       </div>
 
-      <div class="field">
-        <label for="date">Data Seção</label>
-        <input class="input" placeholder="nome da aventura" id="date" />
-      </div>
-
       <div class="auth-form-actions">
-        <button class="button--primary">Criar Aventura</button>
+        <button class="button--primary" (click)="saveAdventure()">
+          Criar Aventura
+        </button>
       </div>
     </div>
   </div>

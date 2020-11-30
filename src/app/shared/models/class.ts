@@ -1,5 +1,6 @@
 import { AttributesEnum } from '../enums/attributes-enum';
 import { Deus } from './deus';
+import { MagicSchools } from './magic';
 import { Pericia } from './pericia';
 import { Poder } from './poder';
 
@@ -120,7 +121,7 @@ export interface BardWay {
 
 export interface MagicSchool {
   id: number;
-  name: string;
+  name: MagicSchools;
   description: string;
 }
 

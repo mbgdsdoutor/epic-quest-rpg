@@ -21,10 +21,13 @@ import { NotesService } from './services/notes.service';
 import { QuillModule } from 'ngx-quill'
 import { DicesComponent } from './components/dices/dices.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { FichaViewerComponent } from './ficha-viewer/ficha-viewer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from '../interceptor';
+import { StatusComponent } from './ficha-viewer/status/status.component';
+import { ItensComponent } from './ficha-viewer/itens/itens.component';
+import { PericiasComponent } from './ficha-viewer/pericias/pericias.component';
+import { HabilidadesComponent } from './ficha-viewer/habilidades/habilidades.component';
 
 @NgModule({
   imports: [
@@ -35,7 +38,6 @@ import { Interceptor } from '../interceptor';
     TagInputModule,
     NgSelectModule,
     ColorPickerModule,
-    NgxExtendedPdfViewerModule,
     QuillModule.forRoot()
   ],
   declarations: [
@@ -52,7 +54,11 @@ import { Interceptor } from '../interceptor';
     RaceStepComponent,
     ClassStepComponent,
     OriginAndAlignmentStepComponent,
-    FichaViewerComponent
+    FichaViewerComponent,
+    HabilidadesComponent,
+    StatusComponent,
+    ItensComponent,
+    PericiasComponent,
   ],
   providers: [
     AdventureService,

@@ -12,7 +12,7 @@
       (input)="handleSearchAdventure($event)"
     />
   </div>
-  <div class="user-container">
+  <div class="user-container" *ngIf="adventures.length > 0">
     <div class="user bg-theme" *ngFor="let adventure of searchedAdventures">
       <button
         class="button--outline text-theme-black"
@@ -30,9 +30,11 @@
         <p class="user-info-name">{{ adventure.name }}</p>
         <p class="user-info-email">
           <b>Mestre: </b>
-          <span [routerLink]="['/social/profile/' + adventure.master.id]">{{
-            adventure.master.userName
-          }}</span>
+          <span
+            *ngIf="adventure.master"
+            [routerLink]="['/social/profile/' + adventure.master.id]"
+            >{{ adventure.master.userName }}</span
+          >
         </p>
         <p class="user-info-email">
           <b>Participantes: </b

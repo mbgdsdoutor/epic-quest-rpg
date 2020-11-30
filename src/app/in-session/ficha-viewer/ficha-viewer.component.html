@@ -14,6 +14,48 @@
     </div>
   </div>
   <div class="ficha-body">
-    <img [src]="activeFicha.photoUrl" alt="user picture" />
+    <div class="ficha-body-fixed-content">
+      <img [src]="activeFicha.photoUrl" alt="user picture" />
+      <div class="bottom-info">
+        <div class="bottom-info-name">
+          {{ activeFicha.name }} - Lv. {{ activeFicha.nivel }}
+        </div>
+      </div>
+    </div>
+    <div class="ficha-body-header">
+      <img
+        [src]="'../assets/images/' + activeFicha.class.id + '.jpeg'"
+        alt="class-icon"
+      />
+      <div class="ficha-body-header-item">
+        <img src="assets/icons/progression.svg" alt="xp-icon" />
+      </div>
+      <div class="ficha-body-header-item">
+        <img src="assets/icons/life-ball.svg" alt="xp-icon" />
+      </div>
+      <div class="ficha-body-header-item">
+        <img src="assets/icons/mana-ball.svg" alt="xp-icon" />
+      </div>
+      <div class="ficha-body-header-item">
+        <img src="assets/icons/swap-bag.svg" alt="xp-icon" />
+      </div>
+      <div class="ficha-body-header-item">
+        <img src="assets/icons/wingfoot.svg" alt="xp-icon" />
+      </div>
+    </div>
+    <div class="ficha-body-container">
+      <div class="ficha-body-tabs">
+        <div class="ficha-body-tabs-option">Status</div>
+        <div class="ficha-body-tabs-option">Perícias</div>
+        <div class="ficha-body-tabs-option">Itens</div>
+        <div class="ficha-body-tabs-option">Habilidades</div>
+      </div>
+      <div class="ficha-body-tabs-content"></div>
+    </div>
+    <!-- <p style="font-size: 1.2rem">Lv. {{ activeFicha.nivel }}</p>
+          <p style="text-align: right">
+            {{ activeFicha.experience }} /
+            {{ experiencesPerLevel["level" + activeFicha.nivel] }}
+          </p> -->
   </div>
 </div>

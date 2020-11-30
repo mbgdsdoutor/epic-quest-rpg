@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Player } from 'src/app/shared/models/player';
 import { TokenStorageService } from 'src/app/token-storage.service';
+import { experienceMock } from 'src/app/utils/mocks';
 
 @Component({
   selector: 'ficha-viewer',
@@ -13,6 +14,8 @@ export class FichaViewerComponent {
   @Input() fichas: Player[];
   activeFicha: Player;
   userId: number;
+  experiencesPerLevel = experienceMock;
+  activeTab: number = 1;
 
   constructor(
     private tokenService: TokenStorageService
@@ -30,6 +33,10 @@ export class FichaViewerComponent {
 
   changeActive() {
 
+  }
+
+  changeActiveTab(tab: number) {
+    this.activeTab = tab;
   }
 
   emitHideFicha() {

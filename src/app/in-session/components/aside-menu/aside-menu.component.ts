@@ -24,6 +24,10 @@ export class AsideMenuComponent {
     this.aside.nativeElement.classList.toggle('aside--open')
   }
 
+  openRules() {
+    document.querySelector('#rules').classList.add('showModal');
+  }
+
   logoutSessao() {
     this.router.navigateByUrl('adventures/mine');
     // const adventure = this.adventureService.findById(this.adventureId).subscribe(response => {

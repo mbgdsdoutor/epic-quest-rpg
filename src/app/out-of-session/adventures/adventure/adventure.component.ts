@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/shared/alert.service';
+import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { TokenStorageService } from 'src/app/token-storage.service';
 import { Adventure } from '../../../shared/models/adventure';
 import { Notification, NotificationStatus, NotificationType } from '../../models/notification';
@@ -20,12 +22,20 @@ export class AdventureComponent implements OnInit {
   constructor(
     private tokenService: TokenStorageService,
     private notificationService: NotificationService,
+    private loadingService: LoadingService,
+    private alertService: AlertService,
     private adventureService: AdventureService) { }
 
   ngOnInit() {
+    this.loadingService.startLoadingBar();
     this.adventureService.findAll().subscribe(response => {
+      console.log(response)
       this.adventures = response;
       this.searchedAdventures = this.adventures;
+      this.loadingService.stopLoadingBar();
+    }, (err) => {
+      this.loadingService.stopLoadingBar();
+      this.alertService.error('Erro ao buscar aventuras.');
     });
   }
 
