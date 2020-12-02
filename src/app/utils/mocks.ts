@@ -463,7 +463,7 @@ export const fullPoderesMock: Poder[] = [
     description: 'Você pode usar duas armas de uma mão com o poder Estilo de Duas Armas. Pré-requisito: Estilo de Duas Armas.',
     category: CategoryEnum.Combate,
     requirement: {
-      poderes: [999]
+      poderes: [42]
     },
   }, {
     id: 3,
@@ -472,7 +472,7 @@ export const fullPoderesMock: Poder[] = [
     category: CategoryEnum.Combate,
     requirement: {
       strengthPoints: 13,
-      poderes: [998]
+      poderes: [40]
     },
   }, {
     id: 4,
@@ -481,30 +481,295 @@ export const fullPoderesMock: Poder[] = [
     category: CategoryEnum.Combate,
     requirement: {
       strengthPoints: 13,
-      poderes: [998]
+      poderes: [40]
+    },
+  },{
+    id: 5,
+    name: 'Ataque Poderoso',
+    description: 'Declare que está usando este poder antes de fazer um ataque corpo a corpo. Você sofre –2 no teste de ataque, mas recebe +5 na rolagem de dano. Pré-requisito: For 13.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      strengthPoints: 13,
     },
   }, {
-    id: 997,
+    id: 6,
+    name: 'Ataque Preciso',
+    description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na margem de ameaça e +1 no multiplicador de crítico. Pré-requisito: Estilo de Uma Arma.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      strengthPoints: 13,
+      poderes: [38]
+    },
+  }, {
+    id: 7,
+    name: 'Bloqueio com Escudo',
+    description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na margem de ameaça e +1 no multiplicador de crítico. Pré-requisito: Estilo de Uma Arma.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [39]
+    },
+  },{
+    id: 8,
+    name: 'Carga de Cavalaria',
+    description: 'Você passa automaticamente em testes de Cavalgar para não cair da montaria quando sofre dano. Além disso, não sofre penalidades para atacar à distância ou lançar magias quando montado. Pré-requisito: treinado em Cavalgar.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [37]
+    },
+  },{
+    id: 9,
+    name: 'Combate Defensivo',
+    description: 'Quando faz uma ação ataque, você pode usar este poder. Se fizer isso, até seu próximo turno, sofre –2 em testes de ataque, mas recebe +5 na Defesa. Pré-requisito: Int 13.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      intelligencePoints:13,
+    },
+  },{
+    id: 10,
+    name: 'Derrubar Aprimorado',
+    description: 'Você recebe +2 em testes de ataque para desarmar. Quando desarma uma criatura, pode gastar 1 PM para arremessar a arma dela para longe. Para definir onde a arma cai, role 1d8 para a direção (sendo “1” diretamente a sua frente, “2” à frente e à direita e assim por diante) e 1d6 para a distância (medida em quadrados de 1,5m a partir da criatura desarmada). Pré-requisito: Combate Defensivo.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [9]
+    },
+  },{
+    id: 11,
+    name: 'Disparo Preciso',
+    description: 'Você pode fazer ataques à distância contra oponentes envolvidos em combate corpo a corpo sem sofrer a penalidade padrão de –5 no teste de ataque. Pré-requisito: Estilo de Disparo ou Estilo de Arremesso.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [41, 36]
+    },
+  },{
+    id: 12,
+    name: 'Desarmar Aprimorado',
+    description: 'Você recebe +2 em testes de ataque para derrubar. Quando derruba uma criatura, pode gastar 1 PM para fazer um ataque extra contra ela. Pré-requisito: Combate Defensivo.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [9]
+    },
+  },{
+    id: 13,
+    name: 'Disparo Rápido',
+    description: 'Se estiver usando uma arma de ataque à distância e gastar uma ação completa para atacar, você recebe um ataque adicional. Se fizer isso, sofre –2 em ambos os testes de ataque. Pré-requisito: Estilo de Disparo ou Estilo de Arremesso.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      poderes: [41, 36]
+    },
+  },{
+    id: 14,
+    name: 'Empunhadora Poderosa',
+    description: 'Você pode usar armas maiores, que causam um passo a mais de dano, sem sofrer penalidade de –5 nos testes de ataque (um personagem Minúsculo pode usar armas normais, um personagem Pequeno ou Médio pode usar armas aumentadas e assim por diante). Pré-requisito: For 17.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      strengthPoints: 17
+    },
+  },{
+    id: 15,
+    name: 'Estilo Desarmado',
+    description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na Defesa e nos testes de ataque com essa arma. Pré-requisito: treinado em Luta.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      pericias: fullPericiasMock.filter(p => p.name === 'Luta')      
+    },
+  },{
+    id: 16,
+    name: 'Celebrar Ritual',
+    description: 'Você pode lançar magias na forma de rituais. Fazer isso dobra seu limite de PM (permitindo usar mais aprimoramentos), mas aumenta sua execução para uma hora (ou para o dobro da sua execução, o que for maior) e adiciona um componente material de T$ 10 por PM na forma de incensos, óleos, oferendas etc. Quando faz um ritual, você paga apenas metade do custo da magia em PM (após aplicar quaisquer habilidades que modifiquem esse custo).',
+    category: CategoryEnum.Magia,
+    requirement: {
+    },
+  },{
+    id: 17,
+    name: 'Foco em Magia',
+    description: 'Escolha uma magia. Seu custo diminui em –2 PM. Você pode escolher este poder outras vezes para magias diferentes.',
+    category: CategoryEnum.Magia,
+    requirement: {
+    },
+  }, {
+    id: 18,
+    name: 'Magia Ilimitada',
+    description: 'Você soma seu modificador do atributo-chave no limite de PM que pode gastar numa magia. Por exemplo, um mago de 5º nível com Int 18 (+4) e este poder pode gastar até 9 PM em cada magia.',
+    category: CategoryEnum.Magia,
+    requirement: {
+    },
+  }, {
+    id: 19,
+    name: 'Escrever Pergaminho',
+    description: 'Você pode usar a perícia Ofício (escriba) para fabricar pergaminhos com magias que conheça. Veja a perícia Ofício para as regras de fabricar itens e o Capítulo 8: Recompensas para as regras de pergaminhos. O preço de um pergaminho é T$ 25 por PM (por exemplo, T$ 150 para uma magia de 6 PM). Se a magia tiver um componente material, você deve pagá-lo. A CD para fabricá-lo é 20 + custo em PM da magia. De acordo com o mestre, você pode usar outros objetos portáteis que não pergaminhos, como runas, tabuletas de argila etc. Pré-requisitos: Habilidade de classe Magias, treinado em Ofício (escriba).',
+    category: CategoryEnum.Magia,
+    requirement: {
+    },
+  }, {
+    id: 20,
+    name: 'Acrobático',
+    description: 'Você pode usar seu modificador de Destreza em vez de Força em testes de Atletismo. Além disso, terreno difícil não reduz seu deslocamento nem o impede de realizar investidas.',
+    category: CategoryEnum.Destino,
+    requirement: {
+      dexterityPoints: 15
+    },
+  }, {
+    id: 21,
+    name: 'Atlético', 
+    description: 'Você recebe +2 em Atletismo e seu deslocamento aumenta em +3m. Pré-requisito: For 15.',
+    category: CategoryEnum.Destino,
+    requirement: {
+      strengthPoints: 15
+    },
+  }, {
+    id: 22,
+    name: 'Atlético', 
+    description: 'Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você. Pré-requisito: Car 13.',
+    category: CategoryEnum.Destino,
+    requirement: {
+      charismaPoints: 13
+    },
+  }, {
+    id: 23,
+    name: 'Comandar', 
+    description: 'Comandar Você pode gastar uma ação de movimento e 1 PM para gritar ordens para seus aliados em alcance médio. Eles recebem +1 em testes de perícia até o fim da cena. Pré-requisito: Car 13.',
+    category: CategoryEnum.Destino,
+    requirement: {
+      charismaPoints: 13
+    },
+  }, {
+    id: 24,
+    name: 'Curandeiro', 
+    description: 'Você pode gastar uma ação completa para fazer um teste de Cura (CD 15) em uma criatura. Se você passar, ela recupera 1d6 PV, mais 1d6 para cada 5 pontos pelos quais o resultado do teste exceder a CD (2d6 com um resultado 20, 3d6 com um resultado 25 e assim por diante). Você só pode usar este poder uma vez por dia numa mesma criatura. Pré-requisitos: Sab 13, treinado em Cura.',
+    category: CategoryEnum.Destino,
+    requirement: {
+      intelligencePoints: 13,
+      pericias: fullPericiasMock.filter(p => p.name === 'Cura')
+    },
+  }, {
+    id: 25,
+    name: 'Lobo Solitário', 
+    description: 'Você recebe +1 em testes de perícia e Defesa se estiver sem nenhum aliado em alcance curto. Você não sofre penalidade por usar a perícia Cura em si mesmo.',
+    category: CategoryEnum.Destino,
+    requirement: {
+    },
+  }, {
+    id: 26,
+    name: 'Dentes Afiados', 
+    description: 'Você recebe um ataque natural de mordida (dano 1d4, crítico x2, corte). Quando usa a ação ataque, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.',
+    category: CategoryEnum.Tormenta,
+    requirement: {
+    },
+  }, {
+    id: 27,
+    name: 'Dentes Afiados', 
+    description: 'Você recebe um ataque natural de mordida (dano 1d4, crítico x2, corte). Quando usa a ação ataque, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.',
+    category: CategoryEnum.Tormenta,
+    requirement: {
+    },
+  }, {
+    id: 28,
+    name: 'Anatomia Insana', 
+    description: 'Você tem 25% de chance (resultado “1” em 1d4) de ignorar o dano adicional de um acerto crítico ou ataque furtivo. A chance aumenta em +25% para cada dois outros poderes da Tormenta que você possui.',
+    category: CategoryEnum.Tormenta,
+    requirement: {
+    },
+  }, {
+    id: 29,
+    name: 'Sangue Ácido', 
+    description: 'Quando você sofre dano por um ataque corpo a corpo, o atacante sofre 1 ponto de dano de ácido. Este dano aumenta em +1 para cada outro poder da Tormenta que você possui.',
+    category: CategoryEnum.Tormenta,
+    requirement: {
+    },
+  }, {
+    id: 30,
+    name: 'Articulações Flexíveis', 
+    description: 'Você recebe +1 em Acrobacia, Furtividade e Reflexos. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.',
+    category: CategoryEnum.Tormenta,
+    requirement: {
+    },
+  }, {
+    id: 31,
+    name: 'Afinidade com a Tormenta', 
+    description: 'Você recebe +10 em testes de resistência contra efeitos da Tormenta e de suas criaturas.',
+    category: CategoryEnum.Concedido,
+    requirement: {
+    },
+  }, {
+    id: 32,
+    name: 'Anfíbio', 
+    description: 'Você pode respirar embaixo d’água e adquire deslocamento de natação igual a seu deslocamento terrestre.',
+    category: CategoryEnum.Concedido,
+    requirement: {
+    },
+  }, {
+    id: 33,
+    name: 'Conjurar Arma', 
+    description: 'Você pode gastar 1 PM para invocar uma arma corpo a corpo ou de arremesso com a qual seja proficiente. A arma surge em sua mão, recebe um bônus de +1 em testes de ataque e rolagens de dano e dura pela cena. Você não pode criar armas de disparo, mas pode criar 10 projéteis (flechas, virotes etc.).',
+    category: CategoryEnum.Concedido,
+    requirement: {
+    },
+  }, {
+    id: 34,
+    name: 'Benção do Mana', 
+    description: 'Você recebe +3 pontos de mana.',
+    category: CategoryEnum.Concedido,
+    requirement: {
+    },
+  }, {
+    id: 35,
+    name: 'Espada Solar', 
+    description: 'Você pode gastar 1 PM para encantar sua espada (ou outra arma corpo a corpo de corte que esteja empunhando). Ela causa +1d6 de dano por fogo até o fim da cena.',
+    category: CategoryEnum.Concedido,
+    requirement: {
+    },
+  }, {
+    id: 36,
+    name: 'Estilo de Disparo',
+    description: 'Se estiver usando uma arma de disparo, você soma o bônus de Destreza nas rolagens de dano. Pré-requisito: treinado em Pontaria.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      pericias: fullPericiasMock.filter(p => p.name === 'Pontaria')
+    },
+  }, {
+    id: 37,
+    name: 'Ginete',
+    description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na Defesa e nos testes de ataque com essa arma. Pré-requisito: treinado em Luta.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      pericias: fullPericiasMock.filter(p => p.name === 'Cavalgar')
+    },
+  }, {
+    id: 38,
+    name: 'Estilo de Uma Arma',
+    description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na Defesa e nos testes de ataque com essa arma. Pré-requisito: treinado em Luta.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      pericias: fullPericiasMock.filter(p => p.name === 'Luta')
+    },
+  }, {
+    id: 39,
+    name: 'Estilo de Arma e Escudo',
+    description: 'Estilo de Arma e Escudo Se você estiver usando um escudo, o bônus na Defesa que ele fornece aumenta em +2. Pré-requisitos: Treinado em Luta, proficiência com escudos.',
+    category: CategoryEnum.Combate,
+    requirement: {
+      pericias: fullPericiasMock.filter(p => p.name === 'Luta')
+    },
+  }, {
+    id: 40,
     name: 'Estilo de Duas Mãos',
     description: 'Se estiver usando uma arma corpo a corpo com as duas mãos, você recebe +5 nas rolagens de dano. Este poder não pode ser usado com armas leves. Pré-requisito: For 15, Treinado em Luta.',
     category: CategoryEnum.Combate,
     requirement: {
       strengthPoints: 15,
       pericias: fullPericiasMock.filter(p => p.name === 'Luta')
-    }
-  },
-
-  {
-    id: 998,
+    },
+  }, {
+    id: 41,
     name: 'Estilo de Arremesso',
     description: 'Você pode sacar armas de arremesso como uma ação livre e recebe +2 nas rolagens de dano com elas. Pré-requisito: treinado em Pontaria.',
     category: CategoryEnum.Combate,
     requirement: {
       id: 1,
       pericias: fullPericiasMock.filter(p => p.name === 'Pontaria')
-    }
+    },
   }, {
-    id: 999,
+    id: 42,
     name: 'Estilo de Duas Armas',
     description: 'Se estiver usando duas armas (e pelo menos uma delas for leve) e fizer a ação ataque, você pode fazer dois ataques, um com cada arma. Se fizer isso, sofre –2 em ambos os testes de ataque. Se você possuir a habilidade Ambidestria, não sofre essa penalidade. Pré-requisito: Des 15, Treinado em Luta.',
     category: CategoryEnum.Combate,
