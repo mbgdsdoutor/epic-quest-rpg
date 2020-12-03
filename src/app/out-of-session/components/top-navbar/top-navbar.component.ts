@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/authentication/services/user.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { TokenStorageService } from 'src/app/token-storage.service';
-import { Notification, NotificationStatus } from '../../models/notification';
+import { NotificationReturn, NotificationStatus } from '../../models/notification';
 import { User } from '../../models/user';
 import { NotificationService } from '../../services/notification.service';
 
@@ -14,10 +15,11 @@ export class TopNavbarComponent {
 
   constructor(
     private loadingService: LoadingService,
+    private userService: UserService,
     private tokenService: TokenStorageService,
     private notificationService: NotificationService) { }
 
-  notifications: Notification[] = [];
+  notifications: NotificationReturn[] = [];
   isNotificationsOpened: boolean = false;
   loggedUser: User;
 
@@ -34,14 +36,25 @@ export class TopNavbarComponent {
     this.isNotificationsOpened = !this.isNotificationsOpened;
   }
 
-  updateNotification(notification: Notification, status: string) {
-    const notificationIndex = this.notifications.indexOf(notification) + 1;
-    this.loadingService.startLocalLoading(`.notifications-list > div:nth-child(${notificationIndex})`)
-    const updatedNotification: Notification = { ...notification, status: status as NotificationStatus }
-    this.notificationService.updateNotification(updatedNotification).subscribe(response => {
-      this.notifications = this.notifications.filter(el => el.id !== response.id);
-      this.loadingService.stopLocalLoading(`.notifications-list > div:nth-child(${notificationIndex})`);
+  aceptNotification(notification: NotificationReturn, index: number) {
+    this.loadingService.startLocalLoading(`.notifications-list > div:nth-child(${index + 1})`)
+    this.userService.aceptFriend(notification.userId).subscribe(res => {
+      console.log('ADICIONADO!!!!', res);
+      this.notifications = this.notifications.filter(el => el.id !== notification.id);
+      this.loadingService.stopLocalLoading(`.notifications-list > div:nth-child(${index + 1})`);
+
     })
+  }
+
+  updateNotification(notification: Notification, status: string) {
+
+    // const notificationIndex = this.notifications.indexOf(notification) + 1;
+    // this.loadingService.startLocalLoading(`.notifications-list > div:nth-child(${notificationIndex})`)
+    // const updatedNotification: Notification = { ...notification, status: status as NotificationStatus }
+    // this.notificationService.updateNotification(updatedNotification).subscribe(response => {
+    //   this.notifications = this.notifications.filter(el => el.id !== response.id);
+    //   this.loadingService.stopLocalLoading(`.notifications-list > div:nth-child(${notificationIndex})`);
+    // })
   }
 
   switchTheme() {

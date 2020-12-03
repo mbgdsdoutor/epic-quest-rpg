@@ -1,1 +1,18 @@
-status
+<div class="scroll-container">
+  <table class="epic-table">
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Valor</th>
+        <th>Modificador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attribute of attributes">
+        <td>{{ attribute.name }}</td>
+        <td>{{ attribute.value }}</td>
+        <td>{{ attribute.modifier }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

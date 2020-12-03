@@ -5,7 +5,7 @@ export interface Item {
   id?: number;
   name: string;
   description: string;
-  value: number;
+  value?: number;
   damage_dice?: DiceEnum;
   additionalDamagePoints?: number;
   penaltyDice?: DiceEnum;

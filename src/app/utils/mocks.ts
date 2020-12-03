@@ -155,94 +155,6 @@ export const experienceMock = {
   level20: '-'
 }
 
-export const playerMock: Player = {
-  id: 1,
-  adventureId: 1,
-  alignment: AlignmentEnum.Neutro,
-  experience: 300,
-  age: 20,
-  origem: origemMock,
-  displacement: 8,
-  items: [],
-  poderes: [],
-  pericias: [],
-  deus: null,
-  tibar: 0,
-  userId: 3,
-  nivel: 1,
-  name: 'Eric Han Bin',
-  race: raceMock,
-  class: classeMock,
-  lifePoints: 8,
-  totalLifePoints: 8,
-  manaPoints: 5,
-  totalManaPoints: 5,
-  caPoints: 10,
-  strength: 12,
-  wisdom: 10,
-  dexterity: 14,
-  constitution: 9,
-  intelligence: 11,
-  charisma: 10,
-  photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS62tMAHeaksBS-NGajA7EVlgB3bUShjU_egA&usqp=CAU'
-}
-
-export const fullAdventuresMock: Adventure[] = [
-  {
-    id: 1, name: 'Trinity Wonder', photoUrl: 'https://pm1.narvii.com/6374/f49224bea7937903db1166396c554224b3361b8c_hq.jpg', description: 'Nós três que nos conhecemos através do tempo e espaço, inevitavelmente nunca pensamos sobre a existência um do outro... Um artista marcial, uma maga e uma cientista genial. Os ventos do destino une três personalidades, e trazem grandes mudanças ao mundo conhecido atualmente.',
-    master: {
-      id: 2,
-      userName: 'Matheus Braz',
-      email: 'mbgdsdoutor@gmail.com',
-      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
-      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
-    },
-    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
-    { id: 6, userName: 'Leonardo Tavares', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
-    players: [
-      playerMock,
-      { ...playerMock, id: 2, name: 'Tobias' },
-      { ...playerMock, id: 3, name: 'Tavares' },
-    ]
-  },
-  {
-    id: 2, name: 'O Retorno do Mago', photoUrl: 'https://img.supermangas.site/img/animes/47504-large.jpg', description: 'O pior aluno da Academia Westroad e a vergonha da Família Blake. Uma nova alma entra no corpo sem vida de Fray Blake, o garoto que não conseguiu aguentar sua dolorosa vida e optou pela morte. O Grande Mago Lucas Trawman ganhou a chance de se vingar ao reencarnar no corpo do menino! Esse é o começo da nova aventura do Grande Mago que retornou após 4000 anos!',
-    master: {
-      id: 6,
-      userName: 'Leonardo Tavares ',
-      email: 'mbgdsdoutor@gmail.com',
-      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
-      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
-    },
-    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
-    { id: 2, userName: 'Matheus Braz', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
-    players: [
-      playerMock,
-      { ...playerMock, id: 2, userId: 2, name: 'Doutor' },
-      { ...playerMock, id: 3, name: 'Kirito' }
-    ]
-  }
-]
-
-export const notificationsMock: Notification[] = [
-  {
-    id: 1,
-    from: usersMock[0],
-    to: usersMock[1],
-    type: NotificationType.FriendList,
-    status: NotificationStatus.Created
-  },
-  {
-    id: 2,
-    from: usersMock[2],
-    to: usersMock[1],
-    type: NotificationType.Adventure,
-    status: NotificationStatus.Created,
-    adventureName: 'Trinity Wonder',
-  },
-]
-
-
 export const fullPericiasMock: Pericia[] = [{
   id: 1,
   name: 'Acrobacia',
@@ -483,7 +395,7 @@ export const fullPoderesMock: Poder[] = [
       strengthPoints: 13,
       poderes: [40]
     },
-  },{
+  }, {
     id: 5,
     name: 'Ataque Poderoso',
     description: 'Declare que está usando este poder antes de fazer um ataque corpo a corpo. Você sofre –2 no teste de ataque, mas recebe +5 na rolagem de dano. Pré-requisito: For 13.',
@@ -508,7 +420,7 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [39]
     },
-  },{
+  }, {
     id: 8,
     name: 'Carga de Cavalaria',
     description: 'Você passa automaticamente em testes de Cavalgar para não cair da montaria quando sofre dano. Além disso, não sofre penalidades para atacar à distância ou lançar magias quando montado. Pré-requisito: treinado em Cavalgar.',
@@ -516,15 +428,15 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [37]
     },
-  },{
+  }, {
     id: 9,
     name: 'Combate Defensivo',
     description: 'Quando faz uma ação ataque, você pode usar este poder. Se fizer isso, até seu próximo turno, sofre –2 em testes de ataque, mas recebe +5 na Defesa. Pré-requisito: Int 13.',
     category: CategoryEnum.Combate,
     requirement: {
-      intelligencePoints:13,
+      intelligencePoints: 13,
     },
-  },{
+  }, {
     id: 10,
     name: 'Derrubar Aprimorado',
     description: 'Você recebe +2 em testes de ataque para desarmar. Quando desarma uma criatura, pode gastar 1 PM para arremessar a arma dela para longe. Para definir onde a arma cai, role 1d8 para a direção (sendo “1” diretamente a sua frente, “2” à frente e à direita e assim por diante) e 1d6 para a distância (medida em quadrados de 1,5m a partir da criatura desarmada). Pré-requisito: Combate Defensivo.',
@@ -532,7 +444,7 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [9]
     },
-  },{
+  }, {
     id: 11,
     name: 'Disparo Preciso',
     description: 'Você pode fazer ataques à distância contra oponentes envolvidos em combate corpo a corpo sem sofrer a penalidade padrão de –5 no teste de ataque. Pré-requisito: Estilo de Disparo ou Estilo de Arremesso.',
@@ -540,7 +452,7 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [41, 36]
     },
-  },{
+  }, {
     id: 12,
     name: 'Desarmar Aprimorado',
     description: 'Você recebe +2 em testes de ataque para derrubar. Quando derruba uma criatura, pode gastar 1 PM para fazer um ataque extra contra ela. Pré-requisito: Combate Defensivo.',
@@ -548,7 +460,7 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [9]
     },
-  },{
+  }, {
     id: 13,
     name: 'Disparo Rápido',
     description: 'Se estiver usando uma arma de ataque à distância e gastar uma ação completa para atacar, você recebe um ataque adicional. Se fizer isso, sofre –2 em ambos os testes de ataque. Pré-requisito: Estilo de Disparo ou Estilo de Arremesso.',
@@ -556,7 +468,7 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       poderes: [41, 36]
     },
-  },{
+  }, {
     id: 14,
     name: 'Empunhadora Poderosa',
     description: 'Você pode usar armas maiores, que causam um passo a mais de dano, sem sofrer penalidade de –5 nos testes de ataque (um personagem Minúsculo pode usar armas normais, um personagem Pequeno ou Médio pode usar armas aumentadas e assim por diante). Pré-requisito: For 17.',
@@ -564,22 +476,22 @@ export const fullPoderesMock: Poder[] = [
     requirement: {
       strengthPoints: 17
     },
-  },{
+  }, {
     id: 15,
     name: 'Estilo Desarmado',
     description: 'Se estiver usando uma arma corpo a corpo em uma das mãos e nada na outra, você recebe +2 na Defesa e nos testes de ataque com essa arma. Pré-requisito: treinado em Luta.',
     category: CategoryEnum.Combate,
     requirement: {
-      pericias: fullPericiasMock.filter(p => p.name === 'Luta')      
+      pericias: fullPericiasMock.filter(p => p.name === 'Luta')
     },
-  },{
+  }, {
     id: 16,
     name: 'Celebrar Ritual',
     description: 'Você pode lançar magias na forma de rituais. Fazer isso dobra seu limite de PM (permitindo usar mais aprimoramentos), mas aumenta sua execução para uma hora (ou para o dobro da sua execução, o que for maior) e adiciona um componente material de T$ 10 por PM na forma de incensos, óleos, oferendas etc. Quando faz um ritual, você paga apenas metade do custo da magia em PM (após aplicar quaisquer habilidades que modifiquem esse custo).',
     category: CategoryEnum.Magia,
     requirement: {
     },
-  },{
+  }, {
     id: 17,
     name: 'Foco em Magia',
     description: 'Escolha uma magia. Seu custo diminui em –2 PM. Você pode escolher este poder outras vezes para magias diferentes.',
@@ -610,7 +522,7 @@ export const fullPoderesMock: Poder[] = [
     },
   }, {
     id: 21,
-    name: 'Atlético', 
+    name: 'Atlético',
     description: 'Você recebe +2 em Atletismo e seu deslocamento aumenta em +3m. Pré-requisito: For 15.',
     category: CategoryEnum.Destino,
     requirement: {
@@ -618,7 +530,7 @@ export const fullPoderesMock: Poder[] = [
     },
   }, {
     id: 22,
-    name: 'Atlético', 
+    name: 'Atlético',
     description: 'Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você. Pré-requisito: Car 13.',
     category: CategoryEnum.Destino,
     requirement: {
@@ -626,7 +538,7 @@ export const fullPoderesMock: Poder[] = [
     },
   }, {
     id: 23,
-    name: 'Comandar', 
+    name: 'Comandar',
     description: 'Comandar Você pode gastar uma ação de movimento e 1 PM para gritar ordens para seus aliados em alcance médio. Eles recebem +1 em testes de perícia até o fim da cena. Pré-requisito: Car 13.',
     category: CategoryEnum.Destino,
     requirement: {
@@ -634,7 +546,7 @@ export const fullPoderesMock: Poder[] = [
     },
   }, {
     id: 24,
-    name: 'Curandeiro', 
+    name: 'Curandeiro',
     description: 'Você pode gastar uma ação completa para fazer um teste de Cura (CD 15) em uma criatura. Se você passar, ela recupera 1d6 PV, mais 1d6 para cada 5 pontos pelos quais o resultado do teste exceder a CD (2d6 com um resultado 20, 3d6 com um resultado 25 e assim por diante). Você só pode usar este poder uma vez por dia numa mesma criatura. Pré-requisitos: Sab 13, treinado em Cura.',
     category: CategoryEnum.Destino,
     requirement: {
@@ -643,77 +555,77 @@ export const fullPoderesMock: Poder[] = [
     },
   }, {
     id: 25,
-    name: 'Lobo Solitário', 
+    name: 'Lobo Solitário',
     description: 'Você recebe +1 em testes de perícia e Defesa se estiver sem nenhum aliado em alcance curto. Você não sofre penalidade por usar a perícia Cura em si mesmo.',
     category: CategoryEnum.Destino,
     requirement: {
     },
   }, {
     id: 26,
-    name: 'Dentes Afiados', 
+    name: 'Dentes Afiados',
     description: 'Você recebe um ataque natural de mordida (dano 1d4, crítico x2, corte). Quando usa a ação ataque, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.',
     category: CategoryEnum.Tormenta,
     requirement: {
     },
   }, {
     id: 27,
-    name: 'Dentes Afiados', 
+    name: 'Dentes Afiados',
     description: 'Você recebe um ataque natural de mordida (dano 1d4, crítico x2, corte). Quando usa a ação ataque, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.',
     category: CategoryEnum.Tormenta,
     requirement: {
     },
   }, {
     id: 28,
-    name: 'Anatomia Insana', 
+    name: 'Anatomia Insana',
     description: 'Você tem 25% de chance (resultado “1” em 1d4) de ignorar o dano adicional de um acerto crítico ou ataque furtivo. A chance aumenta em +25% para cada dois outros poderes da Tormenta que você possui.',
     category: CategoryEnum.Tormenta,
     requirement: {
     },
   }, {
     id: 29,
-    name: 'Sangue Ácido', 
+    name: 'Sangue Ácido',
     description: 'Quando você sofre dano por um ataque corpo a corpo, o atacante sofre 1 ponto de dano de ácido. Este dano aumenta em +1 para cada outro poder da Tormenta que você possui.',
     category: CategoryEnum.Tormenta,
     requirement: {
     },
   }, {
     id: 30,
-    name: 'Articulações Flexíveis', 
+    name: 'Articulações Flexíveis',
     description: 'Você recebe +1 em Acrobacia, Furtividade e Reflexos. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.',
     category: CategoryEnum.Tormenta,
     requirement: {
     },
   }, {
     id: 31,
-    name: 'Afinidade com a Tormenta', 
+    name: 'Afinidade com a Tormenta',
     description: 'Você recebe +10 em testes de resistência contra efeitos da Tormenta e de suas criaturas.',
     category: CategoryEnum.Concedido,
     requirement: {
     },
   }, {
     id: 32,
-    name: 'Anfíbio', 
+    name: 'Anfíbio',
     description: 'Você pode respirar embaixo d’água e adquire deslocamento de natação igual a seu deslocamento terrestre.',
     category: CategoryEnum.Concedido,
     requirement: {
     },
   }, {
     id: 33,
-    name: 'Conjurar Arma', 
+    name: 'Conjurar Arma',
     description: 'Você pode gastar 1 PM para invocar uma arma corpo a corpo ou de arremesso com a qual seja proficiente. A arma surge em sua mão, recebe um bônus de +1 em testes de ataque e rolagens de dano e dura pela cena. Você não pode criar armas de disparo, mas pode criar 10 projéteis (flechas, virotes etc.).',
     category: CategoryEnum.Concedido,
     requirement: {
     },
   }, {
     id: 34,
-    name: 'Benção do Mana', 
+    name: 'Benção do Mana',
     description: 'Você recebe +3 pontos de mana.',
     category: CategoryEnum.Concedido,
     requirement: {
     },
   }, {
     id: 35,
-    name: 'Espada Solar', 
+    name: 'Espada Solar',
     description: 'Você pode gastar 1 PM para encantar sua espada (ou outra arma corpo a corpo de corte que esteja empunhando). Ela causa +1d6 de dano por fogo até o fim da cena.',
     category: CategoryEnum.Concedido,
     requirement: {
@@ -778,6 +690,104 @@ export const fullPoderesMock: Poder[] = [
       dexterityPoints: 15,
       pericias: fullPericiasMock.filter(p => p.name === 'Luta')
     },
+  },
+]
+
+export const playerMock: Player = {
+  id: 1,
+  adventureId: 1,
+  alignment: AlignmentEnum.Neutro,
+  experience: 300,
+  age: 20,
+  origem: origemMock,
+  displacement: 8,
+  items: [{
+    id: 1,
+    name: 'Armadura de Couro Simples',
+    consumable: false,
+    description: 'Uma simples armadura.'
+  }, {
+    id: 2,
+    name: 'Espada de Aço',
+    consumable: false,
+    description: 'Uma espada iniciante, forjada por um ferreiro preguiçoso.'
+  }
+  ],
+  poderes: [...fullPoderesMock],
+  pericias: fullPericiasMock.sort(() => Math.random() - Math.random()).slice(0, 5),
+  deus: null,
+  tibar: 0,
+  userId: 3,
+  nivel: 1,
+  name: 'Eric Han Bin',
+  race: raceMock,
+  class: classeMock,
+  lifePoints: 8,
+  totalLifePoints: 8,
+  manaPoints: 5,
+  totalManaPoints: 5,
+  caPoints: 10,
+  strength: 12,
+  wisdom: 10,
+  dexterity: 14,
+  constitution: 9,
+  intelligence: 11,
+  charisma: 10,
+  photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS62tMAHeaksBS-NGajA7EVlgB3bUShjU_egA&usqp=CAU'
+}
+
+export const fullAdventuresMock: Adventure[] = [
+  {
+    id: 1, name: 'Trinity Wonder', photoUrl: 'https://pm1.narvii.com/6374/f49224bea7937903db1166396c554224b3361b8c_hq.jpg', description: 'Nós três que nos conhecemos através do tempo e espaço, inevitavelmente nunca pensamos sobre a existência um do outro... Um artista marcial, uma maga e uma cientista genial. Os ventos do destino une três personalidades, e trazem grandes mudanças ao mundo conhecido atualmente.',
+    master: {
+      id: 2,
+      userName: 'Matheus Braz',
+      email: 'mbgdsdoutor@gmail.com',
+      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
+      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
+    },
+    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
+    { id: 6, userName: 'Leonardo Tavares', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
+    players: [
+      playerMock,
+      { ...playerMock, id: 2, name: 'Tobias' },
+      { ...playerMock, id: 3, name: 'Tavares' },
+    ]
+  },
+  {
+    id: 2, name: 'O Retorno do Mago', photoUrl: 'https://img.supermangas.site/img/animes/47504-large.jpg', description: 'O pior aluno da Academia Westroad e a vergonha da Família Blake. Uma nova alma entra no corpo sem vida de Fray Blake, o garoto que não conseguiu aguentar sua dolorosa vida e optou pela morte. O Grande Mago Lucas Trawman ganhou a chance de se vingar ao reencarnar no corpo do menino! Esse é o começo da nova aventura do Grande Mago que retornou após 4000 anos!',
+    master: {
+      id: 6,
+      userName: 'Leonardo Tavares ',
+      email: 'mbgdsdoutor@gmail.com',
+      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
+      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
+    },
+    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
+    { id: 2, userName: 'Matheus Braz', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
+    players: [
+      playerMock,
+      { ...playerMock, id: 2, userId: 2, name: 'Doutor' },
+      { ...playerMock, id: 3, name: 'Kirito' }
+    ]
+  }
+]
+
+export const notificationsMock: Notification[] = [
+  {
+    id: 1,
+    from: usersMock[0],
+    to: usersMock[1],
+    type: NotificationType.FriendList,
+    status: NotificationStatus.Created
+  },
+  {
+    id: 2,
+    from: usersMock[2],
+    to: usersMock[1],
+    type: NotificationType.Adventure,
+    status: NotificationStatus.Created,
+    adventureName: 'Trinity Wonder',
   },
 ]
 

@@ -10,6 +10,7 @@
   border-radius: 10px;
   display: flex;
   transition: right 0.3s;
+  z-index: 99;
   &--open {
     right: 16px;
   }

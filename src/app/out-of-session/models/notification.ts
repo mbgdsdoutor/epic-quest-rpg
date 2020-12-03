@@ -9,6 +9,13 @@ export interface Notification {
   status: NotificationStatus;
 }
 
+export interface NotificationReturn {
+  id: number;
+  userId?: User;
+  description: string;
+  adventure?: any;
+}
+
 export enum NotificationType {
   FriendList = 'FriendList',
   Adventure = 'Adventure',

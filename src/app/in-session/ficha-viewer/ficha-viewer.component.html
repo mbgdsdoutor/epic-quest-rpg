@@ -9,6 +9,7 @@
     <div
       *ngFor="let ficha of fichas"
       [ngClass]="{ active: ficha.id === activeFicha.id }"
+      (click)="changeActive(ficha.id)"
     >
       {{ ficha.name }}
     </div>
@@ -19,6 +20,10 @@
         [src]="'../assets/images/' + activeFicha.class.id + '.jpeg'"
         alt="class-icon"
       />
+      <div>
+        <p>Raça: {{ activeFicha.race.name }}</p>
+        <p>Classe: {{ activeFicha.class.name }}</p>
+      </div>
     </div>
     <div class="ficha-body-fixed-content">
       <img [src]="activeFicha.photoUrl" alt="user picture" />
@@ -57,14 +62,58 @@
         <p>deslocamento: {{ activeFicha.displacement }}</p>
       </div>
     </div>
-    <div class="ficha-body-container">
+    <div
+      class="ficha-body-container"
+      [ngStyle]="{ height: isMaster ? '65%' : '72%' }"
+    >
       <div class="ficha-body-tabs">
-        <div class="ficha-body-tabs-option">Status</div>
-        <div class="ficha-body-tabs-option">Perícias</div>
-        <div class="ficha-body-tabs-option">Itens</div>
-        <div class="ficha-body-tabs-option">Habilidades</div>
+        <div
+          class="ficha-body-tabs-option"
+          [ngClass]="{ active: activeTab === 1 }"
+          (click)="changeActiveTab(1)"
+        >
+          <img src="assets/icons/status.svg" alt="xp-icon" />
+          Status
+        </div>
+        <div
+          class="ficha-body-tabs-option"
+          [ngClass]="{ active: activeTab === 2 }"
+          (click)="changeActiveTab(2)"
+        >
+          <img src="assets/icons/pericias.svg" alt="xp-icon" />
+          Perícias
+        </div>
+        <div
+          class="ficha-body-tabs-option"
+          [ngClass]="{ active: activeTab === 3 }"
+          (click)="changeActiveTab(3)"
+        >
+          <img src="assets/icons/itens.svg" alt="xp-icon" />
+          Itens
+        </div>
+        <div
+          class="ficha-body-tabs-option"
+          [ngClass]="{ active: activeTab === 4 }"
+          (click)="changeActiveTab(4)"
+        >
+          <img src="assets/icons/habilidades.svg" alt="xp-icon" />
+          Habilidades
+        </div>
       </div>
-      <div class="ficha-body-tabs-content"></div>
+      <div class="ficha-body-tabs-content">
+        <status [ficha]="activeFicha" *ngIf="activeTab === 1"></status>
+        <pericias [ficha]="activeFicha" *ngIf="activeTab === 2"></pericias>
+        <itens
+          [ficha]="activeFicha"
+          [isMaster]="isMaster"
+          *ngIf="activeTab === 3"
+        ></itens>
+        <habilidades
+          [ficha]="activeFicha"
+          [isMaster]="isMaster"
+          *ngIf="activeTab === 4"
+        ></habilidades>
+      </div>
     </div>
   </div>
 </div>

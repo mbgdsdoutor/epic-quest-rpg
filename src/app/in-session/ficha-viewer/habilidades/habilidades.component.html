@@ -1,1 +1,133 @@
-habilidades
+<div class="scroll-container">
+  <div style="display: flex; align-items: center; margin: 16px 0px">
+    <div class="user-search-box">
+      <i class="material-icons text-theme-black">search</i>
+      <input
+        class="input"
+        type="text"
+        placeholder="Digite o nome do poder"
+        (input)="handleSearchPoder($event)"
+      />
+    </div>
+    <button
+      class="button button--default"
+      *ngIf="isMaster"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0px;
+        height: 40px;
+        width: 40px;
+        margin: 0px 16px 0px 0px;
+      "
+    >
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+
+  <h3 *ngIf="getPoderes('Raca').length > 0">Poderes de Raça</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Raça'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Raça'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Origem').length > 0">Poderes de Origem</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Origem'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Origem'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Combate').length > 0">Poderes de Combate</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Combate'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Combate'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Destino').length > 0">Poderes de Destino</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Destino'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Destino'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Magia').length > 0">Poderes de Magia</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Magia'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Magia'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Concedido').length > 0">Poderes Condedidos</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Concedido'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Concedido'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+
+  <h3 *ngIf="getPoderes('Tormenta').length > 0">Poderes de Tormenta</h3>
+
+  <ng-container *ngFor="let poder of searchedPoderes">
+    <button
+      class="accordion"
+      (click)="triggerPanel($event)"
+      *ngIf="poder.category == 'Tormenta'"
+    >
+      {{ poder.name }}
+    </button>
+    <div class="panel" *ngIf="poder.category == 'Tormenta'">
+      <p>{{ poder.description }}</p>
+    </div>
+  </ng-container>
+</div>

@@ -1,2 +1,15 @@
 @media only screen and (max-width: 720px) {
 }
+.scroll-container {
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 100%;
+
+  .epic-table {
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+  }
+}

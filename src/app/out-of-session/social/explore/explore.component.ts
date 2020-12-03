@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from 'src/app/authentication/services/user.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
-import { NotificationService } from '../../services/notification.service';
-import { Notification, NotificationStatus, NotificationType } from '../../models/notification';
 import { TokenStorageService } from 'src/app/token-storage.service';
 
 @Component({
@@ -18,30 +16,34 @@ export class ExploreComponent implements OnInit {
   users: User[] = [];
   searchedUsers: User[] = [];
   usersIdNotification: number[] = [];
+  allNotifications = [];
   isLoading: boolean = false;
 
   constructor(
     private userService: UserService,
     private tokenService: TokenStorageService,
-    private notificationService: NotificationService,
     private loadingService: LoadingService) { }
 
   ngOnInit() {
-    this.loggedUser = this.tokenService.getLoggedUser();
     this.loadingService.startLoadingBar();
     this.isLoading = true;
-    this.userService.findAll().subscribe(response => {
-      let idsMap = [];
-      if (this.loggedUser.friendList && this.loggedUser.friendList.length > 0) {
-        idsMap = this.loggedUser.friendList.map(e => e.id)
-      }
-
-      this.users = response.filter(u => u.id !== this.loggedUser.id && !idsMap.includes(u.id));
-      this.searchedUsers = this.users;
+    this.loggedUser = this.tokenService.getLoggedUser();
+    this.userService.getFriends().subscribe(friends => {
+      this.loggedUser.friendList = friends;
     }).add(() => {
-      this.loadingService.stopLoadingBar();
-      this.isLoading = false;
-    });
+      this.userService.findAll().subscribe(response => {
+        let idsMap = [];
+        if (this.loggedUser.friendList && this.loggedUser.friendList.length > 0) {
+          idsMap = this.loggedUser.friendList.map(e => e.id)
+        }
+
+        this.users = response.filter(u => u.id !== this.loggedUser.id && !idsMap.includes(u.id));
+        this.searchedUsers = this.users;
+      }).add(() => {
+        this.loadingService.stopLoadingBar();
+        this.isLoading = false;
+      });
+    })
   }
 
   handleSearchUser(event): void {
@@ -60,14 +62,5 @@ export class ExploreComponent implements OnInit {
       console.log(response)
       this.usersIdNotification.push(user.id);
     })
-    // const notification: Notification = {
-    //   from: this.loggedUser,
-    //   to: user,
-    //   status: NotificationStatus.Created,
-    //   type: NotificationType.FriendList
-    // }
-    // this.notificationService.createNotification(notification).subscribe(response => {
-    //   this.usersIdNotification.push(user.id);
-    // })
   }
 }

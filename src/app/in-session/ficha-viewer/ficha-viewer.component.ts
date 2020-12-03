@@ -31,8 +31,8 @@ export class FichaViewerComponent {
     }
   }
 
-  changeActive() {
-
+  changeActive(id: number) {
+    this.activeFicha = this.fichas.filter(f => f.id === id)[0]
   }
 
   changeActiveTab(tab: number) {

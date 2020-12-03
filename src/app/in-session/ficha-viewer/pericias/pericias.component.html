@@ -1,1 +1,26 @@
-pericias
+<div class="scroll-container">
+  <table class="epic-table">
+    <thead>
+      <tr>
+        <th>Perícia</th>
+        <th>Treinada</th>
+        <th>Modificador</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pericia of pericias">
+        <td>{{ pericia.name }}</td>
+        <td>{{ pericia.treinada ? "sim" : "não" }}</td>
+        <td>{{ pericia?.modificador?.modifier }}</td>
+        <td>
+          {{
+            pericia.treinada
+              ? 4 + pericia?.modificador?.modifier
+              : pericia?.modificador?.modifier
+          }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
