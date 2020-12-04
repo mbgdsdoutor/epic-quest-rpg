@@ -22,27 +22,24 @@
           *ngIf="isNotificationsOpened"
           class="notifications-list bg-theme text-theme"
         >
-          <div *ngFor="let notification of notifications">
+          <div *ngFor="let notification of notifications; let i = index">
             <img
               class="notification-user-photo"
-              [src]="notification.from.photoUrl"
+              [src]="notification.userId.photoUrl"
             />
             <p class="notification-description">
-              <span *ngIf="notification.type === 'FriendList'"
-                >{{ notification.from.userName }} gostaria de ser seu amigo no
+              <span *ngIf="notification.userId"
+                >{{ notification.userId.userName }} gostaria de ser seu amigo no
                 Epic Quest RPG.</span
               >
-              <span *ngIf="notification.type === 'Adventure'"
-                >{{ notification.from.userName }} gostaria de participar da sua
-                aventura {{ notification.adventureName }}.</span
+              <span *ngIf="notification.adventure"
+                >{{ notification.userId.userName }} gostaria de participar da
+                sua aventura {{ notification.adventure.name }}.</span
               >
             </p>
             <div class="notification-options">
-              <button (click)="updateNotification(notification, 'Accepted')">
+              <button (click)="aceptNotification(notification, i)">
                 aceitar
-              </button>
-              <button (click)="updateNotification(notification, 'Denied')">
-                recusar
               </button>
             </div>
           </div>

@@ -1,8 +1,5 @@
 <div class="container" *ngIf="user">
   <div class="profile-card box-shadow-theme bg-theme text-theme">
-    <button *ngIf="isEditable" class="edit-photo bg-theme-hover">
-      <i class="material-icons">photo_camera</i>
-    </button>
     <button
       *ngIf="isEditable && !isEditing"
       (click)="toggleIsEditing()"
@@ -20,7 +17,7 @@
       <input
         class="input text-theme-black"
         type="text"
-        [value]="user.userName"
+        [(ngModel)]="user.userName"
       />
     </div>
     <div class="profile-card-info">
@@ -30,7 +27,15 @@
         *ngIf="isEditing"
         class="input text-theme-black"
         type="text"
-        [value]="user.email"
+        [(ngModel)]="user.email"
+      />
+    </div>
+    <div *ngIf="isEditing" class="profile-card-info">
+      <label>foto</label>
+      <input
+        class="input text-theme-black"
+        type="text"
+        [(ngModel)]="user.photoUrl"
       />
     </div>
     <div class="profile-card-info">
@@ -41,16 +46,14 @@
         style="resize: none"
         class="input text-theme-black"
         type="text"
-        [value]="user.description"
+        [(ngModel)]="user.description"
       ></textarea>
     </div>
     <div *ngIf="isEditing" class="profile-card-actions">
       <button class="button--default" (click)="toggleIsEditing()">
         Cancelar
       </button>
-      <button class="button--primary" (click)="toggleIsEditing()">
-        Salvar
-      </button>
+      <button class="button--primary" (click)="updateUser()">Salvar</button>
     </div>
   </div>
   <div class="profile-group-card">

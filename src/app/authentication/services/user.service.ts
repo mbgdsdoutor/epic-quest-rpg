@@ -15,6 +15,7 @@ export class UserService {
         // const user = usersMock.filter(u => u.id === userId)[0];
         // return of({ ...user, friendList: usersMock });
     }
+
     public findAll(): Observable<User[]> {
         return this.httpClient.get<User[]>(`${url}/getAll/`);
         // return of(usersMock);
@@ -22,5 +23,19 @@ export class UserService {
 
     public addFriend(user: User): Observable<void> {
         return this.httpClient.post<void>(`${url}/addFriend/`, user);
+    }
+
+    public aceptFriend(user: User): Observable<void> {
+        return this.httpClient.post<void>(`${url}/aceptInvite/`, user);
+    }
+
+    public getFriends(): Observable<User[]> {
+        return this.httpClient.get<User[]>(`${url}/getFriends`);
+        // const user = usersMock.filter(u => u.id === userId)[0];
+        // return of({ ...user, friendList: usersMock });
+    }
+
+    public updateUser(user: User): Observable<User> {
+        return this.httpClient.put<User>(`${url}/update`, user)
     }
 }

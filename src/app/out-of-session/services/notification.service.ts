@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { notificationsMock } from 'src/app/utils/mocks';
-import { Notification } from '../models/notification';
+import { Notification, NotificationReturn } from '../models/notification';
 import { delay } from 'rxjs/operators';
 import { User } from '../models/user';
 
@@ -12,8 +12,13 @@ const url = 'http://localhost:8085/api/v1/notification';
 export class NotificationService {
     constructor(private httpClient: HttpClient) { }
 
-    public findByUserId(userId: number): Observable<Notification[]> {
-        return this.httpClient.get<Notification[]>(`${url}/getById/${userId}`);
+    public findByUserId(userId: number): Observable<NotificationReturn[]> {
+        return this.httpClient.get<NotificationReturn[]>(`${url}/getById/${userId}`);
+        //return of(notificationsMock);
+    }
+
+    public findAll(): Observable<NotificationReturn[]> {
+        return this.httpClient.get<NotificationReturn[]>(`${url}/getAll`);
         //return of(notificationsMock);
     }
 

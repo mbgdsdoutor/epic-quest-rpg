@@ -1,1 +1,54 @@
-itens
+<div class="scroll-container">
+  <div class="form" *ngIf="isMaster">
+    <button
+      *ngIf="!isAddingItem"
+      (click)="toggleAddingItem()"
+      class="button button--default"
+    >
+      Adicionar Item
+    </button>
+    <div *ngIf="isAddingItem">
+      <div class="field">
+        <label for="name">Nome</label>
+        <input
+          class="input"
+          [(ngModel)]="itemToAdd.name"
+          placeholder="digite o nome do seu item"
+          id="name"
+        />
+      </div>
+
+      <div class="field">
+        <label for="name">Descrição</label>
+        <input
+          class="input"
+          [(ngModel)]="itemToAdd.description"
+          placeholder="digite a descrição do seu item"
+          id="name"
+        />
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 16px">
+        <button (click)="toggleAddingItem()" class="button button--default">
+          Cancelar
+        </button>
+        <button
+          (click)="addItem()"
+          [disabled]="itemToAdd.name == '' || itemToAdd.description == ''"
+          class="button button--primary"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="item" *ngFor="let item of itens">
+    <p contenteditable="true">
+      {{ item.name }}
+    </p>
+    <p contenteditable="true">
+      {{ item.description }}
+    </p>
+  </div>
+  <div class="no-content" *ngIf="itens.length === 0">Sem itens na lista.</div>
+</div>

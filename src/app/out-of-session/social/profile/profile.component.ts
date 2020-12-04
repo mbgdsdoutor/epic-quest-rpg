@@ -42,8 +42,12 @@ export class ProfileComponent implements OnInit {
     }
     this.loadingService.startLoadingBar();
     this.userService.findById(urlId).subscribe(response => {
-      this.loadingService.stopLoadingBar();
       this.user = response;
+      this.userService.getFriends().subscribe(friends => {
+        this.loadingService.stopLoadingBar();
+        this.user.friendList = friends;
+        console.log('SOMOS AMIGOS DO PEITO', friends)
+      })
     }, (err) => {
       this.loadingService.stopLoadingBar();
       this.alertService.error('Erro ao buscar usuário.');
@@ -52,5 +56,20 @@ export class ProfileComponent implements OnInit {
 
   toggleIsEditing() {
     this.isEditing = !this.isEditing;
+  }
+
+  updateUser() {
+    this.loadingService.startLoadingBar();
+    let userToSave = { ...this.user };
+    delete userToSave.friendList;
+    console.log(this.user)
+    this.userService.updateUser(userToSave).subscribe(response => {
+      this.loadingService.stopLoadingBar();
+      this.alertService.success('Usuário salvo com sucesso.')
+    }, (err) => {
+      this.alertService.success('Erro ao salvar usuário.')
+      this.loadingService.stopLoadingBar();
+    })
+    this.toggleIsEditing();
   }
 }
