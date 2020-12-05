@@ -62,15 +62,27 @@ export class FichaStepperComponent implements OnInit {
 
   nextStep(): void {
     console.log('MADOKA! ', this.ficha)
-    if (this.activeStep !== 3) {
+    if (this.activeStep !== this.steps.length - 1) {
       this.activeStep++;
     } else {
+      this.configuraFicha();
       // salvar ficha
     }
   }
 
-  updateBasicInfo(data: any) {
-    console.log(data)
+  configuraFicha() {
+    const displacement = this.ficha.race.displacement;
+    const items = this.ficha.origem.items;
+    const lifePoints = this.ficha.class.initialLifePoints;
+    const manaPoints = this.ficha.class.initialManaPoints;
+    const totalLifePoints = this.ficha.class.initialLifePoints;
+    const totalManaPoints = this.ficha.class.initialManaPoints;
+    const poderes = [...this.ficha.poderes, ...this.ficha.race.poderes, ...this.ficha.origem.poderes]
+    const caPoints = 10;
+
+    const fichaToSave: Player = { ...this.ficha, displacement, items, lifePoints, manaPoints, totalLifePoints, totalManaPoints, poderes, caPoints }
+    console.log(fichaToSave)
+    console.log(JSON.stringify(fichaToSave))
   }
 }
 

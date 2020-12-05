@@ -2,7 +2,9 @@
   <div class="aside-toggle" (click)="toggleAside()">
     <i class="material-icons">menu</i>
   </div>
-  <div *ngIf="isMaster" class="aside-item">Conceder Experiência</div>
+  <div *ngIf="isMaster" class="aside-item" (click)="openXp()">
+    Conceder Experiência
+  </div>
   <div *ngIf="!isMaster" class="aside-item">Solicitar Acesso</div>
   <div class="aside-item" (click)="openRules()">Consultar Livro</div>
   <!-- <div *ngIf="!isMaster" class="aside-item">Conquistas</div> -->

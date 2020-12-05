@@ -24,6 +24,10 @@ export class AsideMenuComponent {
     this.aside.nativeElement.classList.toggle('aside--open')
   }
 
+  openXp() {
+    document.querySelector('#xp-manager').classList.add('showModal');
+  }
+
   openRules() {
     document.querySelector('#rules').classList.add('showModal');
   }

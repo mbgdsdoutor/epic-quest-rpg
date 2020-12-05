@@ -15,12 +15,13 @@ import { AdventureService } from '../../services/adventure.service';
 
 export class NewAdventureComponent implements OnInit {
 
-  users: User[] = [];
+  users: { display: string, value: number }[] = [];
+  allUsers: User[] = [];
   loggedUser: User;
   //form aventura
   adventureName: string;
   adventureDescription: string;
-  adventureUsers: User[] = [];
+  adventureUsers: { display: string, value: number }[] = [];
   adventurePhotoUrl: string;
 
   constructor(
@@ -34,13 +35,17 @@ export class NewAdventureComponent implements OnInit {
   ngOnInit() {
     this.loggedUser = this.tokenService.getLoggedUser();
     let idsMap = [];
-    if (this.loggedUser.friendList && this.loggedUser.friendList.length > 0) {
-      idsMap = this.loggedUser.friendList.map(e => e.id)
-    }
-
     this.userService.findAll().subscribe(response => {
-      this.users = response;
-      this.adventureUsers = response;
+      this.allUsers = response;
+      this.userService.getFriends().subscribe(f => {
+        idsMap = f.map(e => e.id)
+      }).add(() => {
+        this.users = response.map(e => {
+          return { display: e.userName, value: e.id }
+        }).filter(u => idsMap.includes(u.value));
+      })
+
+      // this.adventureUsers = response;
       // this.users = response.filter(e => e.id !== this.loggedUser.id && idsMap.includes(e.id))
     })
   }
@@ -51,8 +56,8 @@ export class NewAdventureComponent implements OnInit {
       name: this.adventureName,
       description: this.adventureDescription,
       photoUrl: this.adventurePhotoUrl,
-      users: this.adventureUsers,
-      master: this.users.filter(u => u.id === this.loggedUser.id)[0]
+      users: this.allUsers.filter(u => this.adventureUsers.map(e => e.value).includes(u.id)),
+      master: this.allUsers.filter(u => u.id === this.loggedUser.id)[0]
     }
     console.log('salvando aventura: ', adventure)
     this.adventureService.saveAdventure(adventure).subscribe(response => {

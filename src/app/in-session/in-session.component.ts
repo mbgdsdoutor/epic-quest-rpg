@@ -37,9 +37,10 @@ export class InSessionComponent {
     this.adventureService.findById(this.urlId).subscribe(response => {
       console.log('adventure', response);
       this.adventure = response;
-      if (this.adventure.players.filter(p => p.userId === this.user.id).length === 1) {
-        // this.showFichaCreation = true;
-        this.showFichaCreation = false;
+      console.log(this.adventure.players)
+      console.log(this.user.id)
+      if (this.adventure.players.filter(p => p.userId === this.user.id).length === 0) {
+        this.showFichaCreation = true;
       }
       this.loadingService.stopLocalLoading('body');
       this.alertService.success('Sessão Iniciada!');

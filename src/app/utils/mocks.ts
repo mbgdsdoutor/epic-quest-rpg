@@ -936,21 +936,7 @@ export const fullRacesMock: Race[] = [{
   charismaPoints: 0,
   freePoints: 0,
   displacement: 12,
-  pericias: [{
-    id: 1,
-    name: 'Misticismo',
-    description: 'mistico demais hehe',
-    attribute: AttributesEnum.Charisma,
-    onlyTrained: false,
-    armorPenalty: false,
-  }, {
-    id: 2,
-    name: 'Percepção',
-    description: 'perceptivo demais hehe',
-    attribute: AttributesEnum.Charisma,
-    onlyTrained: false,
-    armorPenalty: false,
-  }],
+  pericias: fullPericiasMock.filter(p => p.name === 'Misticismo' || p.name === 'Percepção'),
   poderes: [
     {
       id: 1,

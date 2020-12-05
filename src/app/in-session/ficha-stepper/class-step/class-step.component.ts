@@ -14,10 +14,23 @@ export class ClassStepComponent {
 
   @Input() ficha: Player;
   pericias: Pericia[] = fullPericiasMock;
+  disabledPericias: number[] = [];
+  maxQntyPericias = 0;
 
   constructor() { }
 
   ngOnInit() {
+    if (this.ficha.race.pericias.length > 0) {
+      this.ficha.pericias = [...this.ficha.pericias, ...this.ficha.race.pericias];
+    }
+    if (this.ficha.origem.pericias.length > 0) {
+      this.ficha.pericias = [...this.ficha.pericias, ...this.ficha.origem.pericias]
+    }
+    if (this.ficha.class.pericias.length > 0) {
+      this.ficha.pericias = [...this.ficha.pericias, ...this.ficha.class.pericias];
+    }
 
+    this.disabledPericias = [...this.ficha.pericias].map(p => p.id);
+    this.maxQntyPericias = this.ficha.pericias.length + this.ficha.class.periciasChoose[0].quantity;
   }
 }

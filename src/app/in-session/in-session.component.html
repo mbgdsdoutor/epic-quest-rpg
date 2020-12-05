@@ -1,5 +1,5 @@
-<ficha-stepper *ngIf="showFichaCreation"></ficha-stepper>
-
+<ficha-stepper *ngIf="!isMaster && showFichaCreation"></ficha-stepper>
+<xp-manager [aventura]="adventure"></xp-manager>
 <aside-menu [isMaster]="isMaster" [adventureId]="adventure.id"></aside-menu>
 <router-outlet></router-outlet>
 <ficha-viewer
@@ -10,11 +10,6 @@
 ></ficha-viewer>
 <notes [adventure]="adventure"></notes>
 <dices></dices>
-<!-- <ngx-extended-pdf-viewer
-  [src]="'assets/tormenta20-v0.7.pdf'"
-  useBrowserLocale="true"
-  height="80vh"
-></ngx-extended-pdf-viewer> -->
 <!-- <chat></chat> -->
 
 <div class="main-options" [ngClass]="{ master: isMaster }">

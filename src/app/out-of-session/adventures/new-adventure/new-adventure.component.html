@@ -42,16 +42,16 @@
         <tag-input
           [placeholder]="'+ jogador'"
           [secondaryPlaceholder]="'adicionar um jogador'"
-          [ngModel]="adventureUsers"
+          [(ngModel)]="adventureUsers"
           [identifyBy]="'id'"
           [displayBy]="'userName'"
           [onlyFromAutocomplete]="true"
         >
-          <!-- <tag-input-dropdown
+          <tag-input-dropdown
             [showDropdownIfEmpty]="true"
             [autocompleteItems]="users"
           >
-          </tag-input-dropdown> -->
+          </tag-input-dropdown>
         </tag-input>
       </div>
 

@@ -1,0 +1,38 @@
+<div id="xp-manager" class="hideModal">
+  <div class="container">
+    <h3>Conceder Experiência</h3>
+    <button class="close" (click)="closeXpManager()">
+      <i class="material-icons">close</i>
+    </button>
+    <div class="field">
+      <label for="xp">Experiência</label>
+      <input
+        id="xp"
+        class="input"
+        type="number"
+        [(ngModel)]="xpAmount"
+        placeholder="quantia de exp"
+      />
+    </div>
+    <div class="field" style="margin-top: 8px">
+      <label for="players">Jogadores</label>
+      <tag-input
+        [placeholder]="'+ jogador'"
+        [secondaryPlaceholder]="'adicionar um jogador'"
+        [(ngModel)]="adventureUsers"
+        [identifyBy]="'id'"
+        [displayBy]="'userName'"
+        [onlyFromAutocomplete]="true"
+      >
+        <tag-input-dropdown
+          [showDropdownIfEmpty]="true"
+          [autocompleteItems]="users"
+        >
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+    <div style="margin-top: 8px; display: flex; justify-content: flex-end">
+      <button class="button button--primary">Salvar</button>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,16 @@
 </div>
 
 <div class="field">
+  <label for="foto">Foto</label>
+  <input
+    class="input"
+    [(ngModel)]="ficha.photoUrl"
+    placeholder="cole a foto do seu personagem"
+    id="foto"
+  />
+</div>
+
+<div class="field">
   <label for="race">Raça</label>
   <ng-select [(ngModel)]="ficha.race" id="race">
     <ng-option *ngFor="let race of races" [value]="race">{{

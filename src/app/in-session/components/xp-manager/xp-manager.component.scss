@@ -1,0 +1,84 @@
+@media only screen and (max-width: 720px) {
+}
+
+.container {
+  background-color: #fefefe;
+  position: relative;
+  padding: 16px;
+  width: 450px;
+
+  h3 {
+    margin: 8px 0px 16px 0px;
+  }
+}
+
+div#xp-manager {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+
+  button.close {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: #fafafa;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+
+  iframe {
+    border: 2px solid #000;
+    border-radius: 4px;
+  }
+}
+
+.hideModal {
+  z-index: -1;
+  opacity: 0;
+  animation: hide 0.25s;
+
+  transform: scale(0);
+}
+@keyframes hide {
+  from {
+    z-index: 2;
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    z-index: -1;
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+.showModal {
+  opacity: 1;
+  z-index: 2;
+  animation: show 0.2s;
+
+  transform: scale(1);
+}
+@keyframes show {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+}

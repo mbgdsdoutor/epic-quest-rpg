@@ -14,7 +14,6 @@ export interface Player {
   userId: number;
   nivel: number;
   experience?: number;
-  experiencePerLevel?: ExperiencePerLevel;
   adventureId: number;
   class: Class;
   race: Race;

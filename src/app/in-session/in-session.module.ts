@@ -28,6 +28,8 @@ import { StatusComponent } from './ficha-viewer/status/status.component';
 import { ItensComponent } from './ficha-viewer/itens/itens.component';
 import { PericiasComponent } from './ficha-viewer/pericias/pericias.component';
 import { HabilidadesComponent } from './ficha-viewer/habilidades/habilidades.component';
+import { XPManagerComponent } from './components/xp-manager/xp-manager.component';
+import { FichaService } from '../out-of-session/services/ficha.service';
 
 @NgModule({
   imports: [
@@ -59,10 +61,12 @@ import { HabilidadesComponent } from './ficha-viewer/habilidades/habilidades.com
     StatusComponent,
     ItensComponent,
     PericiasComponent,
+    XPManagerComponent,
   ],
   providers: [
     AdventureService,
     NotesService,
+    FichaService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ]
 })
