@@ -1,6 +1,14 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdventureService } from 'src/app/out-of-session/services/adventure.service';
+import { FichaService } from 'src/app/out-of-session/services/ficha.service';
+import { AlertService } from 'src/app/shared/alert.service';
+import { LoadingService } from 'src/app/shared/loading/loading.service';
+import { Adventure } from 'src/app/shared/models/adventure';
 import { Player } from 'src/app/shared/models/player';
 import { TokenStorageService } from 'src/app/token-storage.service';
+import { fullPericiasMock } from 'src/app/utils/mocks';
 
 @Component({
   selector: 'ficha-stepper',
@@ -12,13 +20,25 @@ export class FichaStepperComponent implements OnInit {
   steps: string[] = [Steps.basicInfo, Steps.originAndAlignment, Steps.raceInfo, Steps.classInfo, Steps.attributeInfo]
   activeStep: number = 0
   ficha: Player
+  urlId: number
+  adventure: Adventure
 
   constructor(
-    private tokenService: TokenStorageService) {
+    private tokenService: TokenStorageService,
+    private loadingService: LoadingService,
+    private alertService: AlertService,
+    private router: Router,
+    private fichaService: FichaService,
+    private adventureService: AdventureService) {
+    this.urlId = parseInt(this.router.url.split('/').pop(), 10);
   }
 
   ngOnInit() {
     const user = this.tokenService.getLoggedUser();
+    this.adventureService.findById(this.urlId).subscribe(response => {
+      console.log('adventure', response);
+      this.adventure = response;
+    })
     this.ficha = {
       name: '',
       photoUrl: '',
@@ -66,7 +86,7 @@ export class FichaStepperComponent implements OnInit {
       this.activeStep++;
     } else {
       this.configuraFicha();
-      // salvar ficha
+      //this.salvarFichap();
     }
   }
 
@@ -82,8 +102,48 @@ export class FichaStepperComponent implements OnInit {
 
     const fichaToSave: Player = { ...this.ficha, displacement, items, lifePoints, manaPoints, totalLifePoints, totalManaPoints, poderes, caPoints }
     console.log(fichaToSave)
-    console.log(JSON.stringify(fichaToSave))
+    console.log(JSON.stringify(fichaToSave).length)
+    this.salvarFicha(fichaToSave);
   }
+
+  salvarFicha(fichita: Player) {
+    this.loadingService.startLoadingBar();
+    this.fichaService.createFicha(fichita, this.urlId).subscribe(response => {
+      this.alertService.success('Ficha criada com sucesso!');
+      this.loadingService.stopLoadingBar();
+    }, (err) => {
+      this.loadingService.stopLoadingBar();
+      this.alertService.error('Erro ao salvar ficha.')
+    })
+  }
+
+  // salvarFiacha(fichita: Player) {
+  //   // salva as paradas
+  //   this.loadingService.startLoadingBar();
+  //   this.adventureService.saveAllItens(fichita.items).subscribe(items => {
+  //     /* */
+  //   }, (err) => {
+  //     this.alertService.error('Erro ao salvar ficha!');
+  //     this.loadingService.stopLoadingBar();
+  //   }).add(() => {
+  //     this.adventureService.saveAllPoderes(fichita.poderes).subscribe(poderes => {
+  //       /* */
+  //     }, (err) => {
+  //       this.alertService.error('Erro ao salvar ficha!');
+  //       this.loadingService.stopLoadingBar();
+  //     })
+  //   }).add(() => {
+  //     this.fichaService.createFicha(fichita).subscribe(ficha => {
+  //       this.alertService.success('Ficha criada com sucesso!');
+  //       this.loadingService.stopLoadingBar();
+  //     }, (err) => {
+  //       this.alertService.error('Erro ao salvar ficha!');
+  //       this.loadingService.stopLoadingBar();
+  //     })
+  //   })
+
+
+  // }
 }
 
 export enum Steps {

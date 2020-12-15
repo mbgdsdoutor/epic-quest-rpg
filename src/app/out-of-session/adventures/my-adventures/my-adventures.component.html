@@ -23,8 +23,8 @@
           <h2>{{ adventure.name }}</h2>
           <p class="user-info-email text-theme-black">
             <b>Mestre: </b>
-            <span [routerLink]="['/social/profile/' + adventure.master.id]">{{
-              adventure.master.userName
+            <span [routerLink]="['/social/profile/' + adventure.mestre.id]">{{
+              adventure.mestre.userName
             }}</span>
           </p>
           <p class="user-info-email text-theme-black">
@@ -38,7 +38,7 @@
         </div>
         <div
           class="master-emblem bg-theme"
-          *ngIf="adventure.master.id === user.id"
+          *ngIf="adventure.mestre.id === user.id"
         >
           <master-icon width="28" height="28"></master-icon>
         </div>
@@ -117,14 +117,14 @@
       </div>
       <div class="master-actions">
         <button
-          *ngIf="adventure.master.id === user.id"
+          *ngIf="adventure.mestre.id === user.id"
           class="button--outline text-theme-black"
           [routerLink]="['/session/' + adventure.id]"
         >
           Iniciar Sessão
         </button>
         <button
-          *ngIf="adventure.master.id !== user.id"
+          *ngIf="adventure.mestre.id !== user.id"
           class="button--outline text-theme-black"
           [routerLink]="['/session/' + adventure.id]"
         >

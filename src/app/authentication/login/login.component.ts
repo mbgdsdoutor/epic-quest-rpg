@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.configurarForm();
     if (this.tokenStorageService.isLogged()) {
-      this.router.navigateByUrl('/social/explore');
+      this.router.navigateByUrl('/adventures/mine');
     }
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorageService.saveToken('Bearer ' + data.token);
           this.tokenStorageService.saveUser(data.user);
           this.loadingService.stopLoadingBar();
-          this.router.navigateByUrl('/social/explore');
+          this.router.navigateByUrl('/adventures/mine');
         }
       },
       (err) => {

@@ -1,6 +1,11 @@
 <ficha-stepper *ngIf="!isMaster && showFichaCreation"></ficha-stepper>
-<xp-manager [aventura]="adventure"></xp-manager>
-<aside-menu [isMaster]="isMaster" [adventureId]="adventure.id"></aside-menu>
+<xp-manager *ngIf="adventure && isMaster" [aventura]="adventure"></xp-manager>
+<level-up *ngIf="adventure && !showFichaCreation && !isMaster"></level-up>
+<aside-menu
+  *ngIf="adventure"
+  [isMaster]="isMaster"
+  [adventureId]="adventure.id"
+></aside-menu>
 <router-outlet></router-outlet>
 <ficha-viewer
   *ngIf="isFichaOpen"
@@ -8,12 +13,12 @@
   [fichas]="adventure.players"
   (hideFicha)="hideFicha()"
 ></ficha-viewer>
-<notes [adventure]="adventure"></notes>
+<notes *ngIf="adventure" [adventure]="adventure"></notes>
 <dices></dices>
 <!-- <chat></chat> -->
 
 <div class="main-options" [ngClass]="{ master: isMaster }">
-  <button *ngIf="isMaster" id="pencil-trigger" (click)="showPencilOptions()">
+  <button *ngIf="!isMaster" id="pencil-trigger" (click)="showPencilOptions()">
     <i class="material-icons">brush</i>
     <span>Pincel</span>
   </button>
@@ -55,7 +60,7 @@
   </svg>
 </div>
 
-<div class="player-info-container">
+<div class="player-info-container" *ngIf="adventure?.players.length > 0">
   <div
     class="player-info"
     *ngFor="let player of adventure.players"

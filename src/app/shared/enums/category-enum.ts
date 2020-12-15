@@ -5,5 +5,6 @@ export enum CategoryEnum {
   Concedido = 'Concedido',
   Tormenta = 'Tormenta',
   Raca = 'Raça', // inventei
+  Classe = 'Classe',
   Origem = 'Origem' // inevntei tbm
 }

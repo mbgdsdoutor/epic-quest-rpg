@@ -57,7 +57,7 @@ export class NewAdventureComponent implements OnInit {
       description: this.adventureDescription,
       photoUrl: this.adventurePhotoUrl,
       users: this.allUsers.filter(u => this.adventureUsers.map(e => e.value).includes(u.id)),
-      master: this.allUsers.filter(u => u.id === this.loggedUser.id)[0]
+      mestre: this.allUsers.filter(u => u.id === this.loggedUser.id)[0]
     }
     console.log('salvando aventura: ', adventure)
     this.adventureService.saveAdventure(adventure).subscribe(response => {

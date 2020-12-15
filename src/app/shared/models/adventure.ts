@@ -6,7 +6,7 @@ export interface Adventure {
   name: string;
   photoUrl: string;
   description: string;
-  master: User;
+  mestre: User;
   users: User[];
   players?: Player[];
   isSessionActive?: boolean;

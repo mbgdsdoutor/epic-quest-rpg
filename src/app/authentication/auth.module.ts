@@ -27,7 +27,7 @@ import { UserService } from './services/user.service';
   providers: [
     AuthService,
     UserService,
-    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ]
 })
 export class AuthModule { }

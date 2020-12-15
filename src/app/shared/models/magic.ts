@@ -1,5 +1,3 @@
-import { AttributesEnum } from '../enums/attributes-enum';
-
 export interface Magic {
   id: number;
   name: string;
@@ -12,8 +10,8 @@ export interface Magic {
   efect?: string;
   duration?: string;
   circle: 1 | 2 | 3 | 4 | 5;
-  area?: String;
-  resistence?: String;
+  area?: string;
+  resistence?: string;
 }
 
 export enum MagicSchools {

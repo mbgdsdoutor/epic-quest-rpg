@@ -28,9 +28,21 @@
               [src]="notification.userId.photoUrl"
             />
             <p class="notification-description">
-              <span *ngIf="notification.userId"
+              <span
+                *ngIf="
+                  notification.userId &&
+                  !notification.description.includes('Aceitou')
+                "
                 >{{ notification.userId.userName }} gostaria de ser seu amigo no
                 Epic Quest RPG.</span
+              >
+              <span
+                *ngIf="
+                  notification.userId &&
+                  notification.description.includes('Aceitou')
+                "
+                >{{ notification.userId.userName }} aceitou seu pedido de
+                amizade!.</span
               >
               <span *ngIf="notification.adventure"
                 >{{ notification.userId.userName }} gostaria de participar da
@@ -39,7 +51,11 @@
             </p>
             <div class="notification-options">
               <button (click)="aceptNotification(notification, i)">
-                aceitar
+                {{
+                  notification.description.includes("Aceitou")
+                    ? "Ok"
+                    : "Aceitar"
+                }}
               </button>
             </div>
           </div>

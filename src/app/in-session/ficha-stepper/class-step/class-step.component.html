@@ -25,33 +25,28 @@
 </div>
 
 <div>
-  <ul>
-    <li>
-      <p>
-        <span
-          >Perícias: (Escolha até
-          {{ ficha.class.periciasChoose[0].quantity }})</span
-        >
-      </p>
-    </li>
-    <li>
-      <ng-select
-        [(ngModel)]="ficha.pericias"
-        id="pericias"
-        [multiple]="true"
-        [maxSelectedItems]="maxQntyPericias"
-        [clearable]="false"
-        [closeOnSelect]="false"
-      >
-        <ng-option
-          *ngFor="let pericia of pericias"
-          [value]="pericia"
-          [disabled]="disabledPericias.includes(pericia.id) ? true : false"
-          >{{ pericia.name }}</ng-option
-        >
-      </ng-select>
-    </li>
-  </ul>
+  <p>
+    <span
+      >Perícias: (Escolha até
+      {{ ficha.class.periciasChoose[0].quantity }})</span
+    >
+  </p>
+
+  <ng-select
+    [(ngModel)]="ficha.pericias"
+    id="pericias"
+    [multiple]="true"
+    [maxSelectedItems]="maxQntyPericias"
+    [clearable]="false"
+    [closeOnSelect]="false"
+  >
+    <ng-option
+      *ngFor="let pericia of pericias"
+      [value]="pericia"
+      [disabled]="disabledPericias.includes(pericia.id) ? true : false"
+      >{{ pericia.name }}</ng-option
+    >
+  </ng-select>
 </div>
 <!-- 
 <div class="">

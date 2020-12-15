@@ -1,0 +1,18 @@
+<div id="level-up" class="hideModal">
+  <div class="container" *ngIf="actualFicha">
+    <h3>Parabéns! Você upou para o nível {{ actualLevel }}!</h3>
+    <div class="form">
+      <div class="field">
+        <label for="atributo">Atributo</label>
+        <ng-select [(ngModel)]="atributo" id="atributo">
+          <ng-option *ngFor="let attribute of attributes" [value]="attribute">{{
+            attribute
+          }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="form-actions">
+        <button class="button button--primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

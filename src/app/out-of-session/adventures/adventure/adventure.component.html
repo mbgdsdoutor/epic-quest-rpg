@@ -31,9 +31,9 @@
         <p class="user-info-email">
           <b>Mestre: </b>
           <span
-            *ngIf="adventure.master"
-            [routerLink]="['/social/profile/' + adventure.master.id]"
-            >{{ adventure.master.userName }}</span
+            *ngIf="adventure.mestre"
+            [routerLink]="['/social/profile/' + adventure.mestre.id]"
+            >{{ adventure.mestre.userName }}</span
           >
         </p>
         <p class="user-info-email">
@@ -47,5 +47,11 @@
         <p class="user-info-description">{{ adventure.description }}</p>
       </div>
     </div>
+  </div>
+  <div class="user-container" *ngIf="adventures.length === 0">
+    Não foi encontrada nenhuma aventura.
+    <b [routerLink]="['/adventures/new']"
+      >Crie a sua propria aventura com seus amigos!</b
+    >
   </div>
 </div>

@@ -37,19 +37,18 @@ export class InSessionComponent {
     this.adventureService.findById(this.urlId).subscribe(response => {
       console.log('adventure', response);
       this.adventure = response;
-      console.log(this.adventure.players)
-      console.log(this.user.id)
       if (this.adventure.players.filter(p => p.userId === this.user.id).length === 0) {
         this.showFichaCreation = true;
       }
+      this.isMaster = this.adventure.mestre.id === this.user.id;
       this.loadingService.stopLocalLoading('body');
       this.alertService.success('Sessão Iniciada!');
     }, (err) => {
       this.loadingService.stopLocalLoading('body');
       this.alertService.error('Erro ao iniciar sessão!');
     })
-    //this.isMaster = this.adventure.master.id === this.user.id;
-    this.isMaster = this.adventure.master.id === 2;
+    //this.isMaster = this.adventure.mestre.id === this.user.id;
+
   }
 
   // showChat(): void {

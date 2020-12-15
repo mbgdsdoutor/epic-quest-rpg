@@ -30,6 +30,7 @@ import { PericiasComponent } from './ficha-viewer/pericias/pericias.component';
 import { HabilidadesComponent } from './ficha-viewer/habilidades/habilidades.component';
 import { XPManagerComponent } from './components/xp-manager/xp-manager.component';
 import { FichaService } from '../out-of-session/services/ficha.service';
+import { LevelUpComponent } from './components/level-up/level-up.component';
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { FichaService } from '../out-of-session/services/ficha.service';
     ItensComponent,
     PericiasComponent,
     XPManagerComponent,
+    LevelUpComponent,
   ],
   providers: [
     AdventureService,
