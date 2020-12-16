@@ -864,7 +864,7 @@ export const fullOrigensMock: Origem[] = [{
 }, {
   id: 3,
   name: 'Aristocrata',
-  description: 'Você nasceu na nobreza. Recebeueducação sofisticada em assuntosacadêmicos, política mercantil,torneios de cavalaria ou mesmo conjuração arcana, dependendo das tradições emsua linhagem e desejos deseus pais. Você ainda procura cumprir seus compromissos como nobre? Lutapara conciliar as expectativasda família com a vidade aventuras? Oucortou totalmente seus laços como passado, mantendo apenas algunspertences valiosos econtatos úteis?',
+  description: 'Você nasceu na nobreza. Recebeu educação sofisticada em assuntos acadêmicos, política mercantil, torneios de cavalaria ou mesmo conjuração arcana, dependendo das tradições emsua linhagem e desejos deseus pais. Você ainda procura cumprir seus compromissos como nobre? Luta para conciliar as expectativas da família com a vidade aventuras? Ou cortou totalmente seus laços como passado, mantendo apenas alguns pertences valiosos econtatos úteis?',
   itemChooseOne: false,
   items: [{
     name: 'Jóia da familia',
@@ -877,7 +877,7 @@ export const fullOrigensMock: Origem[] = [{
     {
       name: 'Comandar',
       category: CategoryEnum.Origem,
-      description: 'asdf ',
+      description: 'Você pode gastar uma ação de movimento e 1 PM para gritar ordens para seus aliados em alcance médio. Eles recebem +1 em testes de perícia até o fim da cena.',
       requirement: null
     }, {
       name: 'Sangue Azul',
@@ -886,7 +886,578 @@ export const fullOrigensMock: Origem[] = [{
       requirement: null
     }
   ],
-}];
+}, {
+  id: 4,
+  name: 'Artesão',
+  description: 'Você nasceu na nobreza. Recebeueducação sofisticada em assuntosacadêmicos, política mercantil,torneios de cavalaria ou mesmo conjuração arcana, dependendo das tradições emsua linhagem e desejos deseus pais. Você ainda procura cumprir seus compromissos como nobre? Lutapara conciliar as expectativasda família com a vidade aventuras? Oucortou totalmente seus laços como passado, mantendo apenas algunspertences valiosos econtatos úteis?',
+  itemChooseOne: false,
+  items: [{
+    name: 'Kit de Ofício',
+    description: 'Um item que você possa fabricar',
+    consumable: false,
+    value: 50,
+  }],
+  pericias: fullPericiasMock.filter(p => p.name === 'Ofício' || p.name === 'Vontade'),
+  poderes: [
+    {
+      name: 'Frutos do Trabalho',
+      category: CategoryEnum.Origem,
+      description: 'Quando passa em um teste de Ofício para sustento, você recebe o dobro do dinheiro. ',
+      requirement: null
+    }, {
+      name: 'Sortudo',
+      category: CategoryEnum.Origem,
+      description: 'Você pode gastar 3 PM para rolar novamente um teste recém realizado (apenas uma vez por teste).',
+      requirement: null
+    }
+  ],
+}, {
+  id: 5,
+  name: 'Artista',
+  description: 'Você possui talento, nasceu com um “dom” — pelo menos é o que outras pessoas gostam de pensar. Será verdade? Ou será que você apenas sentiu atração por certa forma de arte e treinou muito, muito mesmo? Enquanto o artesão fabrica itens “mundanos”, o artista produz entretenimento, alimento para o coração e alma. Talvez você apenas saiba entoar belas canções, aprendidas na infância com pais amorosos, ou ouvindo fadas na floresta. Ou talvez  seja um ator ou dançarino formado em alguma escola de artes prestigiada.',
+  itemChooseOne: true,
+  items: [{
+    name: 'Kit de Disfarces',
+    description: 'Disfarce-se nos momentos mais inoportunos, afinal, você é um artista.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Instrumento Musical',
+    description: 'Encante a todos com uma bela melodia.',
+    consumable: false,
+    value: 50,
+  }
+],
+  pericias: fullPericiasMock.filter(p => p.name === 'Atuação' || p.name === 'Enganação'),
+  poderes: [
+    {
+      name: 'Atraente',
+      category: CategoryEnum.Origem,
+      description: 'Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você.',
+      requirement: null
+    }, {
+      name: 'Dom Artístico',
+      category: CategoryEnum.Origem,
+      description: 'Quando usa a perícia Atuação para fazer uma apresentação e passa no teste, você ganha o dobro de tibares.',
+      requirement: null
+    }, {
+      name: 'Sortudo',
+      category: CategoryEnum.Origem,
+      description: 'Você pode gastar 3 PM para rolar novamente um teste recém realizado (apenas uma vez por teste).',
+      requirement: null
+    }, {
+      name: 'Torcida',
+      category: CategoryEnum.Origem,
+      description: 'Você recebe +2 em testes de perícia e Defesa quando tem a torcida a seu favor. Entenda-se por “torcida” qualquer número de criaturas inteligentes em alcance médio que não esteja realizando nenhuma ação além de torcer por você.',
+      requirement: null
+    }
+  ],
+}, {
+  id: 6,
+  name: 'Batedor',
+  description: 'Seja conduzindo caravanas através dos reinos, rastreando inimigos nos campos de batalha ou guiando exploradores nas vastidões selvagens, você aprendeu a achar caminhos e dirigir outros com segurança. Batedores podem surgir nas tribos mais primitivas, acompanhando grupos de caça, como profissionais sofisticados nas grandes cidades e forças militares ou ainda na perigosa atividade de caça-recompensas. Pouco importando a carreira que adotou mais tarde, como aventureiro, seu antigo treino acaba se revelando útil em numerosas ocasiões.',
+  itemChooseOne: true,
+  items: [{
+    name: 'Barraca',
+    description: 'Uma barraca para se abrigar... ou não.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Arma Simples ou Marcial',
+    description: 'Arma simples ou marcial de ataque à distância.',
+    consumable: false,
+    value: 50,
+  }
+],
+  pericias: fullPericiasMock.filter(p => p.name === 'Furtividade' || p.name === 'Percepção'|| p.name === 'Sobrevivência'),
+  poderes: [
+    {
+      name: 'À Prova de Tudo',
+      category: CategoryEnum.Origem,
+      description: 'Você não sofre penalidades em deslocamento e testes de Sobrevivência por clima ruim.',
+      requirement: null
+    }, {
+      name: 'Estilo de Disparo',
+      category: CategoryEnum.Origem,
+      description: 'Se estiver usando uma arma de disparo, você soma o bônus de Destreza nas rolagens de dano. Pré-requisito: treinado em Pontaria.',
+      requirement: null
+    }, {
+      name: 'Sentidos Aguçados',
+      category: CategoryEnum.Origem,
+      description: 'Você recebe +2 em Percepção, não fica desprevenido contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha. Pré-requisitos: Sab 13, treinado em Percepção.',
+      requirement: null
+    }
+  ],
+},{
+  id: 7,
+  name: 'Charlatão',
+  description: 'Você sempre teve talento para resolver problemas com conversa, sincera ou nem tanto. Talvez tenha aprendido andando com más companhias. Por ser pequeno e fraco em meio a guerreiros truculentos, talvez fosse pura questão de sobrevivência. Ou foi tocado por Hyninn, Sszzaas ou outra entidade traiçoeira. Seja como for, após um pouco de diálogo, você percebe o que as pessoas mais querem ou temem, usando palavras para vencer obstáculos e abrir caminhos tão facilmentequanto espadas e magias. Ou melhor.',
+  itemChooseOne: false,
+  items: [{
+    name: 'Jóia Falsificada',
+    description: 'Uma jóia que parece ter valor.',
+    consumable: false,
+    value: 100,
+  }, {
+    name: 'Kit de Disfarces',
+    description: 'Um kit de disfarces variados.',
+    consumable: false,
+    value: 50,
+  }
+],
+  pericias: fullPericiasMock.filter(p => p.name === 'Enganação' || p.name === 'Jogatina'),
+  poderes: [
+    {
+      name: 'Alpinista Social',
+      category: CategoryEnum.Origem,
+      description: 'Você pode substituir testes de Diplomacia por testes de Enganação.',
+      requirement: null
+    }, {
+      name: 'Aparência Inofensiva',
+      category: CategoryEnum.Origem,
+      description: 'A primeira criatura inteligente (Int 3 ou mais) que atacar você em uma cena deve fazer um teste de Vontade (CD Car). Se falhar, perderá sua ação. Este poder só funciona uma vez por cena; independentemente de a criatura falhar ou não no teste, poderá atacá-lo nas rodadas seguintes. Pré-requisito: Car 13.',
+      requirement: null
+    }, {
+      name: 'Sortudo',
+      category: CategoryEnum.Origem,
+      description: 'Você recebe +2 em Percepção, não fica desprevenido contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha. Pré-requisitos: Sab 13, treinado em Percepção.',
+      requirement: null
+    }
+  ],
+}, {
+  id: 8,
+  name: 'Circense',
+  description: 'Você adquiriu treinamento como acrobata, malabarista, mágico ou outra forma de arte circense que envolva destreza. Talvez tenha aprendido sozinho, durante as brincadeiras de infância. Talvez tenha sido ensinado por um ente querido, tornando essa arte uma forte ligação com seu passado. Ou ainda, é possível que tenha sido forçado a aprender um ou outro truque para sobreviver nas ruas. De qualquer forma, são aptidões que podem acabar sendo úteis em suas aventuras.',
+  itemChooseOne: false,
+  items: [{
+    name: 'Traje de Artista',
+    description: 'Trajes que lhe fazem parecer um artista.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Três Bolas Coloridas',
+    description: 'Bolas coloridas para malabarismo.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Baralho',
+    description: 'Um baralho de cartas para impressionar.',
+    consumable: false,
+    value: 50,
+  }
+],
+  pericias: fullPericiasMock.filter(p => p.name === 'Acrobacia' || p.name === 'Atuação'|| p.name === 'Reflexos'),
+  poderes: [
+    {
+      name: 'Truque de Mágica',
+      category: CategoryEnum.Origem,
+      description: 'Você pode lançar as magias Explosão de Chamas, Hipnotismo e Transmutar Objetos, mas apenas com o aprimoramento Truque.',
+      requirement: null
+    }, {
+      name: 'Acrobático',
+      category: CategoryEnum.Origem,
+      description: 'Você pode usar seu modificador de Destreza em vez de Força em testes de Atletismo. Além disso, terreno difícil não reduz seu deslocamento nem o impede de realizar investidas. Pré-requisito: Des 15.',
+      requirement: null
+    }, {
+      name: 'Parceiro Animal',
+      category: CategoryEnum.Origem,
+      description: 'Você possui um parceiro animal ou humanoide que o acompanha em aventuras. Escolha os detalhes dele, como nome, aparência e personalidade. Em termos de jogo, é um aliado iniciante de um tipo a sua escolha (veja a página XX). O parceiro obedece às suas ordens e se arrisca para ajudá-lo. Entretanto, se for maltratado, pode parar de segui-lo (de acordo com o mestre). Se perder seu parceiro, você recebe outro no início da próxima aventura. Pré-requisitos: treinado em Adestramento (parceiro animal) ou Diplomacia (parceiro humanoide), 6º nível de personagem.',
+      requirement: null
+    }
+  ],
+}, {
+  id: 9,
+  name: 'Criminoso',
+  description: 'Fazer o bem é bonito, mas não enche barriga — pelo menos, assim você foi ensinado. Por necessidade, ambição ou apenas sem conhecer outra vida, você foi um bandido durante boa parte da juventude. Furtava bolsas, trapaceava em jogos de taverna, emboscava viajantes nas estradas ou até aceitava contratos para matar. Agia sozinho, com seu próprio bando, pertencia a uma guilda de ladrões. Tornar-se aventureiro talvez seja uma forma de expiar por seus crimes, ou apenas o passo seguinte; em vez de mercadores, roubar tesouros de dragões!',
+  itemChooseOne: true,
+  items: [{
+    name: 'Kit de Ladrão',
+    description: 'Utensílios úteis para um ladrão.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Kit de Disfarces',
+    description: 'Um kit de disfarces variados.',
+    consumable: false,
+    value: 50,
+  }],
+  pericias: fullPericiasMock.filter(p => p.name === 'Enganação' || p.name === 'Furtividade'|| p.name === 'Ladinagem'),
+  poderes: [
+    {
+      name: 'Pungista',
+      category: CategoryEnum.Origem,
+      description: 'Você pode fazer testes de Ladinagem para sustento, como a perícia Ofício.',
+      requirement: null
+    }, {
+      name: 'Venefício',
+      category: CategoryEnum.Origem,
+      description: 'Quando usa um veneno, você não corre risco de se envenenar acidentalmente. Além disso, a CD para resistir aos seus venenos aumenta em +2. Pré-requisito: treinado em Ofício (alquimia).',
+      requirement: null
+    }
+  ],
+}, {
+  id: 10,
+  name: 'Curandeiro',
+  description: 'Que bom seria se a cura milagrosa dos clérigos estivesse ao alcance de todos! Talvez você tenha sido ajudante do curandeiro da vila, testemunhando quando ele tratava doenças e lesões sem conjurar qualquer magia. Ou teve um estudo formal e sofisticado de medicina no Colégio Real de Médicos em Salistick. De qualquer modo, você é treinado em curar com remédios e tratamentos naturais — algo sempre útil em grupos de aventureiros, mesmo quando há um clérigo por perto.',
+  itemChooseOne: false,
+  items: [{
+    name: 'Bálsamo restaurador',
+    description: 'Bálsamo que faz restaurar.',
+    consumable: false,
+    value: 50,
+  }, {
+    name: 'Kit de Medicamentos',
+    description: 'Um kit de medicamentos variados.',
+    consumable: false,
+    value: 50,
+  }],
+  pericias: fullPericiasMock.filter(p => p.name === 'Cura' || p.name === 'Vontade'),
+  poderes: [
+    {
+      name: 'Curandeiro',
+      category: CategoryEnum.Origem,
+      description: 'Que bom seria se a cura milagrosa dos clérigos estivesse ao alcance de todos! Talvez você tenha sido ajudante do curandeiro da vila, testemunhando quando ele tratava doenças e lesões sem conjurar  qualquer magia. Ou teve um estudo formal e sofisticado  de medicina no Colégio Real de Médicos em Salistick.  De qualquer modo, você é treinado em curar com remédios e tratamentos naturais — algo sempre útil em grupos de aventureiros, mesmo quando há um clérigo por perto.',
+      requirement: null
+    }, {
+      name: 'Venefício',
+      category: CategoryEnum.Origem,
+      description: 'Quando usa um veneno, você não corre risco de se envenenar acidentalmente. Além disso, a CD para resistir aos seus venenos aumenta em +2. Pré-requisito: treinado em Ofício (alquimia).',
+      requirement: null
+    },{
+      name: 'Médico de Campo',
+      category: CategoryEnum.Origem,
+      description: 'Sempre que você faz um teste de Cura para primeiros socorros, o paciente também recupera 1d6 PV.',
+      requirement: null
+    }
+  ],
+  }, {
+    id: 11,
+    name: 'Eremita',
+    description: 'Você passou parte da vida isolado, afastado da sociedade. Foi banido ainda criança, por nascer lefou ou com alguma deformidade da Tormenta. Ouviu um chamado dos deuses, buscando o isolamento para meditar sobre seu significado. Viveu enclausurado em um mosteiro, mantendo contato apenas com poucos monges silenciosos. Ou foi praticante de artes arcanas proibidas, mantendo-se longe de olhares curiosos. A vida simples o tornou forte de corpo e espírito. Mas, em algum momento, você decidiu que bastava — ou teve sua tranquilidade interrompida.',
+    itemChooseOne: false,
+    items: [{
+      name: 'Barraca',
+      description: 'Uma barraca para se abrigar... ou não.',
+      consumable: false,
+      value: 50,
+    }, {
+      name: 'Kit de Medicamentos',
+      description: 'Um kit de medicamentos variados.',
+      consumable: false,
+      value: 50,
+    }],
+    pericias: fullPericiasMock.filter(p => p.name === 'Misticismo' || p.name === 'Religião' || p.name === 'Sobrevivência'),
+    poderes: [
+      {
+        name: 'Busca Interior',
+        category: CategoryEnum.Origem,
+        description: 'Quando você e seus companheiros estão diante de um mistério, incapazes de prosseguir, você pode gastar 1 PM para meditar sozinho durante algum tempo e receber uma dica do mestre',
+        requirement: null
+      }, {
+        name: 'Lobo Solitário',
+        category: CategoryEnum.Origem,
+        description: 'Você recebe +1 em testes de perícia e Defesa se estiver sem nenhum aliado em alcance curto. Você não sofre penalidade por usar a perícia Cura em si mesmo.',
+        requirement: null
+      }
+    ],
+    }, {
+      id: 12,
+      name: 'Escravo',
+      description: 'Ainda que escravidão seja ilegal no Reinado, em Arton a liberdade não é para todos. De minotauros odiosos no Império de Tauron aos cruéis mestres subterrâneos de Trollkyrka, várias culturas praticam a escravidão. Você já nasceu escravo, ou fez parte de um povo derrotado na guerra, ou apenas foi capturado em alguma rua escura para depois despertar na jaula, em algum mercado clandestino? Encontrou uma chance de escapar, tornando-se agora um escravo foragido? Recebeu a liberdade como recompensa por realizar um grande favor a seu dono? Foi resgatado por aventureiros que agora se tornaram sua nova família?',
+      itemChooseOne: false,
+      items: [{
+        name: 'Algemas',
+        description: 'Algemas para prender alguém... ou algo.',
+        consumable: false,
+        value: 50,
+      }, {
+        name: 'Ferramenta Pesada',
+        description: 'Uma ferramenta pesada para várias utilidades.',
+        consumable: false,
+        value: 50,
+      }],
+      pericias: fullPericiasMock.filter(p => p.name === 'Atletismo' || p.name === 'Fortitude' || p.name === 'Furtividade'),
+      poderes: [
+        {
+          name: 'Desejo de Liberdade',
+          category: CategoryEnum.Origem,
+          description: 'Ninguém voltará a torná-lo um escravo! Você recebe +5 em testes contra efeitos que possam aprisioná-lo, como a manobra agarrar ou a magia Imobilizar.',
+          requirement: null
+        }, {
+          name: 'Vitalidade',
+          category: CategoryEnum.Origem,
+          description: 'Você recebe +1 PV por nível de personagem e +2 em Fortitude. Pré-requisito: Con 13.',
+          requirement: null
+        }
+      ],
+      }, {
+        id: 13,
+        name: 'Forasteiro',
+        description: 'Você veio de longe. Sua cultura nativa é quase ou totalmente desconhecida no Reinado, tornando-o uma figura exótica, de hábitos estranhos. Você pertence a uma tribo perdida nas Montanhas Sanguinárias? Nasceu em uma bela cidade de cúpulas douradas no Deserto da Perdição? Navegou em navios audazes desde os Reinos de Moreania? Talvez você até tenha chegado de outro mundo, através de algum portal mágico. Será que conseguiu ajustar-se a este Reinado, agora chamando-o de lar? Ou procura até hoje o caminho de volta para casa?',
+        itemChooseOne: false,
+        items: [{
+          name: 'Diário de Viagem',
+          description: 'Um diário para anotações da viagem.',
+          consumable: false,
+          value: 50,
+        }, {
+          name: 'Traje de Viagem Estrangeiro',
+          description: 'Uma traje estrangeiro para viagens.',
+          consumable: false,
+          value: 50,
+        }, {
+          name: 'Instrumento Musical Exótico',
+          description: 'Instrumento musical exótico para encantar com belas melodias.',
+          consumable: false,
+          value: 50,
+        }],
+        pericias: fullPericiasMock.filter(p => p.name === 'Cavalgar' || p.name === 'Pilotar' || p.name === 'Sobrevivência'),
+        poderes: [
+          {
+            name: 'Cultura Exótica',
+            category: CategoryEnum.Origem,
+            description: 'Por sua diferente visão de mundo, você encontra soluções inesperadas. Você pode gastar 1 PM para fazer um teste de perícia somente treinada, mesmo sem ser treinado na perícia.',
+            requirement: null
+          }, {
+            name: 'Lobo Solitário',
+            category: CategoryEnum.Origem,
+            description: 'Você recebe +1 em testes de perícia e Defesa se estiver sem nenhum aliado em alcance curto. Você não sofre penalidade por usar a perícia Cura em si mesmo.',
+            requirement: null
+          }
+        ],
+        },  {
+          id: 14,
+          name: 'Gladiador',
+          description: 'Em vários pontos do Reinado combates de arena são um entretenimento popular — a ponto de atrair muitos jovens praticantes. Podem ser combates até a morte ou apenas encenações elaboradas ou ainda corridas de cavalo, arquearia e outros esportes não tão sangrentos. Você acabou envolvido nesse mundo glamoroso por ser tradição em sua família, por admirar algum gladiador renomado ou apenas por sede de fama e fortuna. Um evento traumático, uma desilusão ou o puro tédio levou você a abandonar as arenas e aplausos, usando sua experiência em torneios para viver aventuras.',
+          itemChooseOne: false,
+          items: [{
+            name: 'Arma Marcial ou Exótica',
+            description: 'Uma Arma Marcial ou Exótica para necessidades de combate.',
+            consumable: false,
+            value: 50,
+          }, {
+            name: 'Item Sem Valor',
+            description: 'um item sem valor recebido de um admirador.',
+            consumable: false,
+            value: 50,
+          }],
+          pericias: fullPericiasMock.filter(p => p.name === 'Atuação' || p.name === 'Luta'),
+          poderes: [
+            {
+              name: 'Atraente',
+              category: CategoryEnum.Origem,
+              description: 'Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você. Pré-requisito: Car 13',
+              requirement: null
+            }, {
+              name: 'Torcida',
+              category: CategoryEnum.Origem,
+              description: 'Você recebe +2 em testes de perícia e Defesa quando tem a torcida a seu favor. Entenda-se por “torcida” qualquer número de criaturas inteligentes em alcance médio que não esteja realizando nenhuma  ação além de torcer por você. Pré-requisito: Car 13.',
+              requirement: null
+            },{
+              name: 'Pão e Circo',
+              category: CategoryEnum.Origem,
+              description: 'Por seu treino em combates de exibição, você sabe “bater sem machucar”. Pode escolher causar dano não letal sem sofrer a penalidade de –5.',
+              requirement: null
+            }
+          ],
+          }, {
+            id: 15,
+            name: 'Guarda',
+            description: 'Você atuou como agente da lei em uma vila ou cidade. Nem de longe uma profissão tão glamorosa ou emocionante quanto parece; boa parte de seu trabalho resumia-se a guardar um portão, fazer rondas tediosas ou recolher bêbados em tavernas. Pelo menos você recebeu algum treino em investigação e combate. Também tem consigo alguma boa arma, que “esqueceu” de devolver quando abandonou a milícia para se tornar aventureiro.',
+            itemChooseOne: false,
+            items: [{
+              name: 'Apito',
+              description: 'Um apito para chamar atenção.',
+              consumable: false,
+              value: 50,
+            }, {
+              name: 'Insígnia da Milícia',
+              description: 'Uma belíssima insígnia para exibir.',
+              consumable: false,
+              value: 50,
+            }, {
+              name: 'Arma Marcial',
+              description: 'Uma arma marcial para combates.',
+              consumable: false,
+              value: 50,
+            }],
+            pericias: fullPericiasMock.filter(p => p.name === 'Investigação' || p.name === 'Luta' || p.name === 'Percepção'),
+            poderes: [
+              {
+                name: 'Detetive',
+                category: CategoryEnum.Origem,
+                description: 'Você pode substituir testes de Percepção ou Intuição por testes de Investigação.',
+                requirement: null
+              }, {
+                name: 'Invetigador',
+                category: CategoryEnum.Origem,
+                description: 'Você recebe +2 em Investigação e soma seu bônus de Inteligência em Intuição. Pré-requisito: Int 13.',
+                requirement: null
+              }
+            ],
+            }, {
+              id: 16,
+              name: 'Herdeiro',
+              description: 'Você atuou como agente da lei em uma vila ou cidade. Nem de longe uma profissão tão glamorosa ou emocionante quanto parece; boa parte de seu trabalho resumia-se a guardar um portão, fazer rondas tediosas ou recolher bêbados em tavernas. Pelo menos você recebeu algum treino em investigação e combate. Também tem consigo alguma boa arma, que “esqueceu” de devolver quando abandonou a milícia para se tornar aventureiro.',
+              itemChooseOne: false,
+              items: [{
+                name: 'Símbolo de Herança',
+                description: 'Um símbolo de sua herança, como um anel de sinete ou manto cerimonial. Enquanto estiver com esse item, você pode ser reconhecido por sua descendência, o que pode ser bom... ou não!',
+                consumable: false,
+                value: 50,
+              }],
+              pericias: fullPericiasMock.filter(p => p.name === 'Misticismo' || p.name === 'Nobreza' || p.name === 'Ofício'),
+              poderes: [
+                {
+                  name: 'Comandar',
+                  category: CategoryEnum.Origem,
+                  description: 'Você pode gastar uma ação de movimento e 1 PM para gritar ordens para seus aliados em alcance médio. Eles recebem +1 em testes de perícia até o fim da cena. Pré-requisito: Car 13.',
+                  requirement: null
+                }, {
+                  name: 'Herança',
+                  category: CategoryEnum.Origem,
+                  description: 'Você herdou um item mundano ou mágico de até T$ 1.000. Você pode escolher este poder duas vezes, para um item de até T$ 2.000.',
+                  requirement: null
+                }
+              ],
+              },{
+                id: 17,
+                name: 'Membro da Guilda',
+                description: 'Você foi, ou ainda é, membro atuante em uma grande guilda — uma associação de artesãos, mercadores, magos, criminosos ou mesmo aventureiros. A guilda forneceu o treinamento e equipamento necessários para suas atividades, esperando que você seja útil em troca. Você se manteve fiel a seus patronos, cumprindo missões e colhendo os benefícios de pertencer a uma vasta organização? Ou deixou essa vida para trás, sendo agora desprezado ou até caçado por seus antigos mestres? ',
+                itemChooseOne: true,
+                items: [{
+                  name: 'Kit de Ladrão',
+                  description: 'Itens específicos para ladrões',
+                  consumable: false,
+                  value: 50,
+                },                {
+                  name: 'Kit de Ofício',
+                  description: 'Itens característicos de ofício.',
+                  consumable: false,
+                  value: 50,
+                }],
+                pericias: fullPericiasMock.filter(p => p.name === 'Diplomacia' || p.name === 'Enganação' || p.name === 'Misticismo' || p.name === 'Ofício'),
+                poderes: [
+                  {
+                    name: 'Foco em Perícia',
+                    category: CategoryEnum.Origem,
+                    description: 'Escolha uma perícia. Quando faz um teste dessa perícia, você pode gastar 1 PM para rolar dois dados e usar o melhor resultado. Você pode escolher este poder outras vezes para perícias diferentes. Este poder não pode ser aplicado em Luta e Pontaria (mas veja Foco em Arma). Pré-requisito: treinado na perícia escolhida.',
+                    requirement: null
+                  }, {
+                    name: 'Rede de Contatos',
+                    category: CategoryEnum.Origem,
+                    description: 'Graças à influência de sua guilda, você pode substituir testes de Investigação por testes de Diplomacia.',
+                    requirement: null
+                  }
+                ],
+                }, {
+                  id: 18,
+                  name: 'Mercador',
+                  description: 'Seguindo uma tradição de família, após herdar um estabelecimento ou apenas como um jovem empregado, você atuou como comerciante — pelo menos por algum tempo. Uma tenda modesta em algum grande mercado urbano? Uma caravana mercante cruzando o Reinado? Um belo bazar na prestigiada cidade voadora de Vectora? Após alguns anos de negociações e jornadas (nem tão tranquilas quanto outros imaginam), você talvez não tenha ficado rico, mas reuniu algum equipamento e dinheiro suficientes para começar carreira como aventureiro.',
+                  itemChooseOne: false,
+                  items: [{
+                    name: 'Uma Carroça',
+                    description: 'Uma simples e charmosa carroça',
+                    consumable: false,
+                    value: 50,
+                  }, {
+                    name: 'Um trobo',
+                    description: 'Um eficiente trobo.',
+                    consumable: false,
+                    value: 50,
+                  }, {
+                    name: 'Mercadorias',
+                    description: 'Mercadorias para vender no valor de T$ 100.',
+                    consumable: false,
+                    value: 100,
+                  }],
+                  pericias: fullPericiasMock.filter(p => p.name === 'Diplomacia' || p.name === 'Intuição' || p.name === 'Ofício'),
+                  poderes: [
+                    {
+                      name: 'Proficiência',
+                      category: CategoryEnum.Origem,
+                      description: 'Escolha uma proficiência: armas marciais, armas de fogo, armaduras pesadas ou escudos (se for proficiente em armas marciais, você também pode escolher armas exóticas). Você recebe essa  proficiência. Você pode escolher este poder outras  vezes para proficiências diferentes.',
+                      requirement: null
+                    }, {
+                      name: 'Negociação',
+                      category: CategoryEnum.Origem,
+                      description: 'Você pode vender itens por 2/3 do seu preço, em vez de metade do preço.',
+                      requirement: null
+                    }, {
+                      name: 'Sortudo',
+                      category: CategoryEnum.Origem,
+                      description: 'Você pode gastar 3 PM para rolar novamente um teste recém realizado (apenas uma vez por teste).',
+                      requirement: null
+                    }],
+                  }, {
+                    id: 19,
+                    name: 'Minerador',
+                    description: 'Ser aventureiro é a profissão mais perigosa de todas; ser mineiro, talvez a segunda mais perigosa. Você mergulhou nas profundezas da terra atrás de metais necessários à civilização ou riquezas em gemas preciosas. Enquanto humanos e outras raças consideram essa vida um pesadelo, quase todos os anões acreditam ser a mais feliz das carreiras. A escuridão e o sufocamento dos subterrâneos talvez tenham sido assustadores, mas trouxeram a você bens materiais valiosos, bem como informação profunda (sem trocadilhos) sobre túneis e masmorras.',
+                    itemChooseOne: false,
+                    items: [{
+                      name: 'Gemas Preciosas',
+                      description: 'Gemas preciosas com valor.',
+                      consumable: false,
+                      value: 100,
+                    },{
+                      name: 'Picareta',
+                      description: 'Uma precisa picareta.',
+                      consumable: false,
+                      value: 50,
+                    }],
+                    pericias: fullPericiasMock.filter(p => p.name === 'Atleticismo' || p.name === 'Fortitude' || p.name === 'Ofício'),
+                    poderes: [
+                      {
+                        name: 'Ataque Poderoso',
+                        category: CategoryEnum.Origem,
+                        description: 'Declare que está usando este poder antes de fazer um ataque corpo a corpo. Você sofre –2 no teste de ataque, mas recebe +5 na rolagem de dano. Pré-requisito: For 13.',
+                        requirement: null
+                      }, {
+                        name: 'Escavador',
+                        category: CategoryEnum.Origem,
+                        description: 'Você se torna proficiente em picareta e não sofre penalidade em deslocamento por terreno difícil em masmorras e subterrâneos.',
+                        requirement: null
+                      }, {
+                        name: 'Sentidos Aguçados',
+                        category: CategoryEnum.Origem,
+                        description: 'Você recebe +2 em Percepção, não fica desprevenido  contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha. Pré- requisitos: Sab 13, treinado em Percepção.',
+                        requirement: null
+                      }],
+                    }, {
+                      id: 20,
+                      name: 'Nômade',
+                      description: 'Até onde se lembra, você nunca pertenceu a um só lugar. Sua família viajava constantemente, como parte de alguma grande caravana comercial, peregrinação religiosa ou algum povo primitivo que nunca praticou agricultura. Ou talvez suas razões para viajar sejam bastante diferentes e pessoais — após a quase extinção de seu povo, muitos elfos temem criar raízes, enquanto a deusa Valkaria exige que seus devotos se mantenham sempre em viagem. Para você, habituado às estradas e sem laços com nenhuma terra, bastou um pequeno passo para se tornar aventureiro.',
+                      itemChooseOne: false,
+                      items: [{
+                        name: 'Bordão',
+                        description: 'Um belo bordão.',
+                        consumable: false,
+                        value: 50,
+                      },{
+                        name: 'Bússola',
+                        description: 'Uma precisa bússola.',
+                        consumable: false,
+                        value: 50,
+                      }],
+                      pericias: fullPericiasMock.filter(p => p.name === 'Cavalgar' || p.name === 'Pilotagem' || p.name === 'Sobrevivência'),
+                      poderes: [
+                        {
+                          name: 'Lobo Solitário',
+                          category: CategoryEnum.Origem,
+                          description: 'Você recebe +1 em testes de perícia e Defesa se estiver sem nenhum aliado em alcance curto. Você não sofre penalidade por usar a perícia Cura em si mesmo.',
+                          requirement: null
+                        }, {
+                          name: 'Mochileiro',
+                          category: CategoryEnum.Origem,
+                          description: 'Você não sofre penalidade de armadura e redução de deslocamento por transportar carga pesada.',
+                          requirement: null
+                        }, {
+                          name: 'Parceiro Animal',
+                          category: CategoryEnum.Origem,
+                          description: 'Você recebe +2 em Percepção, não fica desprevenido  contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha. Pré- requisitos: Sab 13, treinado em Percepção.',
+                          requirement: null
+                        }],
+                      }];
 
 export const alignmentMocks = [
   { name: AlignmentEnum.CaoticoBondoso, description: 'São espíritos livres que promovem o bem, mas preferem seguir seus próprios instintos e convicções, em vez de confiar em regras. Não acham errado mentir, trapacear e roubar para trazer bem-estar e alegria a outros. Também se preocupam em proteger a liberdade alheia, muitas vezes combatendo tiranos. Diante de uma criança roubando pão, ajuda a encobrir a fuga da criança. Pode até orientá-la a roubar de comerciantes ricos e inescrupulosos e também dividir seu roubo com outros famintos.' },
