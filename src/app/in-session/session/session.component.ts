@@ -56,7 +56,15 @@ export class SessionComponent {
     }, 100)
   }
 
-  startPosition(event: MouseEvent): void {
+  setBackgroundFromB64(file: string) {
+    const image = new Image();
+    image.onload = () => {
+      this.canvasContext.drawImage(image, 0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height)
+    };
+    image.src = file;
+  }
+
+  startPosition(event: MouseEvent, propagate?: boolean): void {
     this.isPainting = true;
     this.draw(event, true);
 
@@ -67,9 +75,13 @@ export class SessionComponent {
       color: this.pencilColor,
       mode: "begin"
     });
+
+    if (propagate) {
+      this.enviarStart(JSON.stringify(event));
+    }
   }
 
-  finishedPosition(event): void {
+  finishedPosition(event, propagate?: boolean): void {
     this.isPainting = false;
     this.canvasContext.beginPath();
 
@@ -80,6 +92,10 @@ export class SessionComponent {
       color: this.pencilColor,
       mode: "end"
     });
+
+    if (propagate) {
+      this.enviarEnd(JSON.stringify(event));
+    }
   }
 
   draw(event: MouseEvent, propagate: boolean): void {
@@ -152,8 +168,7 @@ export class SessionComponent {
     // this.canvasContext.stroke();
   }
 
-  undoDraw() {
-    this.enviarBg('oie');
+  undoDraw(propagate?: boolean) {
     let reverseDrawHistory = [...this.drawHistory].reverse()
     for (const draw of reverseDrawHistory) {
       if (draw.mode === 'end' || draw.mode === 'draw') {
@@ -168,12 +183,27 @@ export class SessionComponent {
       // if (this.drawHistory.length > 1) this.drawHistory.shift()
       this.redrawAll(true);
       // this.setBackground(this.imageWard)
+
+      if (propagate) {
+        this.enviarUndo();
+      }
     }, 1)
   }
 
-  resetDraw() {
+  resetDraw(propagate?: boolean) {
     this.canvasContext.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     this.drawHistory = [];
+    if (propagate) {
+      this.enviarReset();
+    }
+  }
+
+  propagateColor() {
+    this.enviarColor(this.pencilColor);
+  }
+
+  propagateWidth() {
+    this.enviarWidth('' + this.pencilWidth);
   }
 
   initWebSocket() {
@@ -194,7 +224,36 @@ export class SessionComponent {
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/bg`, (data) => {
-            console.log(data);
+            console.log('bg', data);
+            // this.setBackgroundFromB64(data.?);
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/reset`, (data) => {
+            this.resetDraw(false);
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/start`, (data) => {
+            console.log('start', data);
+            // this.startPosition(JSON.parse(data.?));
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/end`, (data) => {
+            console.log('end', data);
+            // this.finishedPosition(JSON.parse(data.?));
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/color`, (data) => {
+            console.log('color', data);
+            // this.pencilColor = data.?
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/width`, (data) => {
+            console.log('width', data);
+            // this.pencilWidth = parseInt(data.?, 10)
+          })
+
+          this.stompSubscribe(stompClient, `/user/${this.socketUserId}/undo`, (data) => {
+            this.undoDraw(false);
           })
         }
 
@@ -205,9 +264,33 @@ export class SessionComponent {
     this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/photo`, bg))
   }
 
+  enviarStart(event: string) {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/start`, 'start'))
+  }
+
+  enviarEnd(event: string) {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/end`, 'end'))
+  }
+
+  enviarReset() {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/reset`, 'reset'))
+  }
+
+  enviarUndo() {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/undo`, 'undo'))
+  }
+
+  enviarColor(color: string) {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/color`, 'color'))
+  }
+
+  enviarWidth(width: string) {
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/width`, 'width'))
+  }
+
   enviarDraw(pincel) {
-    const oka = JSON.stringify(pincel);
-    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/pincel`, pincel))
+    const pincelString = JSON.stringify(pincel);
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/pincel`, pincelString))
   }
 
   connect(username) {

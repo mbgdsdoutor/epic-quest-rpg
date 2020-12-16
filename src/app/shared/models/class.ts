@@ -17,15 +17,8 @@ export interface Class {
   /*Proficiências. Descreve que tipos de equipamento você sabe usar. Todos os personagens sabem
 usar armas simples e armaduras leves. Se você souber
 usar outros equipamentos, isso estará anotado aqui. */
-  levelUpEffect?: LevelUpEffect; // to do
-  // arcanista
-  arcanistWay: ArcanistWay | null;
-  // barbaro
-  barbarianWay: BarbarianWay | null;
-  // bardo
-  bardWay: BardWay | null;
-  // druida
-  // druidWay: DruidWay | null;
+  arcanistWay?: ArcanistWay | null;
+  magicSchoolsAllowed?: MagicSchools[];
 }
 
 export enum ProficienciasEnum {
@@ -134,4 +127,33 @@ export interface DruidWay {
   magicSchoolsAllowed: MagicSchool[]; // enum schools to do
   magicCirclesAllowed: number;
   magicMainAttribute: AttributesEnum;
+}
+
+export interface LevelUpObject {
+  level1: LevelUp,
+  level2: LevelUp,
+  level3: LevelUp,
+  level4: LevelUp,
+  level5: LevelUp,
+  level6: LevelUp,
+  level7: LevelUp,
+  level8: LevelUp,
+  level9: LevelUp,
+  level10: LevelUp,
+  level11: LevelUp,
+  level12: LevelUp,
+  level13: LevelUp,
+  level14: LevelUp,
+  level15: LevelUp,
+  level16: LevelUp,
+  level17: LevelUp,
+  level18: LevelUp,
+  level19: LevelUp,
+  level20: LevelUp,
+}
+
+export interface LevelUp {
+  fixedPowers?: Poder[],
+  choosePowers?: Poder[],
+  chooseMagic?: { magics: Poder[], quantity: number },
 }

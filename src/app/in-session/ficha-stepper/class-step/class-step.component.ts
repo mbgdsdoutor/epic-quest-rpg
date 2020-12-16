@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { AttributesEnum } from 'src/app/shared/enums/attributes-enum';
 import { Pericia } from 'src/app/shared/models/pericia';
 import { Player } from 'src/app/shared/models/player';
-import { Race } from 'src/app/shared/models/race';
-import { fullPericiasMock, raceMock } from 'src/app/utils/mocks';
+import { fullPericiasMock } from 'src/app/utils/mocks';
+import { barbarianLevelUpMock, bardLevelUpMock, bardPowers, druidLevelUpMock, druidPowers, warriorLevelUpMock } from 'src/app/utils/classMocks';
+import { LevelUp } from 'src/app/shared/models/class';
+import { magicSchoolsMock } from 'src/app/shared/models/magic';
+import { Poder } from 'src/app/shared/models/poder';
 
 @Component({
   selector: 'class-step',
@@ -16,6 +18,12 @@ export class ClassStepComponent {
   pericias: Pericia[] = fullPericiasMock;
   disabledPericias: number[] = [];
   maxQntyPericias = 0;
+  selectedPowers: Poder[];
+  barbarianLevelOne: LevelUp = barbarianLevelUpMock.level1;
+  bardLevelOne: LevelUp = { fixedPowers: bardPowers.filter(p => p.name === 'Inspiração + 1') };
+  magicSchools: string[] = magicSchoolsMock;
+  druidLevelOne: LevelUp = { fixedPowers: druidPowers.filter(p => p.name === 'Devoto' || p.name === 'Empatia Selvagem' || p.name === 'Forma Selvagem') };
+  warriorLevelOne: LevelUp = warriorLevelUpMock.level1;
 
   constructor() { }
 
@@ -32,5 +40,13 @@ export class ClassStepComponent {
 
     this.disabledPericias = [...this.ficha.pericias].map(p => p.id);
     this.maxQntyPericias = this.ficha.pericias.length + this.ficha.class.periciasChoose[0].quantity;
+  }
+
+  updateBardSchools() {
+    this.bardLevelOne = bardLevelUpMock(this.ficha.class.magicSchoolsAllowed).level1;
+  }
+
+  updateDruidSchools() {
+    this.druidLevelOne = druidLevelUpMock(this.ficha.class.magicSchoolsAllowed).level1;
   }
 }

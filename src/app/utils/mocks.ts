@@ -861,7 +861,7 @@ export const fullOrigensMock: Origem[] = [{
       requirement: null
     }
   ],
-},{
+}, {
   id: 3,
   name: 'Aristocrata',
   description: 'Você nasceu na nobreza. Recebeueducação sofisticada em assuntosacadêmicos, política mercantil,torneios de cavalaria ou mesmo conjuração arcana, dependendo das tradições emsua linhagem e desejos deseus pais. Você ainda procura cumprir seus compromissos como nobre? Lutapara conciliar as expectativasda família com a vidade aventuras? Oucortou totalmente seus laços como passado, mantendo apenas algunspertences valiosos econtatos úteis?',
@@ -1027,8 +1027,6 @@ export const fullClassesMock: Class[] = [{
   pericias: fullPericiasMock.filter(p => p.name === 'Misticismo' || p.name === 'Vontade'),
   periciasChoose: [{ quantity: 1, pericias: fullPericiasMock.filter(p => p.name === 'Conhecimento' || p.name === 'Iniciativa' || p.name === 'Ofício' || p.name === 'Percepção') }],
   arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
 }, {
   id: 2,
   name: 'Bárbaro',
@@ -1039,9 +1037,6 @@ export const fullClassesMock: Class[] = [{
   pericias: fullPericiasMock.filter(p => p.name === 'Fortitude' || p.name === 'Luta'),
   periciasChoose: [{ quantity: 4, pericias: fullPericiasMock.filter(p => p.name === 'Adestramento' || p.name === 'Atletismo' || p.name === 'Cavalgar' || p.name === 'Iniciativa' || p.name === 'Intimidação' || p.name === 'Ofício' || p.name === 'Percepção' || p.name === 'Pontaria' || p.name === 'Sobrevivência' || p.name === 'Vontade') }],
   proficiencias: [ProficienciasEnum.ArmasMarciais, ProficienciasEnum.Escudos],
-  arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
 }, {
   id: 3,
   name: 'Bardo',
@@ -1052,9 +1047,6 @@ export const fullClassesMock: Class[] = [{
   pericias: fullPericiasMock.filter(p => p.name === 'Atuação' || p.name === 'Reflexos'),
   periciasChoose: [{ quantity: 6, pericias: fullPericiasMock.filter(p => p.name === 'Acrobacia' || p.name === 'Cavalgar' || p.name === 'Conhecimento' || p.name === 'Diplomacia' || p.name === 'Enganação' || p.name === 'Furtividade' || p.name === 'Iniciativa' || p.name === 'Intuição' || p.name === 'Investigação' || p.name === 'Jogatina' || p.name === 'Ladinagem' || p.name === 'Luta' || p.name === 'Misticismo' || p.name === 'Nobreza' || p.name === 'Percepção' || p.name === 'Pontaria' || p.name === 'Religião' || p.name === 'Vontade') }],
   proficiencias: [ProficienciasEnum.ArmasMarciais],
-  arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
 }, {
   id: 4,
   name: 'Druida',
@@ -1065,9 +1057,6 @@ export const fullClassesMock: Class[] = [{
   pericias: fullPericiasMock.filter(p => p.name === 'Sobrevivência' || p.name === 'Vontade'),
   periciasChoose: [{ quantity: 4, pericias: fullPericiasMock.filter(p => p.name === 'Adestramento' || p.name === 'Atletismo' || p.name === 'Cavalgar' || p.name === 'Conhecimento' || p.name === 'Cura' || p.name === 'Fortitude' || p.name === 'Iniciativa' || p.name === 'Intuição' || p.name === 'Luta' || p.name === 'Misticismo' || p.name === 'Ofício' || p.name === 'Percepção' || p.name === 'Religião') }],
   proficiencias: [ProficienciasEnum.Escudos],
-  arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
 }, {
   id: 5,
   name: 'Guerreiro',
@@ -1077,9 +1066,6 @@ export const fullClassesMock: Class[] = [{
   levelUpManaPoints: 3,
   pericias: fullPericiasMock.filter(p => p.name === 'Fortitude'),
   periciasChoose: [{ quantity: 1, pericias: fullPericiasMock.filter(p => p.name === 'Luta' || p.name === 'Pontaria') }, { quantity: 2, pericias: fullPericiasMock.filter(p => p.name === 'Adestramento' || p.name === 'Atletismo' || p.name === 'Cavalgar' || p.name === 'Guerra' || p.name === 'Iniciativa' || p.name === 'Intimidação' || p.name === 'Luta' || p.name === 'Ofício' || p.name === 'Percepção' || p.name === 'Pontaria' || p.name === 'Reflexos') }],
-  arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
 }]
 
 export const fullMagicsMock: Magic[] = [
@@ -3311,116 +3297,4 @@ export const fullMagicsMock: Magic[] = [
     range: MagicRange.Pessoal,
     target: 'Você'
   },
-];
-
-const barbarianPowers: Poder[] = [
-  {
-    name: 'Fúria',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar 2 PM para invocar uma fúria selvagem, tornando-se temível em combate. Você recebe +2 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +2 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um ataque, habilidade ou magia',
-    requirement: null
-  },
-  {
-    name: 'Fúria +2',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar 4 PM para invocar uma fúria selvagem, tornando-se temível em combate. Você recebe +3 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +2 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um ataque, habilidade ou magia',
-    requirement: null
-  },
-  {
-    name: 'Fúria +3',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar 6 PM para invocar uma fúria selvagem, tornando-se temível em combate. Você recebe +4 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +2 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um ataque, habilidade ou magia',
-    requirement: null
-  },
-  {
-    name: 'Fúria +4',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar 8 PM para invocar uma fúria selvagem, tornando-se temível em combate. Você recebe +5 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +2 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um ataque, habilidade ou magia',
-    requirement: null
-  },
-  {
-    name: 'Fúria +5',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar 10 PM para invocar uma fúria selvagem, tornando-se temível em combate. Você recebe +6 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +2 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um ataque, habilidade ou magia',
-    requirement: null
-  },
-  {
-    name: 'Alma de Bronze',
-    category: CategoryEnum.Classe,
-    description: ' Quando entra em fúria, você recebe uma quantidade de pontos de vida temporários igual a metade do seu nível + mod. Força',
-    requirement: null
-  },
-  {
-    name: 'Aumento de Atributo',
-    category: CategoryEnum.Classe,
-    description: ' Você recebe +2 em um atributo a sua escolha. Você pode escolher este poder várias vezes. A partir da segunda vez que escolhê-lo para o mesmo atributo, o bônus diminui para +1.',
-    requirement: null
-  },
-  {
-    name: 'Brado Assustador',
-    category: CategoryEnum.Classe,
-    description: ' Você pode gastar uma ação de movimento e 1 PM para soltar um berro feroz. Todos os inimigos em alcance curto devem fazer um teste de Vontade (CD Car). Um inimigo que falhe fica abalado até o fim da cena. Um inimigo que passe se torna imune a esta habilidade até o fim do dia. Pré-requisito: treinado em Intimidação.',
-    requirement: null
-  },
-  {
-    name: 'Critico Brutal',
-    category: CategoryEnum.Classe,
-    description: 'Seu multiplicador de crítico com ataques corpo a corpo aumenta em + 1. Por exemplo, se fizer um crítico com um machado de batalha, seu multiplicador será x4, em vez de x3. Pré - requisito: 6º nível de bárbaro.',
-    requirement: null
-  },
-  {
-    name: 'Ímpeto',
-    category: CategoryEnum.Classe,
-    description: ' Você pode gastar 1 PM para aumentar seu deslocamento em +6m por uma rodada.',
-    requirement: null
-  }, {
-    name: 'Investida Imprudente',
-    category: CategoryEnum.Classe,
-    description: 'Quando faz uma investida, você pode aumentar sua penalidade em Defesa pela investida para –5 para receber um bônus de +1d8 na rolagem de dano deste ataque.',
-    requirement: null
-  }, {
-    name: 'Pele de Aço',
-    category: CategoryEnum.Classe,
-    description: 'O bônus de Pele de Ferro aumenta para +5. Pré-requisito: 8º nível de bárbaro, Pele de Ferro.',
-    requirement: null
-  }, {
-    name: 'Pele de Ferro',
-    category: CategoryEnum.Classe,
-    description: 'Você recebe +2 na Defesa, mas apenas se não estiver usando armadura pesada',
-    requirement: null
-  }, {
-    name: 'Sangue dos Inimigos',
-    category: CategoryEnum.Classe,
-    description: 'Enquanto está em fúria, quando faz um acerto crítico ou reduz um inimigo a 0 PV, você recebe um bônus cumulativo de +1 em testes de ataque e rolagens de dano, limitado pelo seu nível, até o fim da cena.',
-    requirement: null
-  }, {
-    name: 'Superstição',
-    category: CategoryEnum.Classe,
-    description: 'Você odeia magia, o que faz com que seja mais resistente a ela. Você recebe +5 em testes de resistência contra magias.',
-    requirement: null
-  }, {
-    name: 'Vigor Primal',
-    category: CategoryEnum.Classe,
-    description: 'Você pode gastar uma ação de movimento e 1 PM para recuperar 1d12 pontos de vida. Para cada 2 PM extras que você gastar, cura +1d12 PV (pode gastar 3 PM para recuperar 2d12 PV, 5 PM para recuperar 3d12 PV e assim por diante).',
-    requirement: null
-  }, {
-    name: 'Instinto Selvagem',
-    category: CategoryEnum.Classe,
-    description: 'No 3º nível, você recebe +1 em Percepção e Reflexos. A cada seis níveis, esse bônus aumenta em +1.',
-    requirement: null
-  }, {
-    name: 'Resistência a Dano',
-    category: CategoryEnum.Classe,
-    description: ' A partir do 5º nível, graças a seu vigor e força de vontade, você ignora parte de seus ferimentos. Você recebe resistência a dano 2 (todo dano que sofre é reduzido em 2). A cada três níveis, sua RD aumenta em 2, até um máximo de RD 10 no 17º nível.',
-    requirement: null
-  }, {
-    name: 'Fúria Titânica',
-    category: CategoryEnum.Classe,
-    description: 'No 20º nível, o bônus que você recebe nos testes de ataque e rolagens de dano quando usa Fúria é dobrado. Por exemplo, se gastar 12 PM, em vez de um bônus de +5, recebe um bônus de +10.',
-    requirement: null
-  },
-];
-
-const levelUpMock = [
-
 ];

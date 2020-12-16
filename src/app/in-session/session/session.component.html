@@ -1,8 +1,8 @@
 <div class="container">
   <canvas
     #canvas
-    (mousedown)="startPosition($event)"
-    (mouseup)="finishedPosition($event)"
+    (mousedown)="startPosition($event, true)"
+    (mouseup)="finishedPosition($event, true)"
     (mousemove)="draw($event, true)"
   ></canvas>
 </div>
@@ -13,12 +13,21 @@
   <p>Opções de Desenho</p>
   <div class="field">
     <label>cor</label>
-    <input [(colorPicker)]="pencilColor" [style.background]="pencilColor" />
+    <input
+      [(colorPicker)]="pencilColor"
+      (change)="propagateColor()"
+      [style.background]="pencilColor"
+    />
   </div>
   <div class="field" style="margin-top: 8px; position: relative">
     <label>tamanho</label>
 
-    <ng-select [(ngModel)]="pencilWidth" id="pencil-width" [clearable]="false">
+    <ng-select
+      [(ngModel)]="pencilWidth"
+      (change)="propagateWidth()"
+      id="pencil-width"
+      [clearable]="false"
+    >
       <ng-option
         *ngFor="let width of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
         [value]="width"
@@ -28,9 +37,9 @@
     </ng-select>
   </div>
   <div class="pencil-options-buttons">
-    <button class="button--default" (click)="undoDraw()">
+    <button class="button--default" (click)="undoDraw(true)">
       <i class="material-icons">undo</i>
     </button>
-    <button class="button--default" (click)="resetDraw()">limpar</button>
+    <button class="button--default" (click)="resetDraw(true)">limpar</button>
   </div>
 </div>

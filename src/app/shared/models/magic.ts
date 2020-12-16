@@ -25,6 +25,8 @@ export enum MagicSchools {
   Evocacao = 'Evocação'
 }
 
+export const magicSchoolsMock = [MagicSchools.Transmutacao, MagicSchools.Encantamento, MagicSchools.Abjuracao, MagicSchools.Convocacao, MagicSchools.Adivinhacao, MagicSchools.Necromancia, MagicSchools.Ilusao, MagicSchools.Evocacao];
+
 export enum MagicRange {
   Curto = 'Curto',
   Medio = 'Médio',

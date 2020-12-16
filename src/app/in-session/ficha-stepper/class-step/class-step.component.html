@@ -48,30 +48,149 @@
     >
   </ng-select>
 </div>
-<!-- 
-<div class="">
-  <h4>
-    Atributos:
-    <span *ngFor="let atributo of attributes"
-      >{{ atributo.value > 0 ? "+" : "" }}{{ atributo.value }}&nbsp;{{
-        atributo.name
-      }}</span
+
+<!--BARBARO-->
+<div *ngIf="ficha.class.id === 2">
+  <div>
+    <h4>Habilidades de Classe Lv. 1:</h4>
+    <ul>
+      <li *ngFor="let habilidade of barbarianLevelOne.fixedPowers">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--BARDO-->
+<div *ngIf="ficha.class.id === 3">
+  <div>
+    <h4>Habilidades de Classe Lv. 1:</h4>
+    <ul>
+      <li *ngFor="let habilidade of bardLevelOne.fixedPowers">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <p>
+      <span>Escolas de Magia</span>
+    </p>
+
+    <ng-select
+      [(ngModel)]="ficha.class.magicSchoolsAllowed"
+      id="schools"
+      [multiple]="true"
+      [maxSelectedItems]="3"
+      [clearable]="false"
+      [closeOnSelect]="false"
+      (change)="updateSchools()"
     >
-  </h4>
+      <ng-option *ngFor="let school of magicSchools" [value]="school">{{
+        school
+      }}</ng-option>
+    </ng-select>
+  </div>
+
+  <div
+    *ngIf="
+      !ficha.class.magicSchoolsAllowed ||
+      ficha.class.magicSchoolsAllowed.length === 0
+    "
+  >
+    <p>
+      <span>Magias</span>
+    </p>
+
+    <ng-select
+      [(ngModel)]="selectedPowers"
+      id="schools"
+      [multiple]="true"
+      [maxSelectedItems]="bardLevelOne.chooseMagic.quantity"
+      [clearable]="false"
+      [closeOnSelect]="false"
+    >
+      <ng-option
+        *ngFor="let magic of bardLevelOne.chooseMagic.magics"
+        [value]="magic"
+        >{{ magic.name }}</ng-option
+      >
+    </ng-select>
+  </div>
 </div>
-<div class="">
-  <h4>
-    Perícias:
-    <span *ngFor="let pericia of race.pericias">{{ pericia.name }}</span>
-  </h4>
+
+<!--DRUIDA-->
+<div *ngIf="ficha.class.id === 4">
+  <div>
+    <h4>Habilidades de Classe Lv. 1:</h4>
+    <ul>
+      <li *ngFor="let habilidade of druidLevelOne.fixedPowers">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <p>
+      <span>Escolas de Magia</span>
+    </p>
+
+    <ng-select
+      [(ngModel)]="ficha.class.magicSchoolsAllowed"
+      id="schools"
+      [multiple]="true"
+      [maxSelectedItems]="3"
+      [clearable]="false"
+      [closeOnSelect]="false"
+      (change)="updateSchools()"
+    >
+      <ng-option *ngFor="let school of magicSchools" [value]="school">{{
+        school
+      }}</ng-option>
+    </ng-select>
+  </div>
+
+  <div
+    *ngIf="
+      !ficha.class.magicSchoolsAllowed ||
+      ficha.class.magicSchoolsAllowed.length === 0
+    "
+  >
+    <p>
+      <span>Magias</span>
+    </p>
+
+    <ng-select
+      [(ngModel)]="selectedPowers"
+      id="schools"
+      [multiple]="true"
+      [maxSelectedItems]="druidLevelOne.chooseMagic.quantity"
+      [clearable]="false"
+      [closeOnSelect]="false"
+    >
+      <ng-option
+        *ngFor="let magic of druidLevelOne.chooseMagic.magics"
+        [value]="magic"
+        >{{ magic.name }}</ng-option
+      >
+    </ng-select>
+  </div>
 </div>
-<div class="">
-  <h4>Habilidades de Raça:</h4>
-  <ul>
-    <li *ngFor="let habilidade of race.poderes">
-      <p>
-        <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
-      </p>
-    </li>
-  </ul>
-</div> -->
+
+<!--GUERREIRO-->
+<div *ngIf="ficha.class.id === 5">
+  <div>
+    <h4>Habilidades de Classe Lv. 1:</h4>
+    <ul>
+      <li *ngFor="let habilidade of warriorLevelOne.fixedPowers">
+        <p>
+          <span>{{ habilidade.name }}:</span> {{ habilidade.description }}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

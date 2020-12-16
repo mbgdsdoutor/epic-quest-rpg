@@ -1,8 +1,8 @@
 h4 span {
   font-weight: normal;
   &:not(:last-child) {
-    &:after{
-      content: ", "
+    &:after {
+      content: ", ";
     }
   }
 }
@@ -17,8 +17,6 @@ ul {
     }
   }
 }
-
-
 
 // radio button
 .control--radio .control__indicator {
@@ -41,7 +39,7 @@ ul {
   pointer-events: none;
 }
 .control__indicator:after {
-  content: '';
+  content: "";
   position: absolute;
   display: none;
 }
