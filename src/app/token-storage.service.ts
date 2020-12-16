@@ -4,6 +4,7 @@ import { User } from './out-of-session/models/user';
 
 const TOKEN_KEY = 'AuthToken';
 const USER = 'User';
+const NOTIFICATIONS = 'Notifications';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,18 @@ export class TokenStorageService {
     window.localStorage.removeItem(USER);
   }
 
+  public addNotification(id: number) {
+    const lst: number[] = this.getNotifications() || [];
+    lst.push(id);
+    window.localStorage.removeItem(NOTIFICATIONS);
+    window.localStorage.setItem(NOTIFICATIONS, JSON.stringify(lst));
+  }
+
+  public getNotifications(): number[] {
+    return JSON.parse(localStorage.getItem(NOTIFICATIONS)) || [];
+  }
+
   public saveUser(user: any) {
-    console.log('entrei no save user')
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
   }

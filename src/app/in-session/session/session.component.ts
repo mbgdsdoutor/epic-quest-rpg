@@ -23,7 +23,6 @@ export class SessionComponent {
 
   constructor(private tokenService: TokenStorageService) {
     this.socketUserId = this.tokenService.getLoggedUser().id;
-    console.log('madoka', this.socketUserId);
   }
 
   ngAfterViewInit(): void {
@@ -62,6 +61,10 @@ export class SessionComponent {
       this.canvasContext.drawImage(image, 0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height)
     };
     image.src = file;
+
+    setTimeout(() => {
+      this.redrawAll(false);
+    }, 100)
   }
 
   startPosition(event: MouseEvent, propagate?: boolean): void {
@@ -77,7 +80,7 @@ export class SessionComponent {
     });
 
     if (propagate) {
-      this.enviarStart(JSON.stringify(event));
+      this.enviarStart(event);
     }
   }
 
@@ -94,7 +97,7 @@ export class SessionComponent {
     });
 
     if (propagate) {
-      this.enviarEnd(JSON.stringify(event));
+      this.enviarEnd(event);
     }
   }
 
@@ -112,7 +115,7 @@ export class SessionComponent {
     this.madokaDraw(draw);
 
     if (propagate) {
-      this.enviarDraw(draw)
+      this.enviarDraw(event);
     }
   }
 
@@ -219,13 +222,11 @@ export class SessionComponent {
         console.log('ME INSCREVI A MIM MESMO', this.socketUserId)
         if (this.socketUserId !== 1) {
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/draw`, (data) => {
-            console.log('DRAW RECEBIDO!', data);
-            // this.madokaDraw(data.?);
+            this.draw(JSON.parse(data.body), false);
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/bg`, (data) => {
-            console.log('bg', data);
-            // this.setBackgroundFromB64(data.?);
+            this.setBackgroundFromB64(data.body);
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/reset`, (data) => {
@@ -233,23 +234,19 @@ export class SessionComponent {
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/start`, (data) => {
-            console.log('start', data);
-            // this.startPosition(JSON.parse(data.?));
+            this.startPosition(JSON.parse(data.body));
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/end`, (data) => {
-            console.log('end', data);
-            // this.finishedPosition(JSON.parse(data.?));
+            this.finishedPosition(JSON.parse(data.body));
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/color`, (data) => {
-            console.log('color', data);
-            // this.pencilColor = data.?
+            this.pencilColor = data.body;
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/width`, (data) => {
-            console.log('width', data);
-            // this.pencilWidth = parseInt(data.?, 10)
+            this.pencilWidth = parseInt(data.body, 10);
           })
 
           this.stompSubscribe(stompClient, `/user/${this.socketUserId}/undo`, (data) => {
@@ -264,12 +261,16 @@ export class SessionComponent {
     this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/photo`, bg))
   }
 
-  enviarStart(event: string) {
-    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/start`, 'start'))
+  enviarStart(event) {
+    const startlote = {clientX: event.clientX, clientY: event.clientY}
+    const startString = JSON.stringify(startlote);
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/start`, startString))
   }
 
-  enviarEnd(event: string) {
-    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/end`, 'end'))
+  enviarEnd(event) {
+    const endlote = {clientX: event.clientX, clientY: event.clientY}
+    const endString = JSON.stringify(endlote);
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/end`, endString))
   }
 
   enviarReset() {
@@ -281,15 +282,16 @@ export class SessionComponent {
   }
 
   enviarColor(color: string) {
-    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/color`, 'color'))
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/color`, color))
   }
 
   enviarWidth(width: string) {
-    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/width`, 'width'))
+    this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/width`, width))
   }
 
   enviarDraw(pincel) {
-    const pincelString = JSON.stringify(pincel);
+    const pincelote = {clientX: pincel.clientX, clientY: pincel.clientY}
+    const pincelString = JSON.stringify(pincelote);
     this.connection.then((stompClient) => this.stompClientSendMessage(stompClient, `/app/pincel`, pincelString))
   }
 

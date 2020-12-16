@@ -13,6 +13,10 @@ export class FichaService {
         return this.httpClient.get<Player>(`${url}/getById/${userId}`);
     }
 
+    public getPlayersByAdventureId(adventureId: number): Observable<any> {
+        return this.httpClient.get<any>(`${url}/getPlayersByAdventureId/${adventureId}`);
+    }
+
     public createFicha(ficha: Player, adventureId: number): Observable<string> {
         const fichaString = JSON.stringify(ficha);
         const obj = {
@@ -22,7 +26,13 @@ export class FichaService {
         return this.httpClient.post<string>(`${url}/create`, obj);
     }
 
-    public updateFicha(ficha: Player): Observable<Player> {
-        return this.httpClient.put<Player>(`${url}/update`, ficha);
+    public updateFicha(ficha: Player, adventureId: number): Observable<Player> {
+        const fichaString = JSON.stringify(ficha);
+        const obj = {
+            id: ficha.id,
+            adventure: { id: adventureId },
+            player: fichaString
+        }
+        return this.httpClient.put<Player>(`${url}/update`, obj);
     }
 }

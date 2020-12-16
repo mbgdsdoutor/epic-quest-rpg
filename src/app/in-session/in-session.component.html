@@ -18,7 +18,7 @@
 <!-- <chat></chat> -->
 
 <div class="main-options" [ngClass]="{ master: isMaster }">
-  <button *ngIf="!isMaster" id="pencil-trigger" (click)="showPencilOptions()">
+  <button *ngIf="isMaster" id="pencil-trigger" (click)="showPencilOptions()">
     <i class="material-icons">brush</i>
     <span>Pincel</span>
   </button>

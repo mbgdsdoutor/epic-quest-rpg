@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/shared/alert.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
+import { Player } from 'src/app/shared/models/player';
 import { TokenStorageService } from 'src/app/token-storage.service';
-import { usersMock } from 'src/app/utils/mocks';
 import { Adventure } from '../../../shared/models/adventure';
 import { User } from '../../models/user';
 import { AdventureService } from '../../services/adventure.service';
@@ -33,6 +33,13 @@ export class MyAdventuresComponent implements OnInit {
       const aventurasDisponiveis = response.filter(a => {
         const mapIds = a.users.map(u => u.id)
         return a.mestre.id === this.user.id || mapIds.includes(this.user.id)
+      }).map(a => {
+        let players:Player[] = [];
+        a.players.forEach(p => {
+          const pl = p as unknown as {player: string, id: number, adventure: null}
+          players.push(JSON.parse(pl.player));
+        })
+        return {...a, players}
       })
       this.adventures = aventurasDisponiveis;
       this.searchedAdventures = this.adventures;

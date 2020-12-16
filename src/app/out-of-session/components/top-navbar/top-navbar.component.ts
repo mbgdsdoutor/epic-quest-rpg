@@ -25,10 +25,10 @@ export class TopNavbarComponent {
 
   ngOnInit() {
     this.loggedUser = this.tokenService.getLoggedUser();
-    console.log(this.loggedUser)
+    const nots = this.tokenService.getNotifications();
     this.notificationService.findByUserId(this.loggedUser.id).subscribe(response => {
       console.log('MADOKA NOTIFICATIONS!', response)
-      this.notifications = response;
+      this.notifications = response.filter(n => !nots.includes(n.id));
     })
   }
 
@@ -42,7 +42,7 @@ export class TopNavbarComponent {
       console.log('ADICIONADO!!!!', res);
       this.notifications = this.notifications.filter(el => el.id !== notification.id);
       this.loadingService.stopLocalLoading(`.notifications-list > div:nth-child(${index + 1})`);
-
+      this.tokenService.addNotification(notification.id);
     })
   }
 

@@ -128,7 +128,7 @@
       [maxSelectedItems]="3"
       [clearable]="false"
       [closeOnSelect]="false"
-      (change)="updateSchools()"
+      (change)="updateBardSchools()"
     >
       <ng-option *ngFor="let school of magicSchools" [value]="school">{{
         school
@@ -188,7 +188,7 @@
       [maxSelectedItems]="3"
       [clearable]="false"
       [closeOnSelect]="false"
-      (change)="updateSchools()"
+      (change)="updateDruidSchools()"
     >
       <ng-option *ngFor="let school of magicSchools" [value]="school">{{
         school

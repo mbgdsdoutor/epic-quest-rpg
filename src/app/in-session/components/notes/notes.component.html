@@ -29,7 +29,7 @@
         [closeOnSelect]="false"
         [disabled]="isEditorDisabled"
       >
-        <ng-option *ngFor="let user of adventure.players" [value]="user.id">{{
+        <ng-option *ngFor="let user of adventure.players" [value]="user.userId">{{
           user?.name
         }}</ng-option>
       </ng-select>
@@ -56,13 +56,18 @@
   </div>
   <div *ngIf="!isNotesForm">
     <div class="notes-body">
+      <div class="note" *ngIf="notes && notes.length === 0">
+        <div class="note-title">
+          Sem anotações cadastradas.
+        </div>
+      </div>
       <div class="note" *ngFor="let note of notes">
         <div class="note-title">
           <span>{{ note.title }}</span>
           <ng-container *ngFor="let player of adventure.players">
             <img
               *ngIf="
-                note.userId !== userId &&
+                note.userId !== userId && note.sharedUsersIds &&
                 note.sharedUsersIds.includes(player.userId)
               "
               [src]="player.photoUrl"

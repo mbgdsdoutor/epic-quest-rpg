@@ -109,19 +109,6 @@ export const raceMock: Race = {
     }],
 }
 
-export const classeMock: Class = {
-  id: 1,
-  name: 'Arcanista',
-  initialLifePoints: 8,
-  levelUpLifePoints: 2,
-  initialManaPoints: 5,
-  levelUpManaPoints: 2,
-  pericias: [],
-  arcanistWay: null,
-  barbarianWay: null,
-  bardWay: null,
-}
-
 export const origemMock: Origem = {
   id: 1,
   itemChooseOne: false,
@@ -693,85 +680,87 @@ export const fullPoderesMock: Poder[] = [
   },
 ]
 
-export const playerMock: Player = {
-  id: 1,
-  adventureId: 1,
-  alignment: AlignmentEnum.Neutro,
-  experience: 300,
-  age: 20,
-  origem: origemMock,
-  displacement: 8,
-  items: [{
-    id: 1,
-    name: 'Armadura de Couro Simples',
-    consumable: false,
-    description: 'Uma simples armadura.'
-  }, {
-    id: 2,
-    name: 'Espada de Aço',
-    consumable: false,
-    description: 'Uma espada iniciante, forjada por um ferreiro preguiçoso.'
-  }
-  ],
-  poderes: [...fullPoderesMock],
-  pericias: fullPericiasMock.sort(() => Math.random() - Math.random()).slice(0, 5),
-  deus: null,
-  tibar: 0,
-  userId: 3,
-  nivel: 1,
-  name: 'Eric Han Bin',
-  race: raceMock,
-  class: classeMock,
-  lifePoints: 8,
-  totalLifePoints: 8,
-  manaPoints: 5,
-  totalManaPoints: 5,
-  caPoints: 10,
-  strength: 12,
-  wisdom: 10,
-  dexterity: 14,
-  constitution: 9,
-  intelligence: 11,
-  charisma: 10,
-  photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS62tMAHeaksBS-NGajA7EVlgB3bUShjU_egA&usqp=CAU'
-}
+// DELETE
+// export const playerMock: Player = {
+//   id: 1,
+//   adventureId: 1,
+//   alignment: AlignmentEnum.Neutro,
+//   experience: 300,
+//   age: 20,
+//   origem: origemMock,
+//   displacement: 8,
+//   items: [{
+//     id: 1,
+//     name: 'Armadura de Couro Simples',
+//     consumable: false,
+//     description: 'Uma simples armadura.'
+//   }, {
+//     id: 2,
+//     name: 'Espada de Aço',
+//     consumable: false,
+//     description: 'Uma espada iniciante, forjada por um ferreiro preguiçoso.'
+//   }
+//   ],
+//   poderes: [...fullPoderesMock],
+//   pericias: fullPericiasMock.sort(() => Math.random() - Math.random()).slice(0, 5),
+//   deus: null,
+//   tibar: 0,
+//   userId: 3,
+//   nivel: 1,
+//   name: 'Eric Han Bin',
+//   race: raceMock,
+//   class: fullClassesMock[1],
+//   lifePoints: 8,
+//   totalLifePoints: 8,
+//   manaPoints: 5,
+//   totalManaPoints: 5,
+//   caPoints: 10,
+//   strength: 12,
+//   wisdom: 10,
+//   dexterity: 14,
+//   constitution: 9,
+//   intelligence: 11,
+//   charisma: 10,
+//   photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS62tMAHeaksBS-NGajA7EVlgB3bUShjU_egA&usqp=CAU'
+// }
 
-export const fullAdventuresMock: Adventure[] = [
-  {
-    id: 1, name: 'Trinity Wonder', photoUrl: 'https://pm1.narvii.com/6374/f49224bea7937903db1166396c554224b3361b8c_hq.jpg', description: 'Nós três que nos conhecemos através do tempo e espaço, inevitavelmente nunca pensamos sobre a existência um do outro... Um artista marcial, uma maga e uma cientista genial. Os ventos do destino une três personalidades, e trazem grandes mudanças ao mundo conhecido atualmente.',
-    mestre: {
-      id: 2,
-      userName: 'Matheus Braz',
-      email: 'mbgdsdoutor@gmail.com',
-      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
-      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
-    },
-    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
-    { id: 6, userName: 'Leonardo Tavares', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
-    players: [
-      playerMock,
-      { ...playerMock, id: 2, name: 'Tobias' },
-      { ...playerMock, id: 3, name: 'Tavares' },
-    ]
-  },
-  {
-    id: 2, name: 'O Retorno do Mago', photoUrl: 'https://img.supermangas.site/img/animes/47504-large.jpg', description: 'O pior aluno da Academia Westroad e a vergonha da Família Blake. Uma nova alma entra no corpo sem vida de Fray Blake, o garoto que não conseguiu aguentar sua dolorosa vida e optou pela morte. O Grande Mago Lucas Trawman ganhou a chance de se vingar ao reencarnar no corpo do menino! Esse é o começo da nova aventura do Grande Mago que retornou após 4000 anos!',
-    mestre: {
-      id: 6,
-      userName: 'Leonardo Tavares ',
-      email: 'mbgdsdoutor@gmail.com',
-      photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
-      description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
-    },
-    users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
-    { id: 2, userName: 'Matheus Braz', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
-    players: [
-      playerMock,
-      { ...playerMock, id: 2, userId: 2, name: 'Doutor' },
-      { ...playerMock, id: 3, name: 'Kirito' }
-    ]
-  }
-]
+// DELETE
+// export const fullAdventuresMock: Adventure[] = [
+//   {
+//     id: 1, name: 'Trinity Wonder', photoUrl: 'https://pm1.narvii.com/6374/f49224bea7937903db1166396c554224b3361b8c_hq.jpg', description: 'Nós três que nos conhecemos através do tempo e espaço, inevitavelmente nunca pensamos sobre a existência um do outro... Um artista marcial, uma maga e uma cientista genial. Os ventos do destino une três personalidades, e trazem grandes mudanças ao mundo conhecido atualmente.',
+//     mestre: {
+//       id: 2,
+//       userName: 'Matheus Braz',
+//       email: 'mbgdsdoutor@gmail.com',
+//       photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
+//       description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
+//     },
+//     users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
+//     { id: 6, userName: 'Leonardo Tavares', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
+//     players: [
+//       playerMock,
+//       { ...playerMock, id: 2, name: 'Tobias' },
+//       { ...playerMock, id: 3, name: 'Tavares' },
+//     ]
+//   },
+//   {
+//     id: 2, name: 'O Retorno do Mago', photoUrl: 'https://img.supermangas.site/img/animes/47504-large.jpg', description: 'O pior aluno da Academia Westroad e a vergonha da Família Blake. Uma nova alma entra no corpo sem vida de Fray Blake, o garoto que não conseguiu aguentar sua dolorosa vida e optou pela morte. O Grande Mago Lucas Trawman ganhou a chance de se vingar ao reencarnar no corpo do menino! Esse é o começo da nova aventura do Grande Mago que retornou após 4000 anos!',
+//     mestre: {
+//       id: 6,
+//       userName: 'Leonardo Tavares ',
+//       email: 'mbgdsdoutor@gmail.com',
+//       photoUrl: 'https://i.pinimg.com/564x/ca/5e/03/ca5e036976de26dd35bf9475baa0b022.jpg',
+//       description: 'Olá! Sou o Matheus, e junto com a Nayara, desenvolvo este app como nosso Projeto de Inovação Tecnologica.',
+//     },
+//     users: [{ id: 3, userName: 'Atsuko Akagari', email: 'akkochan@gmail.com', photoUrl: 'https://i.redd.it/t27bpbv22imz.png', description: 'olá, meu nome é Akko, e eu só jogo de mage.' },
+//     { id: 2, userName: 'Matheus Braz', email: 'tavares@cotemig.com.br', photoUrl: 'https://media-exp1.licdn.com/dms/image/C4E03AQHvLJxok2lpxw/profile-displayphoto-shrink_800_800/0?e=1605139200&v=beta&t=PwGRK0TtqOtSNym7BvxrjzP0O8BwArS67nXgoMzRU_g', description: 'Professor dos cursos de Sistema de informação e Análise e desenvolvimento de sistemas, da Faculdade Cotemig. Coordenador do curso de pós-graduação em Data Science e Big Data. Cientista de dados do Hospital Albert Einstein.' },],
+//     players: [
+//       playerMock,
+//       { ...playerMock, id: 2, userId: 2, name: 'Doutor' },
+//       { ...playerMock, id: 3, name: 'Kirito' }
+//     ]
+//   }
+// ]
 
 export const notificationsMock: Notification[] = [
   {

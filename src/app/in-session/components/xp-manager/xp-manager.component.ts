@@ -37,7 +37,7 @@ export class XPManagerComponent {
     this.adventureUsers.forEach((u, index) => {
       const fichaToUpdate = this.aventura.players.find(p => p.id === u.value)
       fichaToUpdate.experience = fichaToUpdate.experience + this.xpAmount;
-      this.fichaService.updateFicha(fichaToUpdate).subscribe(response => {
+      this.fichaService.updateFicha(fichaToUpdate, this.aventura.id).subscribe(response => {
         if (index === this.adventureUsers.length) {
           this.loadingService.stopLocalLoading('#xp-manager .container');
           this.alertService.success('Experiência concedida com sucesso');

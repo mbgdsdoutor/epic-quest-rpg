@@ -43,8 +43,12 @@ export class NotesComponent {
 
   ngOnInit() {
     this.userId = this.tokenService.getLoggedUser().id;
-    this.userId = 2;
+    this.loadNotes();
+  }
+
+  loadNotes() {
     this.notesService.findByUserId(this.userId).subscribe(response => {
+      console.log(`notas`, response)
       this.notes = response;
     })
   }
@@ -54,6 +58,7 @@ export class NotesComponent {
   }
 
   toggleNote() {
+    this.loadNotes();
     this.isEditorDisabled = false;
     this.activeNote = {
       title: '',
@@ -78,10 +83,12 @@ export class NotesComponent {
 
   saveNote() {
     let note = this.activeNote as Note;
+    console.log(`notinha to save`, note)
     this.loadingService.startLocalLoading('.notes');
     this.notesService.saveNote(note).subscribe(response => {
       this.alertService.success('Anotação salva com sucesso!');
       this.loadingService.stopLocalLoading('.notes');
+      this.toggleNote();
     }, err => {
       this.alertService.error('Erro ao salvar anotação!');
       this.loadingService.stopLocalLoading('.notes');

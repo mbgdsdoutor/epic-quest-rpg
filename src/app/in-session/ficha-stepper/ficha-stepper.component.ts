@@ -86,7 +86,6 @@ export class FichaStepperComponent implements OnInit {
       this.activeStep++;
     } else {
       this.configuraFicha();
-      //this.salvarFichap();
     }
   }
 
