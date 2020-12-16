@@ -1,6 +1,6 @@
 <div id="level-up" class="hideModal">
   <div class="container" *ngIf="actualFicha">
-    <h3>Parabéns! Você upou para o nível {{ actualLevel }}!</h3>
+    <h3>Parabéns! Você evoluiu para o nível {{ actualLevel }}!</h3>
     <div class="form">
       <div class="field">
         <label for="atributo">Atributo</label>
@@ -8,6 +8,43 @@
           <ng-option *ngFor="let attribute of attributes" [value]="attribute">{{
             attribute
           }}</ng-option>
+        </ng-select>
+      </div>
+
+      <h4>Habilidades obtidas:</h4>
+      <div class="field" *ngFor="let power of levelUpObject.fixedPowers">
+        <label>{{ power.name }}</label>
+        <label>{{ power.description }}</label>
+      </div>
+      <h4>Escolha suas habilidades:</h4>
+      <div class="field">
+        <ng-select [(ngModel)]="habilidade" id="habilidade">
+          <ng-option
+            *ngFor="let power of levelUpObject.choosePowers"
+            [value]="power"
+            >{{
+            {{power.name}}
+            }}</ng-option
+          >
+        </ng-select>
+        <p>{{ habilidade.description }}</p>
+      </div>
+      <div class="field">
+        <ng-select
+          [(ngModel)]="magias"
+          id="magias"
+          [multiple]="true"
+          [maxSelectedItems]="levelUpObject.chooseMagic.quantity"
+          [clearable]="false"
+          [closeOnSelect]="false"
+        >
+          <ng-option
+            *ngFor="let power of levelUpObject.chooseMagic.magics"
+            [value]="power"
+            >{{
+            {{power.name}}
+            }}</ng-option
+          >
         </ng-select>
       </div>
       <div class="form-actions">

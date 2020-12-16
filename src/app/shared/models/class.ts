@@ -17,7 +17,7 @@ export interface Class {
   /*Proficiências. Descreve que tipos de equipamento você sabe usar. Todos os personagens sabem
 usar armas simples e armaduras leves. Se você souber
 usar outros equipamentos, isso estará anotado aqui. */
-  arcanistWay?: ArcanistWay | null;
+  arcanistWay?: ArcanistWayOptions | null;
   magicSchoolsAllowed?: MagicSchools[];
 }
 

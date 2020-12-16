@@ -24,12 +24,9 @@
   </ul>
 </div>
 
-<div>
+<div *ngFor="let periciaC of ficha.class.periciasChoose">
   <p>
-    <span
-      >Perícias: (Escolha até
-      {{ ficha.class.periciasChoose[0].quantity }})</span
-    >
+    <span>Perícias: (Escolha até {{ periciaC.quantity }})</span>
   </p>
 
   <ng-select
@@ -41,12 +38,56 @@
     [closeOnSelect]="false"
   >
     <ng-option
-      *ngFor="let pericia of pericias"
+      *ngFor="let pericia of periciaC.pericias"
       [value]="pericia"
       [disabled]="disabledPericias.includes(pericia.id) ? true : false"
       >{{ pericia.name }}</ng-option
     >
   </ng-select>
+</div>
+
+<div *ngIf="ficha.class.id === 1">
+  <div>
+    <p>
+      <span>Caminho do Arcanista</span>
+    </p>
+    <ng-select
+      [(ngModel)]="ficha.class.arcanistWay"
+      id="arcanistWay"
+      [multiple]="true"
+      [maxSelectedItems]="3"
+      [clearable]="false"
+      [closeOnSelect]="false"
+      (change)="updateArcanistWay()"
+    >
+      <ng-option
+        *ngFor="let arcanist of ['Bruxo', 'Feitiçeiro', 'Mago']"
+        [value]="arcanist"
+        >{{ arcanist }}</ng-option
+      >
+    </ng-select>
+  </div>
+
+  <div *ngIf="ficha.class.arcanistWay">
+    <p>
+      <span>Magias Iniciais</span>
+    </p>
+    <ng-select
+      [(ngModel)]="selectedPowers"
+      id="schools"
+      [multiple]="true"
+      [maxSelectedItems]="arcanistLevelOne.chooseMagic.quantity"
+      [clearable]="false"
+      [closeOnSelect]="false"
+      (change)="updatePowers()"
+    >
+      <ng-option
+        *ngFor="let magic of arcanistLevelOne.chooseMagic.magics"
+        [value]="magic"
+        >{{ magic.name }}</ng-option
+      >
+    </ng-select>
+  </div>
 </div>
 
 <!--BARBARO-->
@@ -112,6 +153,7 @@
       [maxSelectedItems]="bardLevelOne.chooseMagic.quantity"
       [clearable]="false"
       [closeOnSelect]="false"
+      (change)="updatePowers()"
     >
       <ng-option
         *ngFor="let magic of bardLevelOne.chooseMagic.magics"
@@ -171,6 +213,7 @@
       [maxSelectedItems]="druidLevelOne.chooseMagic.quantity"
       [clearable]="false"
       [closeOnSelect]="false"
+      (change)="updatePowers()"
     >
       <ng-option
         *ngFor="let magic of druidLevelOne.chooseMagic.magics"
