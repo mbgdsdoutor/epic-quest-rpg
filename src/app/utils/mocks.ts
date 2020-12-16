@@ -810,50 +810,20 @@ export const fullOrigensMock: Origem[] = [{
   pericias: fullPericiasMock.filter(p => p.name === 'Cura' || p.name === 'Religião' || p.name === 'Vontade'),
   poderes: [
     {
-      id: 1,
       name: 'Membro da Igreja',
       category: CategoryEnum.Origem,
       description: 'Você consegue hospedagem e informação em aliados.',
       requirement: null
     }, {
-      id: 2,
       name: 'Curandeiro',
-      category: CategoryEnum.Destino,
+      category: CategoryEnum.Origem,
       description: 'Você pode gastar uma ação completa para fazer um teste de Cura (CD 15) em uma criatura. Se você passar, ela recupera 1d6 PV, mais 1d6 para cada 5 pontos pelos quais o resultado do teste exceder a CD (2d6 com um resultado 20, 3d6 com um resultado 25 e assim por diante). Você só pode usar este poder uma vez por dia numa mesma criatura. Pré-requisitos: Sab 13, treinado em Cura.',
-      requirement: {
-        strengthPoints: 0,
-        wisdomPoints: 13,
-        dexterityPoints: 0,
-        constitutionPoints: 0,
-        intelligencePoints: 0,
-        charismaPoints: 0,
-        poderes: [],
-        pericias: [{
-          id: 7,
-          name: 'Cura',
-          description: 'Você sabe tratar ferimentos, doenças e venenos.',
-          attribute: AttributesEnum.Wisdom,
-          onlyTrained: false,
-          armorPenalty: false,
-        }],
-        deus: null
-      }
+      requirement: null
     }, {
-      id: 3,
       name: 'Vontade de Ferro',
-      category: CategoryEnum.Destino,
+      category: CategoryEnum.Origem,
       description: 'Você recebe +1 PM para cada dois níveis de personagem e +2 em Vontade. ',
-      requirement: {
-        strengthPoints: 0,
-        wisdomPoints: 13,
-        dexterityPoints: 0,
-        constitutionPoints: 0,
-        intelligencePoints: 0,
-        charismaPoints: 0,
-        poderes: [],
-        pericias: [],
-        deus: null
-      }
+      requirement: null
     }
   ],
 }, {
@@ -863,51 +833,57 @@ export const fullOrigensMock: Origem[] = [{
   itemChooseOne: true,
   items: [{
     name: 'Cão de Guarda',
-    description: '',
+    description: 'Um fiel cão de guarda.',
     consumable: false,
     value: 50,
   }, {
     name: 'Cavalo',
-    description: '',
+    description: 'um fiel cavalo.',
     consumable: false,
     value: 50,
   }, {
     name: 'Pônei',
-    description: '',
+    description: 'um fiel pônei.',
     consumable: false,
     value: 50,
   }],
   pericias: fullPericiasMock.filter(p => p.name === 'Adestramento' || p.name === 'Cavalgar'),
   poderes: [
     {
-      id: 4,
       name: 'Amigo Especial',
       category: CategoryEnum.Origem,
       description: 'Animais comuns são amistosos em relação a você. Mesmo que não seja um devoto de Allihanna, pássaros e outros pequenos animais sempre se aproximam sem receio. Além disso, caso possua um aliado animal, ele pertence a uma espécie exótica e impressionante, sempre atraindo atenção. ',
       requirement: null
     }, {
-      id: 5,
       name: 'Parceiro Animal',
       category: CategoryEnum.Destino,
       description: 'Você possui um parceiro animal ou humanoide que o acompanha em aventuras. Escolha os detalhes dele, como nome, aparência e personalidade. Em termos de jogo, é um aliado iniciante de um tipo a sua escolha (veja a página XX). O parceiro obedece às suas ordens e se arrisca para ajudá-lo. Entretanto, se for maltratado, pode parar de segui-lo (de acordo com o mestre). Se perder seu parceiro, você recebe outro no início da próxima aventura.',
-      requirement: {
-        strengthPoints: 0,
-        wisdomPoints: 0,
-        dexterityPoints: 0,
-        constitutionPoints: 0,
-        intelligencePoints: 0,
-        charismaPoints: 0,
-        poderes: [],
-        pericias: [{
-          id: 2,
-          name: 'Adestramento',
-          description: 'Você sabe lidar com animais.',
-          attribute: AttributesEnum.Charisma,
-          onlyTrained: true,
-          armorPenalty: false,
-        }],
-        deus: null
-      }
+      requirement: null
+    }
+  ],
+},{
+  id: 3,
+  name: 'Aristocrata',
+  description: 'Você nasceu na nobreza. Recebeueducação sofisticada em assuntosacadêmicos, política mercantil,torneios de cavalaria ou mesmo conjuração arcana, dependendo das tradições emsua linhagem e desejos deseus pais. Você ainda procura cumprir seus compromissos como nobre? Lutapara conciliar as expectativasda família com a vidade aventuras? Oucortou totalmente seus laços como passado, mantendo apenas algunspertences valiosos econtatos úteis?',
+  itemChooseOne: false,
+  items: [{
+    name: 'Jóia da familia',
+    description: 'Um item bem valioso de uma rica família',
+    consumable: false,
+    value: 100,
+  }],
+  pericias: fullPericiasMock.filter(p => p.name === 'Diplomacia' || p.name === 'Enganação' || p.name === 'Nobreza'),
+  poderes: [
+    {
+      name: 'Comandar',
+      category: CategoryEnum.Origem,
+      description: 'asdf ',
+      requirement: null
+    }, {
+      name: 'Sangue Azul',
+      category: CategoryEnum.Origem,
+      description: 'Você tem alguma influência política, suficiente para ser tratado com mais leniência pela guarda, conseguir uma audiência com o nobre local etc.',
+      requirement: null
     }
   ],
 }];
