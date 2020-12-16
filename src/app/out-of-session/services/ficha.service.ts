@@ -18,7 +18,8 @@ export class FichaService {
     }
 
     public createFicha(ficha: Player, adventureId: number): Observable<string> {
-        const fichaString = JSON.stringify(ficha);
+        const fichaToReduce = { ...ficha, class: ficha.class.id, race: ficha.race.id, origem: ficha.origem.id }
+        const fichaString = JSON.stringify(fichaToReduce);
         const obj = {
             adventure: { id: adventureId },
             player: fichaString
