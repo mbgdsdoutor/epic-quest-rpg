@@ -26,7 +26,7 @@
     "@angular/service-worker": "~9.1.0",
     "@ng-select/ng-select": "^5.0.8",
     "@stomp/stompjs": "^5.4.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jwt-decode": "^2.2.0",
     "ngx-chips": "^2.1.0",
     "ngx-color-picker": "^10.1.0",
